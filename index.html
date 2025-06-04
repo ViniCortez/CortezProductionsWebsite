@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: Título da Página - Importante! Altere se necessário -->
+    <title>Cortez Productions - Game Development Studio</title>
+    <!-- SEO: Meta Descrição - Importante! Escreva uma descrição concisa e atrativa -->
+    <meta name="description" content="Cortez Productions é um estúdio de desenvolvimento de jogos focado em criar experiências imersivas e narrativas profundas. Explore nossos projetos e nossa visão.">
+    <!-- SEO: Palavras-chave (opcional, menos relevante hoje em dia, mas não prejudica) -->
+    <meta name="keywords" content="game development, indie games, Cortez Productions, horror games, sci-fi games, immersive experiences">
+    <!-- SEO: Open Graph Tags para Redes Sociais (Opcional, mas bom para compartilhamento) -->
+    <meta property="og:title" content="Cortez Productions - Game Development Studio">
+    <meta property="og:description" content="Forjando experiências imersivas que persistem muito depois que a tela escurece.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/030303/4A90E2?text=Cortez+Productions"> <!-- Substitua pela URL de uma imagem representativa do seu site -->
+    <meta property="og:url" content="https://SEU_USUARIO_GITHUB.github.io/SEU_REPOSITORIO/"> <!-- Substitua pela URL final do seu site -->
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="interactive-background"></canvas>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-logo-container">
+            <svg class="loader-logo-svg" viewBox="0 0 100 100">
+                <path class="loader-path" d="M20,50 A30,30 0 1,1 80,50 A30,30 0 1,1 20,50" fill="none" stroke-width="4"/>
+            </svg>
+            <span class="loader-logo-text">C</span>
+        </div>
+        <div class="loader-text">SYSTEM_ONLINE // CORTEZ_PRODUCTIONS</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="container nav-container">
+            <a href="#hero" class="nav-logo">CORTEZ</a>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#vision" class="nav-link">Vision</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="hero-main-title" data-text="CORTEZ">CORTEZ</h1>
+            <h2 class="hero-subtitle" data-text="PRODUCTIONS">PRODUCTIONS</h2>
+            <p class="hero-tagline">Engineering Nightmares. Crafting Realities.</p>
+            <p class="hero-intro">We are a game development studio forging immersive experiences that linger long after the screen fades to black. Welcome to the edge of digital creation.</p>
+            <a href="#projects" class="btn btn-hero">Explore Our Creations</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title anim-on-scroll">Project Archives</h2>
+            <div class="projects-grid">
+                <!-- ATENÇÃO: Substitua os src das imagens abaixo se você tiver imagens locais -->
+                <!-- Exemplo com imagem local: <img src="images/project-umbra-thumbnail.jpg" alt="Project Umbra Thumbnail"> -->
+                <div class="project-card anim-on-scroll" data-project-id="1" data-title="Project Umbra" data-image="https://via.placeholder.com/600x400/030303/4A90E2?text=Project+Umbra" data-description="A psychological horror set in a derelict spaceship. Players must uncover the truth behind the crew's disappearance while battling their own sanity." data-genre="Psychological Horror, Sci-Fi" data-tech="Unreal Engine, Blender">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/600x400/030303/4A90E2?text=Project+Umbra" alt="Project Umbra Thumbnail">
+                        <div class="project-overlay"><span>View Details</span></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Project Umbra</h3>
+                        <p class="project-genre">Psychological Horror, Sci-Fi</p>
+                    </div>
+                </div>
+                <div class="project-card anim-on-scroll" data-project-id="2" data-title="Neon Cipher" data-image="https://via.placeholder.com/600x400/030303/4A90E2?text=Neon+Cipher" data-description="A fast-paced cyberpunk stealth game where players hack systems and navigate neon-lit cityscapes to expose a corporate conspiracy." data-genre="Cyberpunk, Stealth, Action" data-tech="Unity, Substance Painter">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/600x400/030303/4A90E2?text=Neon+Cipher" alt="Neon Cipher Thumbnail">
+                         <div class="project-overlay"><span>View Details</span></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Neon Cipher</h3>
+                        <p class="project-genre">Cyberpunk, Stealth, Action</p>
+                    </div>
+                </div>
+                 <div class="project-card anim-on-scroll" data-project-id="3" data-title="Echoes of the Void" data-image="https://via.placeholder.com/600x400/030303/4A90E2?text=Echoes+Void" data-description="An atmospheric exploration game where you pilot a lone vessel through the remnants of a dead civilization, piecing together their story." data-genre="Exploration, Mystery, Sci-Fi" data-tech="Custom Engine, Houdini">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/600x400/030303/4A90E2?text=Echoes+Void" alt="Echoes of the Void Thumbnail">
+                         <div class="project-overlay"><span>View Details</span></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Echoes of the Void</h3>
+                        <p class="project-genre">Exploration, Mystery, Sci-Fi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision">
+        <div class="container">
+            <h2 class="section-title anim-on-scroll">The Cortez Doctrine</h2>
+            <div class="vision-content">
+                <p class="vision-statement anim-on-scroll">
+                    At Cortez Productions, we believe games are more than entertainment; they are <strong>portals to other realities</strong>.
+                    Our vision is to push the boundaries of interactive storytelling, crafting experiences that are not only
+                    mechanically sound but emotionally resonant.
+                </p>
+                <p class="vision-statement anim-on-scroll" data-anim-delay="0.2s">
+                    We delve into the shadows, exploring themes of
+                    <strong>existential dread, technological paranoia, and the fragility of the human psyche</strong>.
+                    Every line of code, every pixel, every soundscape is meticulously designed to evoke a
+                    <strong>palpable atmosphere</strong> and a lasting impression.
+                </p>
+                 <p class="vision-statement anim-on-scroll" data-anim-delay="0.4s">
+                    We don't just build games; we engineer worlds that challenge, unsettle, and ultimately, captivate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title anim-on-scroll">Behind The Code</h2>
+            <div class="about-content">
+                <p class="anim-on-scroll">Founded by a collective of veteran developers, artists, and audio engineers with a shared passion for the unorthodox, Cortez Productions is a boutique game development studio dedicated to creating unique and memorable interactive experiences. We thrive on innovation, blending cutting-edge technology with narrative depth to explore the darker, more thought-provoking corners of gaming.</p>
+                <p class="anim-on-scroll" data-anim-delay="0.2s">Our mission is to deliver polished, high-fidelity games that respect the player's intelligence and evoke a strong emotional response. We are the architects of digital nightmares and the engineers of compelling realities, committed to quality and the relentless pursuit of the extraordinary.</p>
+
+                <h3 class="team-title anim-on-scroll" data-anim-delay="0.3s">The Architects</h3>
+                <div class="team-grid">
+                    <div class="team-member anim-on-scroll" data-anim-delay="0.4s">
+                        <img src="https://via.placeholder.com/120/4A90E2/030303?text=AC" alt="Alex Cortez">
+                        <h4>Alex Cortez</h4>
+                        <span>Lead Programmer / Visionary</span>
+                    </div>
+                    <div class="team-member anim-on-scroll" data-anim-delay="0.5s">
+                        <img src="https://via.placeholder.com/120/4A90E2/030303?text=SV" alt="Seraphina Volkov">
+                        <h4>Seraphina Volkov</h4>
+                        <span>Art Director / World Builder</span>
+                    </div>
+                    <div class="team-member anim-on-scroll" data-anim-delay="0.6s">
+                        <img src="https://via.placeholder.com/120/4A90E2/030303?text=MT" alt="Marcus Thorne">
+                        <h4>Marcus Thorne</h4>
+                        <span>Sound Design / Composer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title anim-on-scroll">Establish Contact</h2>
+            <p class="anim-on-scroll" style="max-width: 600px; margin-bottom: 2rem;">Ready to build the next nightmare or forge a new reality? We're always looking for collaborators, partners, and brave souls to experience our creations. Send a transmission.</p>
+            <!-- ATENÇÃO: Este formulário é apenas visual. Para que ele envie emails, você precisará de um serviço de terceiros (ex: Formspree, Netlify Forms) ou um backend. -->
+            <form class="contact-form anim-on-scroll" id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST"> <!-- Exemplo com Formspree -->
+                <div class="form-group">
+                    <label for="name">Callsign / Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your identifier">
+                </div>
+                <div class="form-group">
+                    <label for="email">Comms Channel / Email:</label>
+                    <input type="email" id="email" name="_replyto" required placeholder="Your secure email address"> <!-- "_replyto" para Formspree -->
+                </div>
+                <div class="form-group">
+                    <label for="message">Transmission / Message:</label>
+                    <textarea id="message" name="message" required placeholder="Detail your query..."></textarea>
+                </div>
+                <button type="submit" class="btn">Send Transmission</button>
+            </form>
+            <div id="form-status"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#" target="_blank" title="Twitter/X"><img src="https://via.placeholder.com/28/888888/030303?text=X" alt="Twitter"></a>
+                <a href="#" target="_blank" title="LinkedIn"><img src="https://via.placeholder.com/28/888888/030303?text=Li" alt="LinkedIn"></a>
+                <a href="#" target="_blank" title="ArtStation"><img src="https://via.placeholder.com/28/888888/030303?text=As" alt="ArtStation"></a>
+            </div>
+            <p>© <span id="current-year"></span> Cortez Productions. All Rights Reserved. Reality is a construct.</p>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal-btn">×</span>
+            <h2 id="modal-project-title"></h2>
+            <img id="modal-project-image" src="" alt="Project Image"> <!-- Este src será preenchido pelo JS -->
+            <p id="modal-project-description"></p>
+            <p><span id="modal-project-genre"></span></p> <!-- Conteúdo preenchido pelo JS -->
+            <p><span id="modal-project-tech"></span></p> <!-- Conteúdo preenchido pelo JS -->
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
