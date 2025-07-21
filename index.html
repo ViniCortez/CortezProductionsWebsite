@@ -3,161 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cortez Productions - Game Development Studio</title>
-    <meta name="description" content="Cortez Productions é um estúdio de desenvolvimento de jogos focado em criar experiências imersivas e narrativas profundas. Explore nossos projetos e nossa visão.">
-    <meta name="keywords" content="game development, indie games, Cortez Productions, horror games, sci-fi games, immersive experiences">
-    <meta property="og:title" content="Cortez Productions - Game Development Studio">
-    <meta property="og:description" content="Forjando experiências imersivas que persistem muito depois que a tela escurece.">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/030303/4A90E2?text=Cortez+Productions"> 
-    <meta property="og:url" content="https://SEU_USUARIO_GITHUB.github.io/SEU_REPOSITORIO/"> 
-    <meta property="og:type" content="website">
-
+    <meta name="description" content="Cortez Productions is an indie game development studio specializing in immersive and terrifying horror games.">
+    <meta name="keywords" content="Cortez Productions, Game Development, Horror Games, Indie Games, EXP: War Trauma, The Backrooms: Lost Tape, Anomaly Tapes">
+    <title>Cortez Productions</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- NEW Magnetic Cursor Elements -->
-    <div id="magnetic-cursor"></div>
-    <div id="magnetic-cursor-dot"></div>
-
-    <canvas id="interactive-background"></canvas>
-
-    <!-- Original C-Logo Loader -->
-    <div id="loader">
-        <div class="loader-logo-container">
-            <svg class="loader-logo-svg" viewBox="0 0 100 100">
-                <path class="loader-path" d="M20,50 A30,30 0 1,1 80,50 A30,30 0 1,1 20,50" fill="none" stroke-width="4"/>
-            </svg>
-            <span class="loader-logo-text">C</span>
-        </div>
-        <div class="loader-text">SYSTEM_ONLINE // CORTEZ_PRODUCTIONS</div>
-    </div>
-
-    <!-- REMOVED Old Custom Cursor Elements -->
-    <!-- <div id="custom-cursor"></div> -->
-    <!-- <div id="cursor-dot"></div> -->
-
-    <nav id="main-nav">
-        <div class="container nav-container">
-            <a href="#hero" class="nav-logo magnetic-target">CORTEZ</a> <!-- Added magnetic-target -->
-            <div class="menu-toggle plus-morph-menu magnetic-target" id="menu-toggle"> <!-- Added magnetic-target -->
-                <div class="line horizontal"></div>
-                <div class="line vertical"></div>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#hero" class="nav-link active magnetic-target">Home</a></li>
-                <li><a href="#projects" class="nav-link magnetic-target">Projects</a></li>
-                <li><a href="#vision" class="nav-link magnetic-target">Vision</a></li>
-                <li><a href="#about" class="nav-link magnetic-target">About</a></li>
-                <li><a href="#contact" class="nav-link magnetic-target">Contact</a></li>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">CORTEZ PRODUCTIONS</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#bio" class="nav-link">Bio</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="hero">
-        <div class="hero-content">
-            <h1 class="hero-main-title" data-text="CORTEZ">CORTEZ</h1>
-            <h2 class="hero-subtitle" data-text="PRODUCTIONS">PRODUCTIONS</h2>
-            <p class="hero-tagline">Engineering Nightmares. Crafting Realities.</p>
-            <p class="hero-intro">We are a game development studio forging immersive experiences that linger long after the screen fades to black. Welcome to the edge of digital creation.</p>
-            <a href="#projects" class="btn btn-hero magnetic-target">Explore Our Creations</a> <!-- Added magnetic-target -->
+    <!-- Header Section -->
+    <header id="home" class="header">
+        <div class="header-content">
+            <!-- You can replace this text with a grayscale SVG logo -->
+            <h1 class="logo-text">CORTEZ PRODUCTIONS</h1>
+            <p class="tagline">Crafting profoundly immersive and terrifying horror games that captivate players globally.</p>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+    </header>
 
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title anim-on-scroll">Project Archives</h2>
-            <div class="projects-grid">
-                <div class="project-card anim-on-scroll magnetic-target" data-project-id="1" data-title="Project Umbra" data-image="https://via.placeholder.com/600x400/030303/4A90E2?text=Project+Umbra" data-description="A psychological horror set in a derelict spaceship..." data-genre="Psychological Horror, Sci-Fi" data-tech="Unreal Engine, Blender">
-                    <div class="project-thumbnail"><img src="https://via.placeholder.com/600x400/030303/4A90E2?text=Project+Umbra" alt="Project Umbra Thumbnail"><div class="project-overlay"><span>View Details</span></div></div>
-                    <div class="project-info"><h3>Project Umbra</h3><p class="project-genre">Psychological Horror, Sci-Fi</p></div>
-                </div>
-                <div class="project-card anim-on-scroll magnetic-target" data-project-id="2" data-title="Neon Cipher" data-image="https://via.placeholder.com/600x400/030303/4A90E2?text=Neon+Cipher" data-description="A fast-paced cyberpunk stealth game..." data-genre="Cyberpunk, Stealth, Action" data-tech="Unity, Substance Painter">
-                    <div class="project-thumbnail"><img src="https://via.placeholder.com/600x400/030303/4A90E2?text=Neon+Cipher" alt="Neon Cipher Thumbnail"><div class="project-overlay"><span>View Details</span></div></div>
-                    <div class="project-info"><h3>Neon Cipher</h3><p class="project-genre">Cyberpunk, Stealth, Action</p></div>
-                </div>
-                 <div class="project-card anim-on-scroll magnetic-target" data-project-id="3" data-title="Echoes of the Void" data-image="https://via.placeholder.com/600x400/030303/4A90E2?text=Echoes+Void" data-description="An atmospheric exploration game..." data-genre="Exploration, Mystery, Sci-Fi" data-tech="Custom Engine, Houdini">
-                    <div class="project-thumbnail"><img src="https://via.placeholder.com/600x400/030303/4A90E2?text=Echoes+Void" alt="Echoes of the Void Thumbnail"><div class="project-overlay"><span>View Details</span></div></div>
-                    <div class="project-info"><h3>Echoes of the Void</h3><p class="project-genre">Exploration, Mystery, Sci-Fi</p></div>
+    <main>
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">PROJECTS</h2>
+                <div class="projects-grid">
+
+                    <!-- Project 1: EXP: War Trauma -->
+                    <div class="project-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/4r1jynQCLH4" title="EXP: War Trauma Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">EXP: War Trauma</h3>
+                            <p class="project-genre">Psychological Horror</p>
+                            <p class="project-description">A first-person psychological horror game immersing players in the lingering horrors of war as a WWII soldier struggling with PTSD.</p>
+                            <a href="https://store.steampowered.com/app/1592200/EXP_War_Trauma" target="_blank" class="steam-link">View on Steam</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: The Backrooms: Lost Tape -->
+                    <div class="project-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/TFDQp5eqzXw" title="The Backrooms: Lost Tape Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">The Backrooms: Lost Tape</h3>
+                            <p class="project-genre">Liminal Spaces, Psychological Horror</p>
+                            <p class="project-description">An immersive walking simulator through the mysterious and unsettling world of the Backrooms, separated by Tapes (Chapters).</p>
+                            <a href="https://store.steampowered.com/app/1926620/The_Backrooms_Lost_Tape/" target="_blank" class="steam-link">View on Steam</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Anomaly Tapes: The Farmhouse -->
+                    <div class="project-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/mBEDNsM-6oc" title="Anomaly Tapes: The Farmhouse Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Anomaly Tapes: The Farmhouse</h3>
+                            <p class="project-genre">Psychological Horror</p>
+                            <p class="project-description">Play as a Russian police officer investigating a creepy, old farmhouse where you must spot and report anomalies to survive.</p>
+                            <span class="steam-link unreleased">Unreleased</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="vision">
-        <!-- ... (Vision section content as before) ... -->
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title anim-on-scroll">Behind The Code</h2>
-            <div class="about-content">
-                <!-- ... (About content as before) ... -->
-                <h3 class="team-title anim-on-scroll" data-anim-delay="0.3s">The Architects</h3>
-                <div class="team-grid">
-                    <div class="team-member anim-on-scroll magnetic-target" data-anim-delay="0.4s"> <!-- Added magnetic-target -->
-                        <img src="https://via.placeholder.com/120/4A90E2/030303?text=AC" alt="Alex Cortez">
-                        <h4>Alex Cortez</h4><span>Lead Programmer / Visionary</span> 
-                    </div>
-                    <div class="team-member anim-on-scroll magnetic-target" data-anim-delay="0.5s"> <!-- Added magnetic-target -->
-                        <img src="https://via.placeholder.com/120/4A90E2/030303?text=SV" alt="Seraphina Volkov">
-                        <h4>Seraphina Volkov</h4><span>Art Director / World Builder</span> 
-                    </div>
-                    <div class="team-member anim-on-scroll magnetic-target" data-anim-delay="0.6s"> <!-- Added magnetic-target -->
-                        <img src="https://via.placeholder.com/120/4A90E2/030303?text=MT" alt="Marcus Thorne">
-                        <h4>Marcus Thorne</h4><span>Sound Design / Composer</span> 
-                    </div>
+        <!-- Bio Section -->
+        <section id="bio" class="bio-section">
+            <div class="container">
+                <h2 class="section-title">OUR STORY</h2>
+                <div class="bio-content">
+                    <p>Cortez Productions began as a small team of four individuals who collaborated in their spare time to create a horror game driven by their shared passion. The release of the <strong>EXP: War Trauma Demo</strong> on October 31, 2021, received widespread acclaim from players worldwide, generating significant demand for a full game experience. This enthusiastic response motivated us to expand our vision and pursue development with greater ambition.</p>
+                    <p>Today, Cortez Productions has grown into a dedicated indie game studio, driven by a talented team of developers united by a common mission: to craft profoundly immersive and terrifying horror games that captivate players globally.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title anim-on-scroll">Establish Contact</h2>
-            <p class="anim-on-scroll" style="max-width: 600px; margin-bottom: 2rem;">Ready to build the next nightmare or forge a new reality? ...</p>
-            <form class="contact-form anim-on-scroll" id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-                <!-- ... (form content as before) ... -->
-                 <div class="form-group"> <label for="name">Callsign / Name:</label> <input type="text" id="name" name="name" required placeholder="Enter your identifier"> </div>
-                <div class="form-group"> <label for="email">Comms Channel / Email:</label> <input type="email" id="email" name="_replyto" required placeholder="Your secure email address"> </div>
-                <div class="form-group"> <label for="message">Transmission / Message:</label> <textarea id="message" name="message" required placeholder="Detail your query..."></textarea> </div>
-                <button type="submit" class="btn magnetic-target">Send Transmission</button> <!-- Added magnetic-target -->
-            </form>
-            <div id="form-status"></div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="#" target="_blank" title="Twitter/X" class="magnetic-target"><img src="https://via.placeholder.com/28/888888/030303?text=X" alt="Twitter"></a>
-                <a href="#" target="_blank" title="LinkedIn" class="magnetic-target"><img src="https://via.placeholder.com/28/888888/030303?text=Li" alt="LinkedIn"></a>
-                <a href="#" target="_blank" title="ArtStation" class="magnetic-target"><img src="https://via.placeholder.com/28/888888/030303?text=As" alt="ArtStation"></a>
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">GET IN TOUCH</h2>
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    <p id="form-status"></p>
+                </form>
             </div>
-            <p>© <span id="current-year"></span> Cortez Productions. All Rights Reserved. Reality is a construct.</p>
-        </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Cortez Productions. All Rights Reserved.</p>
     </footer>
 
-    <div id="project-modal" class="modal">
-        <!-- ... (modal content as before) ... -->
-         <div class="modal-content">
-            <span class="close-modal magnetic-target" id="close-modal-btn">×</span> <!-- Added magnetic-target to close button -->
-            <h2 id="modal-project-title"></h2>
-            <img id="modal-project-image" src="" alt="Project Image">
-            <p id="modal-project-description"></p>
-            <p><span id="modal-project-genre"></span></p>
-            <p><span id="modal-project-tech"></span></p>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
