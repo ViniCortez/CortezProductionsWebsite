@@ -97,11 +97,18 @@ p {
 }
 
 .nav-logo {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    height: 40px; /* Adjust height for the navbar logo */
+    width: auto;
+    transition: filter 0.3s ease;
+}
+
+.nav-logo-img:hover {
+    filter: brightness(1.2);
 }
 
 .nav-menu {
@@ -156,12 +163,20 @@ p {
     animation: fadeIn 1.5s ease-out;
 }
 
-.logo-text {
-    font-size: 4rem;
+.header-logo {
+    max-width: 600px; /* Adjust this value to make the logo bigger or smaller */
+    width: 90%; /* This makes sure the logo shrinks on smaller mobile screens */
+    height: auto; /* This maintains the aspect ratio so it doesn't get stretched */
     margin-bottom: 20px;
-    letter-spacing: 3px;
-    color: var(--accent-color);
+    transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0)); /* Start with no shadow */
 }
+
+.header-logo:hover {
+    transform: scale(1.02); /* Slightly enlarges the logo */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); /* Adds a subtle white glow */
+}
+
 
 .tagline {
     font-size: 1.2rem;
@@ -363,8 +378,8 @@ section {
         display: none; /* Simple solution for now, could be replaced with a hamburger menu */
     }
 
-    .logo-text {
-        font-size: 2.5rem;
+    .header-logo {
+        max-width: 90%;
     }
 
     .tagline {
