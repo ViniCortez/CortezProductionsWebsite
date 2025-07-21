@@ -31,6 +31,15 @@
 
     <!-- Header Section -->
     <header id="home" class="header">
+        <!-- Looping Video Background -->
+        <div class="video-background">
+            <iframe 
+                src="https://www.youtube.com/embed/TFDQp5eqzXw?autoplay=1&mute=1&loop=1&playlist=TFDQp5eqzXw&controls=0&showinfo=0&modestbranding=1&rel=0" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
         <div class="header-content">
             <!-- Main Logo in the header -->
             <img src="images/CP_Logo_Horizontal_White.svg" alt="Cortez Productions Logo" class="header-logo">
@@ -103,7 +112,8 @@
         <section id="contact" class="contact-section">
             <div class="container">
                 <h2 class="section-title">GET IN TOUCH</h2>
-                <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <!-- The action attribute has been updated with your Formspree endpoint -->
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/xdkdaqyb" method="POST">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                     </div>
