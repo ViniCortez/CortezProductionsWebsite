@@ -1,0 +1,353 @@
+/* --- FONT IMPORT --- */
+@font-face {
+    font-family: 'WW2Poster';
+    src: url('https://cdn.jsdelivr.net/gh/libnoon/Walden-Font-Co@master/ww2-poster/ww2.ttf') format('truetype');
+}
+
+/* --- ROOT VARIABLES & RESETS --- */
+:root {
+    --bg-soot: #111111;
+    --color-parchment: #DDD1A8;
+    --color-parchment-dark: #bcae8a;
+    --color-blood-red: #8B0000;
+    --color-olive-drab: #656346;
+    --font-heading: 'WW2Poster', 'Impact', sans-serif;
+    --font-body: 'IBM Plex Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-soot);
+    color: var(--color-parchment);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    background-image: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
+    overflow-x: hidden;
+}
+
+/* --- CUSTOM CURSOR --- */
+.custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    background-image: url('https://img.icons8.com/ios/50/ffffff/crosshairs.png');
+    background-size: contain;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+}
+
+.crack-decal {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background-image: url('https://pngimg.com/uploads/cracked_glass/cracked_glass_PNG45.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+}
+
+/* --- NAVIGATION --- */
+.main-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.back-link {
+    color: var(--color-parchment);
+    text-decoration: none;
+    font-family: var(--font-body);
+    background: rgba(0,0,0,0.5);
+    padding: 10px 15px;
+    border: 1px solid var(--color-parchment-dark);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background: var(--color-parchment);
+    color: var(--bg-soot);
+}
+
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2; /* 80% opaque black equivalent */
+    pointer-events: none;
+}
+
+.hero-video iframe {
+    width: 100vw;
+    height: 56.25vw;
+    min-width: 177.77vh;
+    min-height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    mix-blend-mode: screen; /* Shell bursts light it up */
+}
+
+.tagline {
+    max-width: 600px;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0; /* For GSAP fade-in */
+}
+
+.steam-button {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--bg-soot);
+    background-color: var(--color-parchment);
+    padding: 15px 30px;
+    text-decoration: none;
+    border: 2px solid var(--color-parchment-dark);
+    transition: all 0.3s ease;
+}
+
+.steam-button:hover {
+    background-color: var(--color-olive-drab);
+    color: var(--color-parchment);
+    border-color: var(--color-parchment);
+}
+
+/* --- GENERAL SECTION STYLING --- */
+section {
+    padding: 80px 20px;
+    border-top: 2px dashed var(--color-parchment-dark);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-parchment);
+    letter-spacing: 2px;
+}
+
+/* --- SUMMARY SECTION --- */
+.summary-section {
+    background-image: url('https://www.transparenttextures.com/patterns/old-paper-2.png');
+    background-color: var(--color-parchment);
+    color: #333;
+    padding: 100px 0;
+}
+
+.parchment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--color-parchment-dark);
+}
+
+.parchment-container .section-title {
+    color: #333;
+}
+
+.summary-text p {
+    margin-bottom: 1.5em;
+    font-size: 1.1rem;
+}
+
+/* --- VIDEO SECTIONS --- */
+.video-section {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-description {
+    max-width: 700px;
+    margin: -20px auto 40px;
+    font-style: italic;
+    color: #aaa;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 4px solid var(--color-parchment);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.crt-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+}
+
+.blood-splatter {
+    color: var(--color-blood-red);
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.exp-text {
+    color: var(--color-blood-red);
+}
+
+.reduced-motion .exp-text {
+    animation: none !important;
+}
+
+@keyframes tilt-shaking {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1.5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-1.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* --- PTSD AWARENESS SECTION --- */
+.ptsd-awareness {
+    background-color: #000;
+    text-align: center;
+}
+
+.awareness-intro {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.icon-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.icon-item {
+    max-width: 250px;
+}
+
+.icon-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-blood-red);
+    margin: 10px 0;
+}
+
+.icon-tremble {
+    font-size: 3rem;
+    transition: transform 0.2s;
+}
+
+.icon-item:hover .icon-tremble {
+    animation: tilt-shaking 0.3s infinite;
+}
+
+.reduced-motion .icon-item:hover .icon-tremble {
+    animation: none;
+}
+
+.crisis-line {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--color-blood-red);
+    color: var(--color-parchment);
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.control-button {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid var(--color-parchment);
+    color: var(--color-parchment);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+/* --- FOOTER --- */
+.end-of-tour {
+    background: #000;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: var(--color-parchment-dark);
+    margin: 0 15px;
+    text-decoration: none;
+}
+.footer-links a:hover {
+    color: var(--color-parchment);
+}
+
+.footer-legal {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* --- ACCESSIBILITY --- */
+@media (prefers-reduced-motion: reduce) {
+    .exp-text, .icon-item:hover .icon-tremble {
+        animation: none;
+    }
+    .custom-cursor {
+        display: none;
+    }
+}
