@@ -26,9 +26,24 @@ body {
     color: var(--color-parchment);
     font-family: var(--font-body);
     line-height: 1.7;
-    background-image: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
     overflow-x: hidden;
+    position: relative;
 }
+
+/* Darker grunge texture applied as a pseudo-element */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
+    opacity: 0.04; /* Much darker/more subtle */
+    z-index: -1;
+    pointer-events: none;
+}
+
 
 /* --- CUSTOM CURSOR --- */
 .custom-cursor {
@@ -96,8 +111,18 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.2; /* 80% opaque black equivalent */
     pointer-events: none;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.8; /* Darkens the video */
+    z-index: 2;
 }
 
 .hero-video iframe {
@@ -113,7 +138,7 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3; /* Above the video and overlay */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -121,10 +146,11 @@ body {
 }
 
 .hero-logo {
-    width: 150px;
+    max-width: 800px; /* Increased size for the logo */
+    width: 90%; 
     height: auto;
     margin-bottom: 20px;
-    mix-blend-mode: screen; /* Shell bursts light it up */
+    mix-blend-mode: screen; 
 }
 
 .tagline {
@@ -154,8 +180,20 @@ body {
 /* --- GENERAL SECTION STYLING --- */
 section {
     padding: 80px 20px;
-    border-top: 2px dashed var(--color-parchment-dark);
+    position: relative;
 }
+
+/* New Section Separator */
+section:not(:first-of-type)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(221, 209, 168, 0.15), transparent);
+}
+
 
 .section-title {
     font-family: var(--font-heading);
@@ -168,9 +206,8 @@ section {
 
 /* --- SUMMARY SECTION --- */
 .summary-section {
-    background-image: url('https://www.transparenttextures.com/patterns/old-paper-2.png');
-    background-color: var(--color-parchment);
-    color: #333;
+    background-color: transparent; /* Grunge from body will show through */
+    color: var(--color-parchment);
     padding: 100px 0;
 }
 
@@ -178,7 +215,9 @@ section {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px;
-    background: rgba(255,255,255,0.1);
+    background-image: url('https://www.transparenttextures.com/patterns/old-paper-2.png');
+    background-color: var(--color-parchment);
+    color: #333;
     border: 1px solid var(--color-parchment-dark);
 }
 
@@ -275,26 +314,25 @@ section {
 
 .icon-item {
     max-width: 250px;
+    border: 1px solid var(--color-parchment-dark);
+    padding: 20px;
+    background: var(--bg-soot);
+}
+
+.icon-placeholder {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-blood-red);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 15px;
 }
 
 .icon-item h3 {
     font-family: var(--font-heading);
     font-size: 1.8rem;
-    color: var(--color-blood-red);
+    color: var(--color-parchment);
     margin: 10px 0;
-}
-
-.icon-tremble {
-    font-size: 3rem;
-    transition: transform 0.2s;
-}
-
-.icon-item:hover .icon-tremble {
-    animation: tilt-shaking 0.3s infinite;
-}
-
-.reduced-motion .icon-item:hover .icon-tremble {
-    animation: none;
 }
 
 .crisis-line {
