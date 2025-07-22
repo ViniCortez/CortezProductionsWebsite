@@ -251,6 +251,12 @@ section:not(:first-of-type)::before {
 
 /* --- VIDEO SECTIONS --- */
 .video-section {
+    /* This rule now only controls padding and background colors */
+    padding: 80px 20px;
+}
+
+.video-section-content {
+    /* This new wrapper centers the content */
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
