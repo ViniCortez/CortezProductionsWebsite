@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CUSTOM CURSOR EFFECT ---
     const cursor = document.querySelector('.custom-cursor');
-    if (!reducedMotion) {
+    if (!document.body.classList.contains('reduced-motion')) {
         window.addEventListener('mousemove', e => {
             gsap.to(cursor, {
                 x: e.clientX,
@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.addEventListener('click', e => {
+            // Do not create crack decal if clicking on a link or button
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                return;
+            }
+
             const crack = document.createElement('div');
             crack.className = 'crack-decal';
             document.body.appendChild(crack);
@@ -78,23 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 start: "top 60%",
                 toggleActions: "play none none none"
             }
-        });
-    }
-    
-    // 3. Shaking text for "EXP"
-    const expText = document.querySelector('.exp-text');
-    if (expText && !reducedMotion) {
-         gsap.to(expText, {
-            keyframes: [
-                {rotate: 2, x: 1},
-                {rotate: -2, x: -1},
-                {rotate: 1, x: 1},
-                {rotate: 0, x: 0}
-            ],
-            duration: 0.2,
-            repeat: -1,
-            repeatDelay: 1,
-            ease: "rough({ template: none.out, strength: 1, points: 20, taper: 'none', randomize: true, clamp: false})"
         });
     }
 
