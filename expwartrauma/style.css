@@ -213,7 +213,8 @@ section:not(:first-of-type)::before {
     padding: 50px;
     color: #333;
     border: none; /* Removed border, the image has its own edges */
-    background: url('../image/EXPWT_Parchment_Square.png') no-repeat center center;
+    /* Corrected Path */
+    background: url('../images/EXPWT_Parchment_Square.png') no-repeat center center;
     background-size: 100% 100%;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
@@ -241,7 +242,8 @@ section:not(:first-of-type)::before {
 
 /* Different background colors for separation */
 .trenches-section {
-    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../image/EXPWT_BloodTrenches_Color.jpg');
+    /* Corrected Path and added dark overlay */
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/EXPWT_BloodTrenches_Color.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Parallax effect */
