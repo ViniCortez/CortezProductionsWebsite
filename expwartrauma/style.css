@@ -208,15 +208,14 @@ section:not(:first-of-type)::before {
 }
 
 .parchment-container {
-    max-width: 800px;
+    max-width: 950px; /* Made the container wider */
     margin: 0 auto;
-    padding: 50px;
+    padding: 100px; /* Increased padding to prevent text clipping */
     color: #333;
-    border: none; /* Removed border, the image has its own edges */
-    /* Corrected Path */
+    border: none; 
     background: url('../images/EXPWT_Parchment_Square.png') no-repeat center center;
     background-size: 100% 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: none; /* Removed the drop shadow */
 }
 
 .parchment-container .section-title {
