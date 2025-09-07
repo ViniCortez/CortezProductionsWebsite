@@ -11,7 +11,7 @@
     --bg-soot-lighter: #1a1a1a;
     --color-parchment: #C9BBA0;
     --color-parchment-dark: #b0a381;
-    --color-briefing-bg: #e6c18c;
+    --color-briefing-bg: #8bb66a; /* Updated Color */
     --color-briefing-text: #2a2a2a;
     --color-blood-red: #8B0000;
     --color-olive-drab: #656346;
@@ -210,11 +210,11 @@ section:not(:first-of-type)::before {
 .summary-section {
     background-color: var(--color-briefing-bg);
     color: var(--color-briefing-text);
-    padding: 100px 20px;
+    padding: 100px 5%; /* Use percentage padding for responsiveness */
 }
 
 .briefing-container {
-    max-width: 1200px;
+    max-width: 1400px; /* Increase max width for larger screens */
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -249,7 +249,7 @@ section:not(:first-of-type)::before {
 }
 
 .briefing-logo img {
-    max-width: 250px;
+    max-width: 400px; /* Made logo bigger */
     width: 100%;
     height: auto;
 }
@@ -349,7 +349,11 @@ section:not(:first-of-type)::before {
 /* --- VIDEO GALLERY --- */
 .gallery-section {
     padding: 80px 20px;
-    background-color: var(--bg-soot-darker);
+    /* New background */
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/EXPWT_BloodTrenches_Color.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .video-gallery {
@@ -514,7 +518,7 @@ section:not(:first-of-type)::before {
 }
 
 /* --- RESPONSIVENESS --- */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .briefing-container {
         flex-direction: column;
         text-align: center;
@@ -540,7 +544,7 @@ section:not(:first-of-type)::before {
     .custom-cursor {
         display: none;
     }
-    .trenches-section {
+    .trenches-section, .gallery-section {
         background-attachment: scroll; /* Disable parallax */
     }
 }
