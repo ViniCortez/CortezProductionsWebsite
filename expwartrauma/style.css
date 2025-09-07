@@ -9,8 +9,10 @@
     --bg-soot: #111111;
     --bg-soot-darker: #080808;
     --bg-soot-lighter: #1a1a1a;
-    --color-parchment: #C9BBA0; /* Darkened parchment color */
-    --color-parchment-dark: #b0a381; /* Corresponding darker shade */
+    --color-parchment: #C9BBA0;
+    --color-parchment-dark: #b0a381;
+    --color-briefing-bg: #e6c18c;
+    --color-briefing-text: #2a2a2a;
     --color-blood-red: #8B0000;
     --color-olive-drab: #656346;
     --font-heading: 'WW2Poster', 'Impact', sans-serif;
@@ -204,39 +206,54 @@ section:not(:first-of-type)::before {
     letter-spacing: 2px;
 }
 
-/* --- SUMMARY SECTION --- */
+/* --- SUMMARY/BRIEFING SECTION (OVERHAULED) --- */
 .summary-section {
-    background-color: transparent; 
+    background-color: var(--color-briefing-bg);
+    color: var(--color-briefing-text);
     padding: 100px 20px;
 }
 
-/* Reverting to square method */
-.parchment-container {
-    max-width: 900px; 
+.briefing-container {
+    max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    aspect-ratio: 1 / 1; /* Make it a square */
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: url('../images/EXPWT_Parchment_Square.png') no-repeat center center;
-    background-size: contain; /* Prevents squashing */
+    gap: 60px;
 }
 
-.parchment-content {
-    max-width: 65%; /* Restrict content width to fit inside texture */
-    color: #333;
+.briefing-text {
+    flex: 2; /* Takes up 2/3 of the space */
 }
 
-.parchment-container .section-title {
-    color: #333;
+.briefing-text .section-title {
+    color: var(--color-briefing-text);
+    text-align: left;
+    margin-bottom: 20px;
 }
 
-.summary-text p {
-    margin-bottom: 1.5em;
+.briefing-text h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.briefing-text p {
     font-size: 1.1rem;
-    mix-blend-mode: multiply;
 }
+
+.briefing-logo {
+    flex: 1; /* Takes up 1/3 of the space */
+    text-align: center;
+}
+
+.briefing-logo img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+}
+
 
 /* --- VIDEO SECTIONS --- */
 .video-section {
@@ -306,7 +323,6 @@ section:not(:first-of-type)::before {
 .exp-text {
     color: var(--color-blood-red);
     display: inline-block;
-    /* Constant jitter animation */
     animation: tilt-shaking 0.2s infinite;
 }
 
@@ -473,6 +489,12 @@ section:not(:first-of-type)::before {
     text-align: center;
 }
 
+.footer-logo {
+    max-width: 200px;
+    margin-bottom: 30px;
+    opacity: 0.7;
+}
+
 .footer-links {
     margin-bottom: 20px;
 }
@@ -490,6 +512,23 @@ section:not(:first-of-type)::before {
     font-size: 0.8rem;
     color: #666;
 }
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .briefing-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .briefing-text .section-title {
+        text-align: center;
+    }
+
+    .briefing-logo {
+        margin-top: 40px;
+    }
+}
+
 
 /* --- ACCESSIBILITY --- */
 @media (prefers-reduced-motion: reduce) {
