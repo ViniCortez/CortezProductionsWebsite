@@ -7,6 +7,11 @@
     <meta name="description" content="A psychological horror game that immerses players in the lingering horrors of war. Take on the role of Krieger, a WWII soldier struggling with PTSD.">
     <!-- Favicon Added -->
     <link rel="icon" type="image/svg+xml" href="../images/EXP-WAR-TRAUMA-(GRUNGE)_LOGOTIPO_FFFFFF.svg">
+    
+    <!-- LightGallery CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" xintegrity="sha512-F2E+YYE1gkt0T5TVajAslgDfTEUQKtlu4ralAic88CyrhIZryMcHxuClaj淳juroJjliUML/MwTZIBRGMSCmA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-youtube.min.css" xintegrity="sha512-MUY2a/dYjRfxVso3g18KjIsLQc7Cj1QpI2BF7I1IobV2M/2n8bSRs4D2s0v6qSXzM7SRq9oG/Kq2vj8P1bkWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,12 +28,10 @@
     <!-- 1. Classified Hero Section -->
     <header class="hero">
         <div class="hero-video">
-            <!-- Updated Video URL -->
             <iframe src="https://www.youtube.com/embed/WBaQ3ySnJX4?autoplay=1&mute=1&controls=0&loop=1&playlist=WBaQ3ySnJX4&modestbranding=1&playsinline=1&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         <div class="video-overlay"></div>
         <div class="hero-content">
-            <!-- Updated Logo Path -->
             <img src="../images/EXP-WAR-TRAUMA-(GRUNGE)_LOGOTIPO_FFFFFF.svg" alt="EXP: War Trauma Logo" class="hero-logo">
             <p class="tagline">A psychological horror game that immerses players in the lingering horrors of war. You will take on the role of Krieger, a fictional WWII soldier struggling with Post-Traumatic Stress Disorder (PTSD).</p>
             <a href="https://store.steampowered.com/app/1592200/EXP_War_Trauma" target="_blank" class="steam-button">Wishlist on Steam</a>
@@ -39,10 +42,12 @@
         <!-- 2. Game Summary ("Sealed Briefing") -->
         <section class="summary-section">
             <div class="parchment-container">
-                <h2 class="section-title">Sealed Briefing</h2>
-                <div class="summary-text" id="summary-text">
-                    <p>"EXP: War Trauma" is a first-person psychological horror game that immerses players in the lingering horrors of war. You will take on the role of Krieger, a fictional World War II soldier struggling with Post Traumatic Stress Disorder (PTSD) after returning home from the battlefields of Europe. As Krieger, you'll experience his daily struggles with trauma, as well as the nightmarish visions that torment him while he sleeps.</p>
-                    <p>The game's unique gameplay mechanics will take you through a series of increasingly terrifying nightmares, each one set in a different WW2 scenario. Each night will bring you closer to uncovering the truth about what happened to Krieger during the war and why the horrors of his experiences have never left him. From dealing with different enemies and creatures, to solving puzzles to uncover the truth. The game will offer an unparalleled experience of a soldier's mind haunted by the memories of war.</p>
+                <div class="parchment-content">
+                    <h2 class="section-title">Sealed Briefing</h2>
+                    <div class="summary-text" id="summary-text">
+                        <p>"EXP: War Trauma" is a first-person psychological horror game that immerses players in the lingering horrors of war. You will take on the role of Krieger, a fictional World War II soldier struggling with Post Traumatic Stress Disorder (PTSD) after returning home from the battlefields of Europe. As Krieger, you'll experience his daily struggles with trauma, as as the nightmarish visions that torment him while he sleeps.</p>
+                        <p>The game's unique gameplay mechanics will take you through a series of increasingly terrifying nightmares, each one set in a different WW2 scenario. Each night will bring you closer to uncovering the truth about what happened to Krieger during the war and why the horrors of his experiences have never left him. From dealing with different enemies and creatures, to solving puzzles to uncover the truth. The game will offer an unparalleled experience of a soldier's mind haunted by the memories of war.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -53,7 +58,7 @@
                 <h2 class="section-title">The Trenches</h2>
                 <p class="video-description">Following the demo, which was set entirely within an apartment, some players assumed the full game would be confined to that single location. This trailer was created to demonstrate that the game encompasses a broader range of settings.</p>
                 <div class="video-container crt-effect">
-                    <iframe loading="lazy" src="https://www.youtube.com/embed/7D-tNlGliY4?rel=0&modestbranding=1&playsinline=1" title="The Trenches Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe loading="lazy" src="https://www.youtube.com/embed/Ie4KsPkSmiU?rel=0&modestbranding=1&playsinline=1" title="The Trenches Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -80,22 +85,62 @@
             </div>
         </section>
         
+        <!-- NEW: Video Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="section-title">Gameplay Archives</h2>
+            <div class="video-gallery" id="video-gallery">
+                <!-- Items will be dynamically populated by JS but an example is here -->
+                 <a class="gallery-item" href="https://youtu.be/2fjQNgKsh9s">
+                    <img src="https://img.youtube.com/vi/2fjQNgKsh9s/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                <a class="gallery-item" href="https://youtu.be/z1OMLID9-rQ">
+                    <img src="https://img.youtube.com/vi/z1OMLID9-rQ/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                <a class="gallery-item" href="https://youtu.be/f9T83nheR6g">
+                    <img src="https://img.youtube.com/vi/f9T83nheR6g/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                 <a class="gallery-item" href="https://youtu.be/muB-Su26Xgg">
+                    <img src="https://img.youtube.com/vi/muB-Su26Xgg/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                 <a class="gallery-item" href="https://youtu.be/A4cNqB-M5OU">
+                    <img src="https://img.youtube.com/vi/A4cNqB-M5OU/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                 <a class="gallery-item" href="https://youtu.be/rHbDj2TMvzk">
+                    <img src="https://img.youtube.com/vi/rHbDj2TMvzk/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                <a class="gallery-item" href="https://youtu.be/OL7HSMUUxPg">
+                    <img src="https://img.youtube.com/vi/OL7HSMUUxPg/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+                <a class="gallery-item" href="https://youtu.be/c5173TjcjfI">
+                    <img src="https://img.youtube.com/vi/c5173TjcjfI/hqdefault.jpg" alt="Gameplay Video Thumbnail">
+                    <div class="play-button"></div>
+                </a>
+            </div>
+        </section>
+
         <!-- 4. PTSD Awareness Block -->
         <section class="ptsd-awareness">
             <h2 class="section-title">Understanding PTSD</h2>
             <p class="awareness-intro">This game depicts themes of PTSD. It is a real and serious condition. If you or someone you know is struggling, please seek help.</p>
             <div class="icon-grid">
-                <div class="icon-item">
+                <div class="icon-item ptsd-icon">
                     <span class="icon-placeholder">[ RECURRING INTRUSION ]</span>
                     <h3>Symptoms</h3>
                     <p>Flashbacks, nightmares, severe anxiety.</p>
                 </div>
-                <div class="icon-item">
+                <div class="icon-item ptsd-icon">
                     <span class="icon-placeholder">[ EXTERNAL CUE ]</span>
                     <h3>Triggers</h3>
                     <p>Loud noises, stressful situations, reminders of trauma.</p>
                 </div>
-                <div class="icon-item">
+                <div class="icon-item ptsd-icon">
                      <span class="icon-placeholder">[ PSYCHOLOGICAL EFFECT ]</span>
                     <h3>Impact</h3>
                     <p>Affects relationships, daily life, and mental well-being.</p>
@@ -115,7 +160,6 @@
             <div class="footer-links">
                 <a href="https://www.woundedwarriorproject.org/" target="_blank">Wounded Warrior Project</a>
                 <a href="https://www.maketheconnection.net/" target="_blank">Make the Connection</a>
-                <a href="https://www.va.gov/get-help-from-mental-health-hub/" target="_blank">VA.gov Mental Health</a>
             </div>
             <div class="footer-legal">
                 <p>ESRB Rating Pending. May contain content inappropriate for children. Visit esrb.org for rating information.</p>
@@ -128,7 +172,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js"></script>
+    
+    <!-- LightGallery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js" xintegrity="sha512-jEJ0GvGC0eG/wCUtKMWKBi2lgGrgTRsayNLjdEatE3ze4mAqySirampjdjAISYUs3pAbmNIPOVy6A8TRgo618A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/youtube/lg-youtube.min.js" xintegrity="sha512-QpC/4c/K2mLhI16K2B/2x8pS3r2pna4C6Fk+wSj9rP2mC5M2jKdlrP0G2FAFm/O/Y+EDfT/QzLg20A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Custom Script -->
     <script src="script.js"></script>
 </body>
 </html>
+

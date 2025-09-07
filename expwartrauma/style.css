@@ -30,6 +30,12 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     position: relative;
+    transition: filter 0.1s ease-in-out; /* For flashback effect */
+}
+
+/* Flashback Effect */
+body.flashback {
+    filter: invert(1);
 }
 
 /* Darker grunge texture applied as a pseudo-element */
@@ -41,7 +47,7 @@ body::after {
     width: 100vw;
     height: 100vh;
     background-image: url('https://www.transparenttextures.com/patterns/grunge-wall.png');
-    opacity: 0.04; /* Much darker/more subtle */
+    opacity: 0.04; 
     z-index: -1;
     pointer-events: none;
 }
@@ -123,7 +129,7 @@ body::after {
     width: 100%;
     height: 100%;
     background-color: #000;
-    opacity: 0.85; /* Made slightly less dark */
+    opacity: 0.85;
     z-index: 2;
 }
 
@@ -140,7 +146,7 @@ body::after {
 
 .hero-content {
     position: relative;
-    z-index: 3; /* Above the video and overlay */
+    z-index: 3;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -148,7 +154,7 @@ body::after {
 }
 
 .hero-logo {
-    max-width: 1000px; /* Increased size for the logo */
+    max-width: 1000px;
     width: 90%; 
     height: auto;
     margin-bottom: 20px;
@@ -175,11 +181,10 @@ body::after {
 
 /* --- GENERAL SECTION STYLING --- */
 section {
-    padding: 80px 0; /* Changed padding to be vertical only */
+    padding: 80px 0;
     position: relative;
 }
 
-/* New Section Separator */
 section:not(:first-of-type)::before {
     content: '';
     position: absolute;
@@ -189,7 +194,6 @@ section:not(:first-of-type)::before {
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(221, 209, 168, 0.15), transparent);
 }
-
 
 .section-title {
     font-family: var(--font-heading);
@@ -203,19 +207,25 @@ section:not(:first-of-type)::before {
 /* --- SUMMARY SECTION --- */
 .summary-section {
     background-color: transparent; 
-    color: var(--color-parchment);
-    padding: 100px 20px; /* Added horizontal padding */
+    padding: 100px 20px;
 }
 
+/* Reverting to square method */
 .parchment-container {
-    max-width: 950px; /* Made the container wider */
+    max-width: 900px; 
     margin: 0 auto;
-    padding: 100px; /* Increased padding to prevent text clipping */
-    color: #333;
-    border: none; 
+    position: relative;
+    aspect-ratio: 1 / 1; /* Make it a square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: url('../images/EXPWT_Parchment_Square.png') no-repeat center center;
-    background-size: 100% 100%;
-    box-shadow: none; /* Removed the drop shadow */
+    background-size: contain; /* Prevents squashing */
+}
+
+.parchment-content {
+    max-width: 65%; /* Restrict content width to fit inside texture */
+    color: #333;
 }
 
 .parchment-container .section-title {
@@ -225,7 +235,7 @@ section:not(:first-of-type)::before {
 .summary-text p {
     margin-bottom: 1.5em;
     font-size: 1.1rem;
-    mix-blend-mode: multiply; /* Makes text look more printed on the texture */
+    mix-blend-mode: multiply;
 }
 
 /* --- VIDEO SECTIONS --- */
@@ -239,22 +249,19 @@ section:not(:first-of-type)::before {
     text-align: center;
 }
 
-/* Different background colors for separation */
 .trenches-section {
-    /* Corrected Path and added dark overlay */
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/EXPWT_BloodTrenches_Color.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Parallax effect */
+    background-attachment: fixed;
 }
 
 .video-section.reactions {
     background-color: var(--bg-soot-lighter);
 }
-.video-section:nth-of-type(4) { /* Post EXP Stress Disorder section */
+.video-section:nth-of-type(4) { 
      background-color: var(--bg-soot);
 }
-
 
 .video-description {
     max-width: 700px;
@@ -298,7 +305,9 @@ section:not(:first-of-type)::before {
 
 .exp-text {
     color: var(--color-blood-red);
-    display: inline-block; /* Required for transform */
+    display: inline-block;
+    /* Constant jitter animation */
+    animation: tilt-shaking 0.2s infinite;
 }
 
 /* --- JITTER ANIMATION --- */
@@ -311,21 +320,90 @@ section:not(:first-of-type)::before {
 }
 
 .steam-button:hover,
-.exp-text:hover,
 .icon-item:hover {
     animation: tilt-shaking 0.2s infinite;
 }
 
 .reduced-motion .steam-button:hover,
-.reduced-motion .exp-text:hover,
+.reduced-motion .exp-text,
 .reduced-motion .icon-item:hover {
     animation: none;
+}
+
+/* --- VIDEO GALLERY --- */
+.gallery-section {
+    padding: 80px 20px;
+    background-color: var(--bg-soot-darker);
+}
+
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 2px solid var(--color-parchment-dark);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+    filter: brightness(0.7);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.play-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid white;
+}
+
+.gallery-item:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: rgba(139, 0, 0, 0.7);
 }
 
 
 /* --- PTSD AWARENESS SECTION --- */
 .ptsd-awareness {
-    background-color: var(--bg-soot-darker);
+    background-color: var(--bg-soot);
     text-align: center;
     padding: 80px 20px;
 }
@@ -349,6 +427,7 @@ section:not(:first-of-type)::before {
     padding: 20px;
     background: var(--bg-soot);
     transition: transform 0.2s ease-out;
+    cursor: pointer;
 }
 
 .icon-placeholder {
@@ -415,7 +494,7 @@ section:not(:first-of-type)::before {
 /* --- ACCESSIBILITY --- */
 @media (prefers-reduced-motion: reduce) {
     .steam-button:hover,
-    .exp-text:hover,
+    .exp-text,
     .icon-item:hover {
         animation: none;
     }
@@ -426,3 +505,4 @@ section:not(:first-of-type)::before {
         background-attachment: scroll; /* Disable parallax */
     }
 }
+
