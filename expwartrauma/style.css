@@ -11,7 +11,7 @@
     --bg-soot-lighter: #1a1a1a;
     --color-parchment: #C9BBA0;
     --color-parchment-dark: #b0a381;
-    --color-briefing-bg: #8bb66a; 
+    --color-briefing-bg: #c9bba0; 
     --color-briefing-text: #2a2a2a;
     --color-blood-red: #8B0000;
     --color-olive-drab: #656346;
@@ -156,7 +156,7 @@ body::after {
 }
 
 .hero-logo {
-    max-width: 700px; /* <-- REDUCED SIZE */
+    max-width: 700px;
     width: 90%; 
     height: auto;
     margin-bottom: 20px;
@@ -249,7 +249,7 @@ section:not(:first-of-type)::before {
 }
 
 .briefing-logo img {
-    max-width: 250px; /* <-- REDUCED SIZE */
+    max-width: 250px;
     width: 100%;
     height: auto;
 }
@@ -277,7 +277,8 @@ section:not(:first-of-type)::before {
 }
 
 .social-link img {
-    height: 28px;
+    height: 22px; /* <-- CORRECTED SIZE */
+    width: 22px; /* <-- CORRECTED SIZE */
     /* This CSS filter converts the white SVG to match the dark text color */
     filter: invert(13%) sepia(0%) saturate(143%) hue-rotate(142deg) brightness(96%) contrast(91%);
 }
@@ -535,7 +536,8 @@ section:not(:first-of-type)::before {
 }
 
 .footer-socials img {
-    height: 30px;
+    height: 28px; /* <-- CORRECTED SIZE */
+    width: 28px;  /* <-- CORRECTED SIZE */
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
