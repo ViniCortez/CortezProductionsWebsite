@@ -249,7 +249,6 @@ section:not(:first-of-type)::before {
 }
 
 .briefing-logo img {
-    max-width: 250px;
     width: 100%;
     height: auto;
 }
@@ -277,10 +276,10 @@ section:not(:first-of-type)::before {
 }
 
 .social-link img {
-    height: 22px; /* <-- CORRECTED SIZE */
-    width: 22px; /* <-- CORRECTED SIZE */
-    /* This CSS filter converts the white SVG to match the dark text color */
-    filter: invert(13%) sepia(0%) saturate(143%) hue-rotate(142deg) brightness(96%) contrast(91%);
+    height: 22px;
+    width: 22px;
+    /* This CSS filter converts the white SVG to black */
+    filter: brightness(0);
 }
 
 
