@@ -8,7 +8,7 @@
     <!-- Favicon Added -->
     <link rel="icon" type="image/svg+xml" href="../images/EXP-WAR-TRAUMA-(GRUNGE)_LOGOTIPO_FFFFFF.svg">
     
-    <!-- LightGallery CSS -->
+    <!-- Corrected LightGallery CSS links (though not currently used for lightbox) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" xintegrity="sha512-F2E+YYE1gkt0T5TVajAslgDfTEUQKtlu4ralAic88CyrhIZryMcHxuClaj淳juroJjliUML/MwTZIBRGMSCmA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-youtube.min.css" xintegrity="sha512-MUY2a/dYjRfxVso3g18KjIsLQc7Cj1QpI2BF7I1IobV2M/2n8bSRs4D2s0v6qSXzM7SRq9oG/Kq2vj8P1bkWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -19,6 +19,10 @@
 </head>
 <body>
     <div class="custom-cursor"></div>
+    
+    <!-- Audio element for flashback effect -->
+    <audio id="flashback-sound" src="../sounds/flashback.mp3" preload="auto"></audio>
+
 
     <!-- Navigation back to main site -->
     <nav class="main-nav">
@@ -51,6 +55,17 @@
 
                     <h3>Powered by Unreal Engine 5</h3>
                     <p>"EXP: War Trauma" leverages Unreal Engine 5's Lumen, Nanite, Megalights, and Metasounds for the most traumatic and emotionally intense WWII psychological horror. Immerse yourself in Krieger's shattered mind through dynamic global illumination, hyper-detailed environments, advanced lighting, and spatialized audio, creating a truly visceral experience of post-war PTSD.</p>
+                    
+                    <div class="briefing-socials">
+                        <a href="http://discord.gg/smAKurM" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img src="../images/discord_white.svg" alt="Discord Logo">
+                            <span>Join our Discord</span>
+                        </a>
+                        <a href="https://x.com/ExpWarTrauma" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img src="../images/x_white.svg" alt="X Logo">
+                            <span>Follow Us on X</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="briefing-logo">
                     <img src="../images/UE-Primary-Logo-2023-Vertical-Black.svg" alt="Unreal Engine 5 Logo">
@@ -163,6 +178,14 @@
     <footer class="end-of-tour">
         <div class="footer-content">
              <img src="../images/UE-Secondary-Logo-2023-Horizontal-White.svg" alt="Powered by Unreal Engine" class="footer-logo">
+            <div class="footer-socials">
+                <a href="http://discord.gg/smAKurM" target="_blank" rel="noopener noreferrer" title="Join our Discord">
+                    <img src="../images/discord_white.svg" alt="Discord">
+                </a>
+                <a href="https://x.com/ExpWarTrauma" target="_blank" rel="noopener noreferrer" title="Follow Us on X">
+                    <img src="../images/x_white.svg" alt="X">
+                </a>
+            </div>
             <div class="footer-links">
                 <a href="https://www.woundedwarriorproject.org/" target="_blank">Wounded Warrior Project</a>
                 <a href="https://www.maketheconnection.net/" target="_blank">Make the Connection</a>
@@ -179,10 +202,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js"></script>
     
-    <!-- LightGallery JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js" xintegrity="sha512-jEJ0GvGC0eG/wCUtKMWKBi2lgGrgTRsayNLjdEatE3ze4mAqySirampjdjAISYUs3pAbmNIPOVy6A8TRgo618A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/youtube/lg-youtube.min.js" xintegrity="sha512-QpC/4c/K2mLhI16K2B/2x8pS3r2pna4C6Fk+wSj9rP2mC5M2jKdlrP0G2FAFm/O/Y+EDfT/QzLg20A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <!-- Custom Script -->
     <script src="script.js"></script>
 </body>

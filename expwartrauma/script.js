@@ -1,108 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // --- GSAP ANIMATIONS ---
+    const body = document.body;
+    let prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 1. Hero Tagline Fade-in
-    gsap.to('.tagline', {
-        opacity: 1,
-        duration: 1.5,
-        delay: 0.5,
-        ease: 'power1.inOut'
-    });
-
-    // 2. Typewriter effect for Sealed Briefing
-    const summaryText = document.getElementById('summary-text');
-    if (summaryText) {
-        const split = new SplitText(summaryText, { type: 'chars, words' });
-        gsap.from(split.chars, {
-            duration: 0.05,
-            opacity: 0,
-            stagger: 0.02,
-            ease: 'power1.in',
-            scrollTrigger: {
-                trigger: '.summary-section',
-                start: 'top 60%',
-                toggleActions: 'play none none none'
-            }
+    // --- JITTER TOGGLE ---
+    const jitterToggle = document.getElementById('toggle-jitter');
+    if (jitterToggle) {
+        jitterToggle.addEventListener('click', () => {
+            body.classList.toggle('reduced-motion');
+            const isReduced = body.classList.contains('reduced-motion');
+            jitterToggle.textContent = isReduced ? 'Enable Jitter Effects' : 'Disable Jitter Effects';
         });
     }
 
-    // --- CURSOR EFFECTS ---
+    if (prefersReducedMotion) {
+        body.classList.add('reduced-motion');
+         if(jitterToggle) jitterToggle.textContent = 'Enable Jitter Effects';
+    }
+
+    // --- CURSOR & CLICK EFFECT ---
     const cursor = document.querySelector('.custom-cursor');
-    if (window.matchMedia("(pointer: fine)").matches) { // Only run on devices with mouse
+    if (cursor && !prefersReducedMotion) {
         window.addEventListener('mousemove', e => {
-            cursor.style.top = `${e.clientY}px`;
-            cursor.style.left = `${e.clientX}px`;
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.1,
+                ease: 'power2.out'
+            });
         });
 
-        document.addEventListener('click', e => {
-            const decal = document.createElement('div');
-            decal.className = 'crack-decal';
-            document.body.appendChild(decal);
-
-            decal.style.top = `${e.clientY - 50}px`;
-            decal.style.left = `${e.clientX - 50}px`;
-
-            gsap.to(decal, {
-                opacity: 1,
+        window.addEventListener('click', e => {
+            const crack = document.createElement('div');
+            crack.className = 'crack-decal';
+            body.appendChild(crack);
+            gsap.set(crack, {
+                x: e.clientX - 50,
+                y: e.clientY - 50,
+                rotation: Math.random() * 360
+            });
+            gsap.to(crack, {
+                opacity: 0.7,
                 duration: 0.1,
                 onComplete: () => {
-                    gsap.to(decal, {
+                    gsap.to(crack, {
                         opacity: 0,
                         duration: 0.4,
-                        delay: 0.2,
+                        delay: 0.1,
                         onComplete: () => {
-                            decal.remove();
+                            crack.remove();
                         }
                     });
                 }
             });
         });
-    } else {
-        cursor.style.display = 'none';
     }
 
 
-    // --- JITTER TOGGLE ---
-    const toggleButton = document.getElementById('toggle-jitter');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('reduced-motion');
-            toggleButton.textContent = document.body.classList.contains('reduced-motion') 
-                ? 'Enable Jitter Effects' 
-                : 'Disable Jitter Effects';
-        });
-    }
-    
-    // --- VIDEO GALLERY ---
-    const gallery = document.getElementById('video-gallery');
-    if (gallery) {
-        lightGallery(gallery, {
-            plugins: [lgYoutube],
-            speed: 500,
-            selector: '.gallery-item',
-        });
-    }
+    // --- HERO ANIMATIONS ---
+    gsap.from('.hero-logo', {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        delay: 0.5
+    });
+    gsap.to('.tagline', {
+        opacity: 1,
+        duration: 1,
+        delay: 1
+    });
 
     // --- PTSD FLASHBACK EFFECT ---
-    let flashbackPlayed = false;
     const ptsdIcons = document.querySelectorAll('.ptsd-icon');
-    const flashbackSound = new Audio('../sounds/flashback.mp3');
+    const flashbackSound = document.getElementById('flashback-sound');
+    let flashbackTriggered = false;
 
     ptsdIcons.forEach(icon => {
         icon.addEventListener('mouseenter', () => {
-            if (!flashbackPlayed) {
-                flashbackPlayed = true;
-
+            if (!flashbackTriggered && !prefersReducedMotion) {
+                flashbackTriggered = true;
+                
                 // Play sound
-                flashbackSound.play().catch(e => console.error("Audio play failed:", e));
+                if (flashbackSound) {
+                    flashbackSound.currentTime = 0;
+                    flashbackSound.play().catch(e => console.error("Audio play failed:", e));
+                }
 
                 // Flash effect
-                document.body.classList.add('flashback');
-                setTimeout(() => {
-                    document.body.classList.remove('flashback');
-                }, 200); // Effect duration in milliseconds
+                gsap.timeline()
+                    .add(() => body.classList.add('flashback'))
+                    .add(() => body.classList.remove('flashback'), "+=0.05")
+                    .add(() => body.classList.add('flashback'), "+=0.1")
+                    .add(() => body.classList.remove('flashback'), "+=0.05");
             }
         });
     });
