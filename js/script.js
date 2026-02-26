@@ -79,4 +79,79 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener("submit", handleSubmit);
 
+    // --- Steam API Integration for Reviews and Tags ---
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectCards.forEach(async (card) => {
+        const steamLink = card.querySelector('.steam-link');
+        const genreEl = card.querySelector('.project-genre');
+        
+        // If there's no steam link with an ID, let's at least style the existing genre as a tag
+        if (genreEl && (!steamLink || !steamLink.href || !steamLink.href.includes('store.steampowered.com/app/'))) {
+            const text = genreEl.textContent;
+            genreEl.innerHTML = `<span class="steam-tag">${text}</span>`;
+            genreEl.classList.add('steam-tags-container');
+            genreEl.classList.remove('project-genre');
+            return;
+        }
+
+        if (steamLink && steamLink.href && steamLink.href.includes('store.steampowered.com/app/')) {
+            const urlParts = steamLink.href.split('/');
+            const appidIndex = urlParts.indexOf('app') + 1;
+            const appid = urlParts[appidIndex];
+
+            if (appid) {
+                // 1. Fetch Reviews
+                try {
+                    const reviewResponse = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1')}`);
+                    const reviewData = await reviewResponse.json();
+                    
+                    if (reviewData && reviewData.query_summary && reviewData.query_summary.total_reviews > 0) {
+                        const summary = reviewData.query_summary;
+                        
+                        let reviewColor = '#a3a3a3'; // Default mixed/grey
+                        const desc = summary.review_score_desc.toLowerCase();
+                        if (desc.includes('positive')) {
+                            reviewColor = '#8bc53f'; // Green for positive
+                        } else if (desc.includes('negative')) {
+                            reviewColor = '#c23f3f'; // Red for negative
+                        }
+                        
+                        const reviewHTML = `
+                            <div class="steam-reviews">
+                                <span class="review-label">All Reviews:</span>
+                                <span class="review-score" style="color: ${reviewColor};">${summary.review_score_desc}</span>
+                                <span class="review-count">(${summary.total_reviews})</span>
+                            </div>
+                        `;
+                        
+                        const titleEl = card.querySelector('.project-title');
+                        titleEl.insertAdjacentHTML('afterend', reviewHTML);
+                    }
+                } catch (e) {
+                    console.error("Error fetching Steam reviews for", appid, e);
+                }
+
+                // 2. Fetch Tags
+                try {
+                    const tagsResponse = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://steamspy.com/api.php?request=appdetails&appid=' + appid)}`);
+                    const tagsData = await tagsResponse.json();
+                    
+                    if (tagsData && tagsData.tags) {
+                        const tags = Object.keys(tagsData.tags).slice(0, 4);
+                        const tagsHTML = tags.map(tag => `<span class="steam-tag">${tag}</span>`).join('');
+                        
+                        if (genreEl) {
+                            genreEl.innerHTML = tagsHTML;
+                            genreEl.classList.add('steam-tags-container');
+                            genreEl.classList.remove('project-genre');
+                        }
+                    }
+                } catch (e) {
+                    console.error("Error fetching Steam tags for", appid, e);
+                }
+            }
+        }
+    });
+
 });

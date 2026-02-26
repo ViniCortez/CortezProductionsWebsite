@@ -33,7 +33,9 @@ body {
     margin: 0 auto;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 700;
     line-height: 1.2;
 }
@@ -64,13 +66,27 @@ p {
 
 /* --- Animations --- */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --- Navigation Bar --- */
@@ -102,7 +118,8 @@ p {
 }
 
 .nav-logo-img {
-    height: 40px; /* Adjust height for the navbar logo */
+    height: 40px;
+    /* Adjust height for the navbar logo */
     width: auto;
     transition: filter 0.3s ease;
 }
@@ -157,7 +174,8 @@ p {
     text-align: center;
     background-color: var(--primary-bg);
     position: relative;
-    overflow: hidden; /* Ensures the video doesn't overflow */
+    overflow: hidden;
+    /* Ensures the video doesn't overflow */
 }
 
 .video-background {
@@ -168,14 +186,19 @@ p {
     height: 100%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    opacity: 0.1; /* Low opacity to fit the background */
-    pointer-events: none; /* Prevents user interaction with the video */
+    opacity: 0.1;
+    /* Low opacity to fit the background */
+    pointer-events: none;
+    /* Prevents user interaction with the video */
 }
 
 .video-background iframe {
-    width: 100vw; /* Viewport Width */
-    height: 56.25vw; /* 16:9 Aspect Ratio for landscape */
-    min-width: 177.77vh; /* 16:9 Aspect Ratio for portrait */
+    width: 100vw;
+    /* Viewport Width */
+    height: 56.25vw;
+    /* 16:9 Aspect Ratio for landscape */
+    min-width: 177.77vh;
+    /* 16:9 Aspect Ratio for portrait */
     min-height: 100vh;
     position: absolute;
     top: 50%;
@@ -185,22 +208,29 @@ p {
 
 .header-content {
     animation: fadeIn 1.5s ease-out;
-    position: relative; /* Required to sit on top of the video background */
+    position: relative;
+    /* Required to sit on top of the video background */
     z-index: 2;
 }
 
 .header-logo {
-    max-width: 600px; /* Adjust this value to make the logo bigger or smaller */
-    width: 90%; /* This makes sure the logo shrinks on smaller mobile screens */
-    height: auto; /* This maintains the aspect ratio so it doesn't get stretched */
+    max-width: 600px;
+    /* Adjust this value to make the logo bigger or smaller */
+    width: 90%;
+    /* This makes sure the logo shrinks on smaller mobile screens */
+    height: auto;
+    /* This maintains the aspect ratio so it doesn't get stretched */
     margin-bottom: 20px;
     transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0)); /* Start with no shadow */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0));
+    /* Start with no shadow */
 }
 
 .header-logo:hover {
-    transform: scale(1.02); /* Slightly enlarges the logo */
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); /* Adds a subtle white glow */
+    transform: scale(1.02);
+    /* Slightly enlarges the logo */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    /* Adds a subtle white glow */
 }
 
 
@@ -219,7 +249,8 @@ section {
     opacity: 0;
 }
 
-.projects-section, .contact-section {
+.projects-section,
+.contact-section {
     background-color: var(--primary-bg);
 }
 
@@ -249,7 +280,8 @@ section {
 
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
 }
@@ -278,6 +310,55 @@ section {
     color: var(--accent-color);
 }
 
+/* --- Steam Reviews & Tags --- */
+.steam-reviews {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.steam-reviews .review-label {
+    color: var(--text-dark);
+}
+
+.steam-reviews .review-score {
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.steam-reviews .review-count {
+    color: var(--text-dark);
+    font-size: 0.85rem;
+}
+
+.steam-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.steam-tag {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-light);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor: default;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.steam-tag:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Fallback for unreleased games that might still use this class before JS runs */
 .project-genre {
     font-style: italic;
     color: var(--text-dark);
@@ -312,6 +393,7 @@ section {
     cursor: default;
     border-color: #444;
 }
+
 .steam-link.unreleased:hover {
     background-color: transparent;
     color: var(--text-dark);
@@ -424,7 +506,8 @@ section {
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none; /* Simple solution for now, could be replaced with a hamburger menu */
+        display: none;
+        /* Simple solution for now, could be replaced with a hamburger menu */
     }
 
     .header-logo {
