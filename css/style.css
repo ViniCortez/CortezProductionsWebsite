@@ -337,9 +337,32 @@ section {
 }
 
 /* --- Contact Section --- */
-.contact-form {
-    max-width: 700px;
+.contact-layout {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
     margin: 0 auto;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.discord-widget {
+    flex: 0 0 350px;
+    display: flex;
+    justify-content: center;
+}
+
+.discord-widget iframe {
+    width: 100%;
+    border-radius: 4px;
 }
 
 .form-group {
