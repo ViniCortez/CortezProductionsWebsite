@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // --- Smooth Scrolling for Navigation Links ---
     const navLinks = document.querySelectorAll('.nav-link');
 
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: "0px"
     };
 
-    const observer = new IntersectionObserver(function(entries, observer) {
+    const observer = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function handleSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
-        
+
         try {
             const response = await fetch(event.target.action, {
                 method: form.method,
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCards.forEach(async (card) => {
         const steamLink = card.querySelector('.steam-link');
         const genreEl = card.querySelector('.project-genre');
-        
+
         // If there's no steam link with an ID, let's at least style the existing genre as a tag
         if (genreEl && (!steamLink || !steamLink.href || !steamLink.href.includes('store.steampowered.com/app/'))) {
             const text = genreEl.textContent;
@@ -103,12 +103,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (appid) {
                 // 1. Fetch Reviews
                 try {
-                    const reviewResponse = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1')}`);
+                    const reviewResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1')}`);
                     const reviewData = await reviewResponse.json();
-                    
+
                     if (reviewData && reviewData.query_summary && reviewData.query_summary.total_reviews > 0) {
                         const summary = reviewData.query_summary;
-                        
+
                         let reviewColor = '#a3a3a3'; // Default mixed/grey
                         const desc = summary.review_score_desc.toLowerCase();
                         if (desc.includes('positive')) {
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         } else if (desc.includes('negative')) {
                             reviewColor = '#c23f3f'; // Red for negative
                         }
-                        
+
                         const reviewHTML = `
                             <div class="steam-reviews">
                                 <span class="review-label">All Reviews:</span>
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span class="review-count">(${summary.total_reviews})</span>
                             </div>
                         `;
-                        
+
                         const titleEl = card.querySelector('.project-title');
                         titleEl.insertAdjacentHTML('afterend', reviewHTML);
                     }
@@ -134,13 +134,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // 2. Fetch Tags
                 try {
-                    const tagsResponse = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://steamspy.com/api.php?request=appdetails&appid=' + appid)}`);
+                    const tagsResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://steamspy.com/api.php?request=appdetails&appid=' + appid)}`);
                     const tagsData = await tagsResponse.json();
-                    
+
                     if (tagsData && tagsData.tags) {
                         const tags = Object.keys(tagsData.tags).slice(0, 4);
                         const tagsHTML = tags.map(tag => `<span class="steam-tag">${tag}</span>`).join('');
-                        
+
                         if (genreEl) {
                             genreEl.innerHTML = tagsHTML;
                             genreEl.classList.add('steam-tags-container');
