@@ -86,12 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const steamLink = card.querySelector('.steam-link');
         const genreEl = card.querySelector('.project-genre');
 
-        // If there's no steam link with an ID, let's at least style the existing genre as a tag
-        if (genreEl && (!steamLink || !steamLink.href || !steamLink.href.includes('store.steampowered.com/app/'))) {
-            const text = genreEl.textContent;
-            genreEl.innerHTML = `<span class="steam-tag">${text}</span>`;
-            genreEl.classList.add('steam-tags-container');
-            genreEl.classList.remove('project-genre');
+        // Skip cards without a Steam link
+        if (!steamLink || !steamLink.href || !steamLink.href.includes('store.steampowered.com/app/')) {
             return;
         }
 
@@ -103,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (appid) {
                 // 1. Fetch Reviews
                 try {
-                    const reviewResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1')}`);
+                    const reviewResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1&filter=all&language=all&review_type=all&purchase_type=all&num_per_page=0')}`);
                     const reviewData = await reviewResponse.json();
 
                     if (reviewData && reviewData.query_summary && reviewData.query_summary.total_reviews > 0) {
@@ -132,19 +128,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.error("Error fetching Steam reviews for", appid, e);
                 }
 
-                // 2. Fetch Tags
+                // 2. Fetch Tags (inserted after genre, not replacing it)
                 try {
                     const tagsResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://steamspy.com/api.php?request=appdetails&appid=' + appid)}`);
                     const tagsData = await tagsResponse.json();
 
                     if (tagsData && tagsData.tags) {
                         const tags = Object.keys(tagsData.tags).slice(0, 4);
-                        const tagsHTML = tags.map(tag => `<span class="steam-tag">${tag}</span>`).join('');
+                        const tagsHTML = `<div class="steam-tags-container">${tags.map(tag => `<span class="steam-tag">${tag}</span>`).join('')}</div>`;
 
                         if (genreEl) {
-                            genreEl.innerHTML = tagsHTML;
-                            genreEl.classList.add('steam-tags-container');
-                            genreEl.classList.remove('project-genre');
+                            genreEl.insertAdjacentHTML('afterend', tagsHTML);
                         }
                     }
                 } catch (e) {
