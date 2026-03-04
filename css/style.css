@@ -1,16 +1,24 @@
 /* --- General Styling & Resets --- */
 :root {
-    --primary-bg: #0a0a0a;
-    --secondary-bg: #131313;
-    /* Slightly darker secondary for better contrast */
-    --text-light: #f5f5f5;
-    --text-dark: #a0a0a0;
+    --primary-bg: #050505;
+    /* Deep Tech Black */
+    --secondary-bg: #111111;
+    /* Dark Grey */
+    --accent-dark: #1a1a1a;
+    /* Lighter Dark Grey */
+    --text-dark: #9ca3af;
+    /* Muted tech grey */
+    --text-dark: #9ca3af;
+    /* Muted tech grey */
+    --text-light: #f3f4f6;
+    /* Crisp off-white */
     --accent-color: #ffffff;
-    --border-color: #2a2a2a;
-    /* Subtler borders */
-    --accent-glow: rgba(255, 255, 255, 0.15);
-    /* For glassmorphism glow */
-    --font-family: 'Roboto', sans-serif;
+    /* Monochromatic tech white */
+    --border-color: rgba(255, 255, 255, 0.08);
+    /* Subtle borders */
+    --accent-glow: rgba(255, 255, 255, 0.3);
+    /* White Glow */
+    --font-family: 'Inter', sans-serif;
 }
 
 * {
@@ -34,7 +42,56 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--accent-color);
+    /* Blue scrollbar hover */
+}
+
+/* --- Loader styles --- */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary-bg);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: var(--accent-color) transparent var(--text-dark) transparent;
+    animation: dual-ring 1.2s linear infinite;
+}
+
+@keyframes dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 html {
@@ -47,8 +104,15 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none;
-    /* Hide default cursor */
+    /* Custom sleek SVG cursor pointing at hotspot (3, 3) */
+    cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3L19 11L12 13L10 20L3 3Z' fill='white' stroke='black' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 3, auto;
+}
+
+/* Ensure interactive elements have pointer */
+a,
+button,
+.nav-logo {
+    cursor: pointer;
 }
 
 /* --- Added Effects & Utility Classes --- */
@@ -60,9 +124,9 @@ body {
     left: -50%;
     width: 200vw;
     height: 200vh;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.04;
-    /* Very subtle */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    /* Extremely subtle */
     pointer-events: none;
     z-index: 9999;
     animation: noiseAnimation 0.2s infinite;
@@ -112,48 +176,6 @@ body {
     100% {
         transform: translate(5%, 0)
     }
-}
-
-/* Custom Cursor Elements */
-.custom-cursor {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
-}
-
-.custom-cursor-follower {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
-}
-
-.custom-cursor.hovering {
-    width: 0px;
-    height: 0px;
-}
-
-.custom-cursor-follower.hovering {
-    width: 60px;
-    height: 60px;
-    background-color: var(--accent-glow);
-    border-color: transparent;
-    backdrop-filter: blur(2px);
 }
 
 .container {
@@ -407,19 +429,104 @@ p {
 
 /* --- General Section Styling --- */
 section {
-    padding: 100px 0;
+    padding: 120px 0;
     animation: slideInUp 1s ease-out forwards;
     opacity: 0;
+    position: relative;
+    overflow: hidden;
+    /* Added to keep radial gradients contained if they stretch */
+}
+
+/* Liquid Gradient Animation for Sections */
+@keyframes liquidGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .projects-section,
-.services-section,
-.contact-section {
+.bio-section {
+    /* Large animated gradient using the new tech dark palette at low opacity */
+    background: linear-gradient(-45deg,
+            rgba(5, 5, 5, 1),
+            rgba(17, 17, 17, 0.8),
+            rgba(30, 30, 30, 0.4),
+            rgba(5, 5, 5, 1));
+    background-size: 400% 400%;
+    animation: liquidGradient 15s ease infinite;
+}
+
+/* --- Services Section Grid Background --- */
+.services-section {
+    position: relative;
     background-color: var(--primary-bg);
 }
 
+/* Create the grid lines */
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    /* Size of grid squares */
+    z-index: 0;
+}
+
+/* Radial gradient mask to fade the grid out gracefully towards the edges/center */
+.services-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 20%, var(--primary-bg) 90%);
+    z-index: 1;
+    pointer-events: none;
+}
+
 .bio-section {
-    background-color: var(--secondary-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* --- Contact Section Matrix Background --- */
+.contact-section {
+    position: relative;
+    background-color: var(--primary-bg);
+}
+
+/* Radial gradient mask to fade the matrix canvas out towards the edges */
+.contact-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 40%, var(--primary-bg) 95%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ensure the content sits perfectly above the matrix canvas and mask */
+.contact-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 /* --- Projects Section --- */
@@ -429,21 +536,46 @@ section {
     gap: 40px;
 }
 
-.project-card {
-    background-color: rgba(19, 19, 19, 0.6);
-    /* Glassmorphism base */
-    backdrop-filter: blur(10px);
+/* -- Advanced Interactive Glare Cards -- */
+.project-card,
+.service-card {
+    background-color: var(--secondary-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
+    position: relative;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
 }
 
-.project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
-    border-color: rgba(255, 255, 255, 0.2);
+/* Ensure content sits above the glare layer */
+.project-card>*,
+.service-card>* {
+    position: relative;
+    z-index: 3;
+}
+
+/* Interactive Glare Layer (injected via JS) */
+.glare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    /* Above the background, directly interacting with internal content elements */
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    mix-blend-mode: overlay;
+    /* Helps the glare look like genuine glass reflection over dark backgrounds */
+    border-radius: inherit;
+}
+
+.project-card:hover,
+.service-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .video-wrapper {
@@ -567,44 +699,46 @@ section {
     color: var(--text-dark);
 }
 
-/* --- Services Section --- */
+/* Ensure the content sits above the grid and radial mask */
+.services-section .container {
+    position: relative;
+}
+
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .service-card {
-    background-color: rgba(19, 19, 19, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 40px 30px;
+    padding: 50px 40px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-radius: 16px;
+    background-color: var(--secondary-bg);
+    /* Match project cards base */
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-}
+/* Service cards inherit exactly the same advanced rotating glow hover as project cards above! */
 
 .service-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
 }
 
 .service-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
     color: var(--accent-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .service-description {
-    font-size: 0.95rem;
-    color: var(--text-dark);
+    font-size: 1rem;
+    color: var(--text-light);
+    /* Changed to light for better readability against dark card */
     line-height: 1.7;
 }
 

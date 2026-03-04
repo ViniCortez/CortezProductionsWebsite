@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    // --- Loading Screen Fadeout ---
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader-wrapper');
+        if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500); // Wait for CSS transition to finish
+        }
+    });
+
     // --- Custom Cursor Logic ---
     const cursor = document.querySelector('.custom-cursor');
     const cursorFollower = document.querySelector('.custom-cursor-follower');
@@ -46,18 +58,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // --- Smooth Scrolling for Navigation Links ---
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-logo, .scroll-indicator');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 70, // Adjust for fixed navbar height
-                    behavior: 'smooth'
-                });
+            // Only apply smooth scrolling if the link is an anchor on the current page
+            if (targetId && targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70, // Adjust for fixed navbar height
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
@@ -106,6 +121,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sections.forEach(section => {
         observer.observe(section);
+    });
+
+    // --- Advanced Card 3D Tilt & Interactive Glare Effect ---
+    const cards = document.querySelectorAll('.project-card, .service-card');
+
+    cards.forEach(card => {
+        // Create glare element dynamically
+        const glare = document.createElement('div');
+        glare.classList.add('glare');
+        card.appendChild(glare);
+
+        card.addEventListener('mousemove', function (e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top; // y position within the element
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Calculate rotation based on pointer distance from center
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+
+            // Calculate angle for the glare gradient
+            const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
+            // Calculate position for the glare based on mouse distance from the edges
+            const glareX = (x / rect.width) * 100;
+            const glareY = (y / rect.height) * 100;
+
+            glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.15) 0%, transparent 60%)`;
+            glare.style.opacity = '1';
+        });
+
+        // Reset transform and glare when mouse leaves
+        card.addEventListener('mouseleave', function () {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            glare.style.opacity = '0';
+        });
     });
 
     // --- Parallax Effect on Hero Elements ---
@@ -231,4 +286,68 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // --- Matrix Rain Effect for Contact Section ---
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const contactSection = document.getElementById('contact');
+
+        // Set initial canvas size
+        function resizeCanvas() {
+            canvas.width = contactSection.offsetWidth;
+            canvas.height = contactSection.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Latin letters and numerals as requested
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+        // Increased font size for better visibility
+        const fontSize = 28;
+        let columns = Math.ceil(canvas.width / fontSize);
+        let drops = [];
+
+        // Initialize drops array
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.random() * -100; // Start off-screen
+        }
+
+        function drawMatrix() {
+            // Recalculate if canvas resizes
+            const currentCols = Math.ceil(canvas.width / fontSize);
+            if (currentCols !== columns) {
+                columns = currentCols;
+                while (drops.length < columns) drops.push(Math.random() * -100);
+            }
+
+            // Create trail effect
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Subtle white text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(text, x, y);
+
+                // Reset drop randomly after it passes the bottom
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                // Move drop down
+                drops[i]++;
+            }
+        }
+
+        // Run animation ~30 FPS
+        setInterval(drawMatrix, 33);
+    }
 });

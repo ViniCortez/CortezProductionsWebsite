@@ -13,16 +13,18 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
+    <!-- Dual Ring Loader -->
+    <div id="loader-wrapper">
+        <div class="dual-ring"></div>
+    </div>
+
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
-
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-follower"></div>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -156,22 +158,19 @@
                 <h2 class="section-title">OUR SERVICES</h2>
                 <div class="services-grid">
                     <div class="service-card">
-                        <div class="service-icon">🎮</div>
-                        <h3 class="service-title">Unreal Engine 5</h3>
-                        <p class="service-description">Harnessing the power of UE5 to deliver high-fidelity graphics,
-                            optimized performance, and robust gameplay systems.</p>
+                        <div class="service-icon"><i class="ph ph-shopping-cart"
+                                style="color: var(--accent-color);"></i></div>
+                        <h3 class="service-title">Digital Assets on FAB</h3>
+                        <p class="service-description">Explore our collection of high-quality digital projects and
+                            assets available on the Epic Games FAB store.</p>
+                        <a href="https://www.fab.com/sellers/Cortez%20Productions" target="_blank" class="steam-link"
+                            style="margin-top: 20px;">Visit FAB Store</a>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon">🌑</div>
-                        <h3 class="service-title">Atmospheric Design</h3>
-                        <p class="service-description">Mastering lighting, environment art, and liminal spaces to create
-                            environments that feel alive and deeply unsettling.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🎧</div>
-                        <h3 class="service-title">Audio Engineering</h3>
-                        <p class="service-description">Crafting tension-building soundscapes, spatial audio, and
-                            visceral SFX to elevate the psychological horror experience.</p>
+                        <div class="service-icon"><i class="ph ph-ghost" style="color: var(--accent-color);"></i></div>
+                        <h3 class="service-title">Classic Horror Remakes</h3>
+                        <p class="service-description">Hire our specialized team to breathe new life into classic horror
+                            games with modern graphics, audio, and gameplay mechanics.</p>
                     </div>
                 </div>
             </div>
@@ -196,6 +195,10 @@
 
         <!-- Contact Section -->
         <section id="contact" class="contact-section">
+            <!-- Canvas for the Matrix Rain Effect -->
+            <canvas id="matrix-canvas"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+
             <div class="container">
                 <h2 class="section-title">GET IN TOUCH</h2>
                 <div class="contact-layout">
