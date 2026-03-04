@@ -687,6 +687,20 @@ section {
     border-color: var(--accent-color);
 }
 
+/* Specific styling for Steam Store links */
+a[href*="store.steampowered.com"].steam-link {
+    color: #66c0f4;
+    /* Authentic Steam Blue */
+    border-color: rgba(102, 192, 244, 0.4);
+}
+
+a[href*="store.steampowered.com"].steam-link:hover {
+    background-color: #66c0f4;
+    color: var(--primary-bg);
+    border-color: #66c0f4;
+    box-shadow: 0 0 15px rgba(102, 192, 244, 0.4);
+}
+
 .steam-link.unreleased {
     background-color: transparent;
     color: var(--text-dark);
