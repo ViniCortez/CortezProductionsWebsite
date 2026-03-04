@@ -1,4 +1,49 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // --- Custom Cursor Logic ---
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorFollower = document.querySelector('.custom-cursor-follower');
+
+    // Only init custom cursor on non-touch devices
+    if (window.matchMedia("(pointer: fine)").matches && cursor && cursorFollower) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let followerX = 0;
+        let followerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Move inner cursor instantly
+            cursor.style.left = `${mouseX}px`;
+            cursor.style.top = `${mouseY}px`;
+        });
+
+        // Smoothly animate the follower (lerp)
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.15;
+            followerY += (mouseY - followerY) * 0.15;
+
+            cursorFollower.style.left = `${followerX}px`;
+            cursorFollower.style.top = `${followerY}px`;
+
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+
+        // Add hover effects for interactive elements
+        const iteractives = document.querySelectorAll('a, button, .project-card, .service-card');
+        iteractives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hovering');
+                cursorFollower.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hovering');
+                cursorFollower.classList.remove('hovering');
+            });
+        });
+    }
 
     // --- Smooth Scrolling for Navigation Links ---
     const navLinks = document.querySelectorAll('.nav-link');
@@ -30,6 +75,30 @@ document.addEventListener('DOMContentLoaded', function () {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
                 entry.target.style.transform = 'translateY(0)';
+
+                // Add staggered animation to child cards if they exist
+                const cards = entry.target.querySelectorAll('.project-card, .service-card');
+                if (cards.length > 0) {
+                    cards.forEach((card, index) => {
+                        // Initially hide and translate down
+                        if (!card.dataset.animated) {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(30px)';
+                            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease, border-color 0.4s ease';
+
+                            // Trigger reflow
+                            void card.offsetWidth;
+
+                            // Apply staggered delay
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, index * 150 + 200); // 150ms stagger, 200ms initial delay
+                            card.dataset.animated = "true";
+                        }
+                    });
+                }
+
                 observer.unobserve(entry.target); // Stop observing after animation
             }
         });
@@ -37,6 +106,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sections.forEach(section => {
         observer.observe(section);
+    });
+
+    // --- Parallax Effect on Hero Elements ---
+    const headerLogo = document.querySelector('.header-logo');
+    const tagline = document.querySelector('.tagline');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        // Only animate if we are near the top (optimization)
+        if (scrolled < window.innerHeight && headerLogo && tagline) {
+            headerLogo.style.transform = `translateY(${scrolled * 0.3}px)`;
+            tagline.style.transform = `translateY(${scrolled * 0.15}px)`;
+            tagline.style.opacity = Math.max(0, 1 - (scrolled / 500));
+        }
     });
 
     // --- Contact Form Submission using Formspree ---
