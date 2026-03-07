@@ -107,7 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             btn.innerText = 'ESTABLISHING CONNECTION...';
 
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+            const formData = new FormData(form);
+            const urlParams = new URLSearchParams();
+            formData.forEach((value, key) => urlParams.append(key, value));
+
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: urlParams })
                 .then(response => {
                     // Success: Hide form and show the "Transmission Received" message
                     form.style.display = 'none';
