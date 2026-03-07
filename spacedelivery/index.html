@@ -66,10 +66,11 @@
             <h3 class="demo-popup-headline text-glow">Limited-Time Demo Launching Soon.</h3>
             <p class="demo-popup-sub">Available for a limited time only. Sign up to get an instant alert when a Demo
                 goes live.</p>
-            <form class="demo-form" onsubmit="return false;">
-                <input type="email" id="demo-email" placeholder="Enter your email address" required>
-                <button type="submit" class="steam-button small-btn demo-submit-btn">NOTIFY ME</button>
+            <form class="demo-form" id="demo-signup-form">
+                <input type="email" name="Email" id="demo-email" placeholder="Enter your email address" required>
+                <button type="submit" class="steam-button small-btn demo-submit-btn" id="submit-btn">NOTIFY ME</button>
             </form>
+            <div id="form-feedback" style="display:none;"></div>
         </div>
     </div>
 
@@ -319,11 +320,13 @@
                 <h2 class="section-title text-glow align-center">Limited-Time Demo Launching Soon.</h2>
                 <p class="demo-inline-sub align-center">Available for a limited time only. Sign up to get an instant
                     alert when a Demo goes live.</p>
-                <form class="demo-form demo-form-inline" onsubmit="return false;">
-                    <input type="email" id="demo-email-inline" placeholder="Enter your email address" required>
-                    <button type="submit" class="steam-button small-btn demo-submit-btn" id="demo-inline-submit">NOTIFY
+                <form class="demo-form demo-form-inline" id="demo-signup-form-inline">
+                    <input type="email" name="Email" id="demo-email-inline" placeholder="Enter your email address"
+                        required>
+                    <button type="submit" class="steam-button small-btn demo-submit-btn" id="submit-btn-inline">NOTIFY
                         ME</button>
                 </form>
+                <div id="form-feedback-inline" style="display:none;"></div>
                 <p class="demo-inline-confirm" id="demo-inline-confirm"
                     style="display:none; color: var(--color-orange); margin-top: 20px;">✓ You're on the list. We'll
                     notify you when the demo drops.</p>

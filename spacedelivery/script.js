@@ -94,42 +94,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Popup form submit
-    if (demoForm) {
-        demoForm.addEventListener('submit', (e) => {
+    // --- Google Apps Script Form Submission ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzYl7-xyzTVN9DLpr3L3sNcpr1mxda09wG2_HKAI-D7Kzt0xkjAL8rR_x0rdwF4CQaIJg/exec';
+
+    // Helper: handle form submission for any demo signup form
+    function handleDemoFormSubmit(form, btn, feedback) {
+        if (!form) return;
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            localStorage.setItem(DEMO_KEY, 'signed_up');
-            hideDemoPopup();
-            // Also update inline section if it exists
-            const inlineConfirm = document.getElementById('demo-inline-confirm');
-            const inlineForm = document.querySelector('.demo-form-inline');
-            if (inlineConfirm) inlineConfirm.style.display = 'block';
-            if (inlineForm) inlineForm.style.display = 'none';
+
+            // High-stakes sci-fi feedback
+            btn.disabled = true;
+            btn.innerText = 'ESTABLISHING CONNECTION...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    // Success: Hide form and show the "Transmission Received" message
+                    form.style.display = 'none';
+                    feedback.style.display = 'block';
+                    feedback.innerHTML = `
+                        <h3>TRANSMISSION RECEIVED.</h3>
+                        <p>You're on the manifest, Commander. We'll alert you the moment the demo drops.</p>
+                        <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" class="wishlist-btn steam-button small-btn" target="_blank">Wishlist on Steam</a>
+                    `;
+                    localStorage.setItem(DEMO_KEY, 'signed_up');
+
+                    // Close popup if it was the popup form
+                    if (form.id === 'demo-signup-form') {
+                        setTimeout(() => hideDemoPopup(), 3000);
+                    }
+
+                    // Sync: also update the other form if it exists
+                    const inlineForm = document.getElementById('demo-signup-form-inline');
+                    const inlineFeedback = document.getElementById('form-feedback-inline');
+                    const popupForm = document.getElementById('demo-signup-form');
+                    const popupFeedback = document.getElementById('form-feedback');
+                    if (form.id === 'demo-signup-form' && inlineForm) {
+                        inlineForm.style.display = 'none';
+                        if (inlineFeedback) {
+                            inlineFeedback.style.display = 'block';
+                            inlineFeedback.innerHTML = feedback.innerHTML;
+                        }
+                    } else if (form.id === 'demo-signup-form-inline' && popupForm) {
+                        popupForm.style.display = 'none';
+                        if (popupFeedback) {
+                            popupFeedback.style.display = 'block';
+                            popupFeedback.innerHTML = feedback.innerHTML;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    btn.disabled = false;
+                    btn.innerText = 'RETRY TRANSMISSION';
+                });
         });
     }
 
-    // Inline section form submit
-    const inlineSubmitBtn = document.getElementById('demo-inline-submit');
-    if (inlineSubmitBtn) {
-        inlineSubmitBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const emailInput = document.getElementById('demo-email-inline');
-            if (emailInput && emailInput.value && emailInput.validity.valid) {
-                localStorage.setItem(DEMO_KEY, 'signed_up');
-                const inlineConfirm = document.getElementById('demo-inline-confirm');
-                const inlineForm = document.querySelector('.demo-form-inline');
-                if (inlineConfirm) inlineConfirm.style.display = 'block';
-                if (inlineForm) inlineForm.style.display = 'none';
-            }
-        });
-    }
+    // Popup form
+    const popupForm = document.getElementById('demo-signup-form');
+    const popupBtn = document.getElementById('submit-btn');
+    const popupFeedback = document.getElementById('form-feedback');
+    handleDemoFormSubmit(popupForm, popupBtn, popupFeedback);
 
-    // If already signed up, hide the inline form and show confirmation
+    // Inline form
+    const inlineForm = document.getElementById('demo-signup-form-inline');
+    const inlineBtn = document.getElementById('submit-btn-inline');
+    const inlineFeedback = document.getElementById('form-feedback-inline');
+    handleDemoFormSubmit(inlineForm, inlineBtn, inlineFeedback);
+
+    // If already signed up, hide both forms and show confirmation
     if (localStorage.getItem(DEMO_KEY) === 'signed_up') {
-        const inlineConfirm = document.getElementById('demo-inline-confirm');
-        const inlineForm = document.querySelector('.demo-form-inline');
-        if (inlineConfirm) inlineConfirm.style.display = 'block';
+        const successHTML = `
+            <h3>TRANSMISSION RECEIVED.</h3>
+            <p>You're on the manifest, Commander. We'll alert you the moment the demo drops.</p>
+            <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" class="wishlist-btn steam-button small-btn" target="_blank">Wishlist on Steam</a>
+        `;
+        if (popupForm) popupForm.style.display = 'none';
+        if (popupFeedback) { popupFeedback.style.display = 'block'; popupFeedback.innerHTML = successHTML; }
         if (inlineForm) inlineForm.style.display = 'none';
+        if (inlineFeedback) { inlineFeedback.style.display = 'block'; inlineFeedback.innerHTML = successHTML; }
     }
 
     // GSAP Registration
