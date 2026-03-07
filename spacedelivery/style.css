@@ -1,0 +1,1154 @@
+/* --- Space Delivery - Sci-Fi Horror Theme --- */
+
+/* FONTS imported in HTML: Share Tech Mono (body) & Orbitron (headings) */
+:root {
+    --bg-dark: #050505;
+    --bg-panel: #0a0a0c;
+    --bg-darker: #020202;
+    --color-text: #b0b8c2;
+    --color-orange: #ff5500;
+    --color-orange-glow: rgba(255, 85, 0, 0.6);
+    --color-white: #e0e6ed;
+    --color-red: #ff3333;
+
+    --font-body: 'Share Tech Mono', monospace;
+    --font-heading: 'Oxanium', sans-serif;
+
+    --panel-border: 1px solid rgba(176, 184, 194, 0.2);
+    --panel-border-bright: 1px solid rgba(255, 85, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+    /* Hide default for custom cursor */
+}
+
+/* Base Body Styles */
+body {
+    background-color: var(--bg-dark);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    font-size: 16px;
+}
+
+/* Animated starfield canvas behind everything */
+#starfield-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Ensure all page content sits above the canvas */
+.hero,
+main,
+.system-footer,
+.main-nav,
+#loader-wrapper,
+#wishlist-popup,
+.custom-cursor {
+    position: relative;
+    z-index: 1;
+}
+
+/* Stop scrolling while loader is active */
+body.loading-state {
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--font-heading);
+    color: var(--color-white);
+    letter-spacing: 2px;
+}
+
+a {
+    color: var(--color-orange);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+a:hover {
+    color: var(--color-white);
+    text-shadow: 0 0 8px var(--color-orange-glow);
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-orange);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    mix-blend-mode: difference;
+}
+
+/* Cursor change on clickable elements */
+a:hover~.custom-cursor,
+button:hover~.custom-cursor {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 85, 0, 0.2);
+}
+
+/* --- Loader Sequence (Sci-Fi Terminal) --- */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-darker);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s, visibility 1s;
+}
+
+.terminal-loader {
+    width: 80%;
+    max-width: 600px;
+    border: 1px solid var(--color-orange);
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(255, 85, 0, 0.2);
+    font-family: var(--font-body);
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-orange);
+}
+
+.terminal-title {
+    color: var(--color-orange);
+}
+
+.terminal-actions .action-btn {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.action-btn.red {
+    background-color: var(--color-red);
+}
+
+.action-btn.yellow {
+    background-color: #ffaa00;
+}
+
+.action-btn.green {
+    background-color: #00ff00;
+}
+
+.terminal-body {
+    padding: 20px;
+    min-height: 200px;
+    color: var(--color-white);
+    line-height: 1.5;
+}
+
+.terminal-body p {
+    margin-bottom: 8px;
+}
+
+.loading-bar-container {
+    width: 100%;
+    height: 10px;
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+.loading-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-orange);
+    box-shadow: 0 0 10px var(--color-orange-glow);
+}
+
+
+/* --- Nav Overlay --- */
+.main-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.back-link {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border: 1px solid rgba(176, 184, 194, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-link:hover {
+    border-color: var(--color-orange);
+    background: rgba(255, 85, 0, 0.1);
+}
+
+/* --- Utilities --- */
+.container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-narrow {
+    width: 90%;
+    max-width: 1400px;
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px var(--color-orange-glow);
+}
+
+.align-center {
+    text-align: center;
+}
+
+/* Sci-Fi Panels */
+.sci-fi-panel {
+    background: var(--bg-panel);
+    border: var(--panel-border);
+    position: relative;
+    padding: 40px;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.sci-fi-panel:hover {
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 85, 0, 0.4);
+    border-color: rgba(255, 85, 0, 0.7);
+}
+
+.sci-fi-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--color-orange), transparent);
+    opacity: 0.5;
+}
+
+.panel-decor-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid var(--color-orange);
+    border-left: 2px solid var(--color-orange);
+}
+
+.panel-decor-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid var(--color-orange);
+    border-right: 2px solid var(--color-orange);
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.37.307.png') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+.vignette-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 20%, #000 80%);
+    z-index: 1;
+}
+
+/* Grid Overlay Effect */
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 85, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 85, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* CRT Scanline / Halftone texture over hero */
+.hero-dither {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4) 2px,
+            transparent 2px,
+            transparent 4px);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+.hero-logo {
+    max-width: 1400px;
+    width: 90%;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--color-white);
+    margin: 0 auto 30px auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hero Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    z-index: 20;
+    transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 0.6;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+
+    60% {
+        transform: translateY(-7px) translateX(-50%);
+    }
+}
+
+/* Sci-fi Buttons */
+.steam-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid var(--color-orange);
+    color: var(--color-orange);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+}
+
+.steam-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--color-orange);
+    transition: all 0.3s;
+    z-index: -1;
+}
+
+.steam-button:hover {
+    color: var(--bg-dark);
+    text-shadow: none;
+    box-shadow: 0 0 20px var(--color-orange-glow);
+}
+
+.steam-button:hover::before {
+    left: 0;
+}
+
+.giant-btn {
+    font-size: 1.5rem;
+    padding: 20px 60px;
+}
+
+/* Random Flicker Effect for Wishlist Button */
+.flicker-btn {
+    animation: flicker 4s infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    4% {
+        opacity: 0.7;
+    }
+
+    6% {
+        opacity: 1;
+    }
+
+    42% {
+        opacity: 1;
+    }
+
+    44% {
+        opacity: 0.5;
+    }
+
+    45% {
+        opacity: 0.9;
+    }
+
+    46% {
+        opacity: 0.4;
+    }
+
+    48% {
+        opacity: 1;
+    }
+
+    78% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.6;
+    }
+
+    82% {
+        opacity: 1;
+    }
+}
+
+
+/* --- Main Sections --- */
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+/* Universal section separator line at the bottom */
+section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 85, 0, 0.4), transparent);
+    pointer-events: none;
+}
+
+.about-section {
+    padding-bottom: 40px;
+}
+
+.features-section {
+    padding-top: 20px;
+}
+
+/* Fluid Gradient Background */
+@keyframes scifiGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.liquid-gradient-bg {
+    background: linear-gradient(-45deg, rgba(5, 5, 5, 0.85), rgba(17, 17, 17, 0.85), rgba(26, 21, 17, 0.85), rgba(5, 5, 5, 0.85));
+    background-size: 400% 400%;
+    animation: scifiGradient 15s ease infinite;
+}
+
+/* SciFi Grid Background */
+.scifi-grid-bg {
+    background-color: rgba(5, 5, 5, 0.85);
+    position: relative;
+    z-index: 1;
+}
+
+.scifi-grid-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 85, 0, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 85, 0, 0.12) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: -1;
+}
+
+.scifi-grid-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 20%, var(--bg-dark) 90%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Dark Mesh Background */
+.dark-mesh-bg {
+    background-color: rgba(2, 2, 2, 0.85);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Diagonal Crosshatch Background */
+.scifi-crosshatch-bg {
+    background-color: rgba(5, 5, 5, 0.9);
+    position: relative;
+    z-index: 1;
+}
+
+.scifi-crosshatch-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255, 85, 0, 0.06) 30px, rgba(255, 85, 0, 0.06) 31px),
+        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255, 85, 0, 0.06) 30px, rgba(255, 85, 0, 0.06) 31px);
+    z-index: -1;
+}
+
+.scifi-crosshatch-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(5, 5, 5, 0.95) 85%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* DITHER / HALFTONE EFFECT (CSS Based for Imagery) */
+/* Replicating the vibe of https://codepen.io/sabosugi/pen/bNegbmy using CSS filters and blend modes */
+.halftone-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #000;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.border-orange {
+    border-color: var(--color-orange);
+}
+
+.halftone-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.5) grayscale(1) brightness(0.8);
+    transition: filter 0.8s;
+}
+
+.halftone-container:hover img {
+    filter: contrast(1) grayscale(0.2) brightness(1.1);
+}
+
+/* Fake halftone dot overlay via repeating radial gradients */
+.halftone-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #fff 10%, transparent 20%), radial-gradient(circle, #fff 10%, transparent 20%);
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+    mix-blend-mode: overlay;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* CAROUSEL SURVEILLANCE STYLES */
+.sci-fi-carousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.carousel-main-display {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 1px solid var(--color-orange);
+    overflow: hidden;
+    background: #000;
+}
+
+#carousel-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.2s, opacity 0.2s;
+}
+
+.car-dither {
+    background-size: 3px 3px;
+    opacity: 0.3;
+}
+
+.carousel-ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--color-orange);
+    text-shadow: 0 0 5px var(--color-orange-glow);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.cam-rec {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: blink 2s infinite;
+}
+
+.red-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-red);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-red);
+}
+
+.carousel-thumbnails {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.carousel-thumbnails::-webkit-scrollbar {
+    height: 6px;
+}
+
+.carousel-thumbnails::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 3px;
+}
+
+.thumb {
+    height: 90px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid rgba(176, 184, 194, 0.3);
+    transition: all 0.2s;
+    opacity: 0.5;
+}
+
+.thumb:hover {
+    opacity: 0.9;
+    border-color: rgba(255, 85, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.thumb.active {
+    opacity: 1;
+    border-color: var(--color-orange);
+    box-shadow: 0 0 10px var(--color-orange-glow);
+}
+
+/* --- DEMO SIGNUP POPUP --- */
+.demo-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
+.demo-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.demo-popup-box {
+    position: relative;
+    width: 90%;
+    max-width: 520px;
+    padding: 50px 40px;
+    text-align: center;
+    margin-bottom: 0;
+    animation: popIn 0.3s ease-out;
+}
+
+.demo-popup-overlay.show .demo-popup-box {
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.demo-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s, transform 0.2s;
+    line-height: 1;
+}
+
+.demo-close-btn:hover {
+    color: var(--color-orange);
+    transform: scale(1.2);
+}
+
+.demo-popup-headline {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--color-orange);
+}
+
+.demo-popup-sub {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+.demo-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.demo-form input[type="email"] {
+    flex: 1 1 250px;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(176, 184, 194, 0.3);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.demo-form input[type="email"]::placeholder {
+    color: rgba(176, 184, 194, 0.5);
+}
+
+.demo-form input[type="email"]:focus {
+    border-color: var(--color-orange);
+    box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+}
+
+.demo-submit-btn {
+    white-space: nowrap;
+}
+
+/* Inline signup section (fallback above footer) */
+.demo-signup-section {
+    position: relative;
+    z-index: 1;
+}
+
+.demo-signup-inline {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.demo-inline-sub {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+.demo-form-inline {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Feature Blocks (Text + Image Side by Side) */
+.feature-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    padding: 0;
+    /* Override default panel padding for custom layout */
+    overflow: hidden;
+    /* For clip-path to work with content */
+}
+
+.feature-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1 1 400px;
+    padding: 40px;
+}
+
+.feature-media {
+    flex: 1 1 400px;
+    background: #000;
+    height: 100%;
+}
+
+.feature-title {
+    color: var(--color-orange);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed rgba(255, 85, 0, 0.3);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.feature-text p {
+    margin-bottom: 15px;
+}
+
+/* Details Grid */
+.details-section {
+    padding-top: 60px;
+}
+
+.details-section .section-title {
+    margin-bottom: 60px;
+}
+
+/* Section Separator */
+.section-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    z-index: 5;
+}
+
+.sep-line {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-orange), transparent);
+    opacity: 0.5;
+}
+
+.sep-diamond {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: 2px solid var(--color-orange);
+    transform: rotate(45deg);
+    margin: 0 15px;
+    box-shadow: 0 0 10px var(--color-orange-glow);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.small-panel {
+    padding: 30px;
+    transition: transform 0.3s;
+}
+
+.small-panel:hover {
+    transform: translateY(-10px);
+}
+
+.small-panel h4 {
+    color: var(--color-orange);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.outline-orange {
+    border: var(--panel-border-bright);
+}
+
+/* Trailer */
+.trailer-section {
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    height: 0;
+}
+
+.trailer-title {
+    margin-bottom: 80px;
+}
+
+.video-container.no-padding {
+    padding-bottom: 56.25%;
+}
+
+/* Kept for specificity if needed */
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.border-glow {
+    box-shadow: 0 0 30px rgba(255, 85, 0, 0.15);
+}
+
+/* --- WISHLIST POPUP --- */
+#wishlist-popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 5000;
+    transform: translateX(120%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#wishlist-popup.show {
+    transform: translateX(0);
+}
+
+.popup-content {
+    background: rgba(10, 10, 12, 0.95);
+    backdrop-filter: blur(10px);
+    width: 350px;
+    padding: 25px;
+    margin-bottom: 0;
+    border: 1px solid var(--color-orange);
+}
+
+.popup-header {
+    color: var(--color-red);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    animation: blink 2s infinite;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.small-btn {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+}
+
+.outline-btn {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-text);
+    padding: 8px 15px;
+    font-family: var(--font-heading);
+    transition: all 0.2s;
+}
+
+.outline-btn:hover {
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+
+/* --- Footer --- */
+.system-footer {
+    background: #020202;
+    border-top: 2px solid #111;
+    padding: 60px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+.footer-brand .footer-logo {
+    width: 150px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.footer-heading {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    font-family: var(--font-body);
+}
+
+.footer-warning {
+    border: 1px dashed var(--color-red);
+    padding: 20px;
+    background: rgba(255, 51, 51, 0.05);
+    color: #aa5555;
+    font-size: 0.9rem;
+}
+
+.warning-icon {
+    display: block;
+    font-size: 2rem;
+    color: var(--color-red);
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #111;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .feature-block {
+        flex-direction: column;
+    }
+
+    .feature-block.reverse {
+        flex-direction: column;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

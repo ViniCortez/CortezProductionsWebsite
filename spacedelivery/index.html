@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Delivery - A Cortez Productions Game</title>
+    <meta name="description"
+        content="Grab your crew for a high-stakes co-op horror run. You have 5 days to meet the quota.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logos/ICON_SD-WHITE.svg">
+
+    <!-- Fonts: Use a sci-fi/terminal font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oxanium:wght@400;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="loading-state">
+
+    <!-- Custom Sci-Fi Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- BOOT SEQUENCE LOADER -->
+    <div id="loader-wrapper">
+        <div class="terminal-loader">
+            <div class="terminal-header">
+                <span class="terminal-title">LOST_CARGO_OS v1.0.4</span>
+                <span class="terminal-actions">
+                    <span class="action-btn red"></span>
+                    <span class="action-btn yellow"></span>
+                    <span class="action-btn green"></span>
+                </span>
+            </div>
+            <div class="terminal-body" id="loader-text-container">
+                <!-- Text injected by JS -->
+            </div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WISHLIST REMINDER POPUP -->
+    <div id="wishlist-popup" class="hidden">
+        <div class="popup-content sci-fi-panel">
+            <div class="popup-header">INCOMING MESSAGE</div>
+            <p>Do not forget to submit your quota. Add to your Wishlist today.</p>
+            <div class="popup-actions">
+                <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" target="_blank"
+                    class="steam-button small-btn popup-btn">Wishlist Now</a>
+                <button id="close-popup" class="outline-btn popup-btn">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEMO SIGNUP POPUP -->
+    <div id="demo-popup" class="demo-popup-overlay">
+        <div class="demo-popup-box sci-fi-panel">
+            <button id="close-demo-popup" class="demo-close-btn">&times;</button>
+            <div class="panel-decor-top-left"></div>
+            <div class="panel-decor-bottom-right"></div>
+            <h3 class="demo-popup-headline text-glow">Limited-Time Demo Launching Soon.</h3>
+            <p class="demo-popup-sub">Available for a limited time only. Sign up to get an instant alert when a Demo
+                goes live.</p>
+            <form class="demo-form" onsubmit="return false;">
+                <input type="email" id="demo-email" placeholder="Enter your email address" required>
+                <button type="submit" class="steam-button small-btn demo-submit-btn">NOTIFY ME</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NAVIGATION OVERLAY -->
+    <nav class="main-nav">
+        <a href="../" class="back-link">&lt; SYSTEM.RETURN_TO_MAIN</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero sci-fi-hero">
+        <div class="vignette-overlay"></div>
+        <div class="grid-overlay"></div>
+        <div class="dither-bg hero-dither"></div>
+
+        <div class="hero-content">
+            <img src="logos/LOGO_SD-COLOR_White&Orange.svg" alt="Space Delivery Logo" class="hero-logo glitch-effect">
+            <p class="tagline type-writer">Grab your crew for a high-stakes co-op horror run. <br> You have 5 days to
+                meet the quota.</p>
+
+            <div class="hero-actions">
+                <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" target="_blank"
+                    class="steam-button giant-btn flicker-btn">
+                    <span class="btn-text">WISHLIST ON STEAM</span>
+                    <span class="btn-scanline"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" id="scroll-to-trailer">
+            <svg viewBox="0 0 24 24" width="40" height="40" stroke="var(--color-orange)" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </header>
+
+    <!-- ANIMATED STARFIELD BACKGROUND CANVAS -->
+    <canvas id="starfield-canvas"></canvas>
+
+    <main id="main-content">
+        <!-- AUDIO ELEMENTS -->
+        <audio id="audio-notification" src="audio/SW_Notification_01.wav" preload="auto"></audio>
+        <audio id="audio-hover" src="audio/SW_Button_Eerie_07.wav" preload="auto"></audio>
+        <audio id="audio-click" src="audio/SW_Button_Eerie_05.wav" preload="auto"></audio>
+
+        <!-- MAIN TRAILER -->
+        <section class="trailer-section scifi-bg-texture">
+            <div class="container container-narrow">
+                <h2 class="section-title trailer-title text-glow align-center">CO-OP MULTIPLAYER EXTRACTION HORROR -
+                    GAMEPLAY TRAILER
+                </h2>
+                <div class="video-container sci-fi-panel no-padding border-glow">
+                    <!-- YouTube Trailer -->
+                    <iframe loading="lazy"
+                        src="https://www.youtube.com/embed/48Ka04mc4dY?si=GxuPHvXsq7j5X9VY&modestbranding=1&rel=0"
+                        title="Space Delivery Trailer" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT THIS GAME -->
+        <section class="about-section liquid-gradient-bg">
+            <div class="container">
+                <div class="sci-fi-panel main-panel">
+                    <div class="panel-decor-top-left"></div>
+                    <div class="panel-decor-bottom-right"></div>
+
+                    <h2 class="section-title text-glow">ABOUT THIS GAME</h2>
+                    <p class="lead-text">Space Delivery is a co-op survival horror game focused on extraction and item
+                        collection. Players must work together to meet a weekly profit quota by traveling to different
+                        planets and dimensions to recover lost cargo.</p>
+                    <p>Armed with a backpack where items must be stacked, the team faces a difficult task: every
+                        destination features unique challenges, enemies, traps, and puzzles.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SURVEILLANCE CAROUSEL -->
+        <section class="carousel-section scifi-crosshatch-bg">
+            <div class="container">
+                <h2 class="section-title text-glow align-center">SURVEILLANCE FEEDS</h2>
+                <div class="sci-fi-carousel-container sci-fi-panel no-padding border-glow">
+                    <div class="panel-decor-top-left"></div>
+                    <div class="panel-decor-bottom-right"></div>
+                    <div class="carousel-main-display">
+                        <img id="carousel-main-img"
+                            src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.36.688.png"
+                            alt="Gameplay Surveillance">
+                        <div class="halftone-overlay car-dither"></div>
+                        <div class="carousel-ui">
+                            <span class="cam-rec">REC <span class="red-dot"></span></span>
+                            <span class="cam-time">SYS.TIME: <span id="sys-time">00:00:00</span></span>
+                        </div>
+                    </div>
+                    <div class="carousel-thumbnails">
+                        <img src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.36.688.png"
+                            class="thumb active" alt="Thumb 1">
+                        <img src="Images/screenshots/Desktop 2026.02.22 - 02.10.20.38.DVR.mp4_snapshot_00.46.712.png"
+                            class="thumb" alt="Thumb 2">
+                        <img src="Images/screenshots/Windows 2026.02.20 - 23.22.38.109.DVR.mp4_snapshot_00.02.506.png"
+                            class="thumb" alt="Thumb 3">
+                        <img src="Images/screenshots/Windows 2026.02.20 - 21.48.55.03.DVR.mp4_snapshot_00.13.214.png"
+                            class="thumb" alt="Thumb 4">
+                        <img src="Images/screenshots/Desktop 2026.02.22 - 00.55.53.23.DVR.mp4_snapshot_00.37.696.png"
+                            class="thumb" alt="Thumb 5">
+                        <img src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.37.694.png"
+                            class="thumb" alt="Thumb 6">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME FEATURES (GIF BLOCKS) -->
+        <section class="features-section scifi-grid-bg">
+            <div class="container container-narrow">
+                <h2 class="section-title text-glow align-center" style="margin-bottom: 80px;">KEY FEATURES</h2>
+                <!-- KEY FEATURES -->
+                <div class="feature-block sci-fi-panel dither-panel">
+                    <div class="feature-text">
+                        <h3 class="feature-title">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" style="vertical-align: middle; margin-right: 10px;">
+                                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <path d="M2 15h10"></path>
+                                <path d="M9 18l3-3-3-3"></path>
+                            </svg>
+                            STORY & PREMISE
+                        </h3>
+                        <p>You are part of the "Lost Cargo Division," a team tasked with recovering shipments that were
+                            misplaced by buyers across the universe.</p>
+                        <p>At the start of the mission, you are assigned a financial quota that must be met within 5
+                            days. If you succeed, the quota increases for the next week, as does the overall difficulty
+                            of the job.</p>
+                    </div>
+                    <div class="feature-media">
+                        <div class="halftone-container">
+                            <img src="Images/gifs/TitleGif_Story&Premise.gif" alt="Story and Premise Gameplay">
+                            <div class="halftone-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROXIMITY VOICE CHAT -->
+                <div class="feature-block sci-fi-panel dither-panel reverse">
+                    <div class="feature-text">
+                        <h3 class="feature-title">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" style="vertical-align: middle; margin-right: 10px;">
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                <path
+                                    d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                                </path>
+                            </svg>
+                            PROXIMITY VOICE CHAT
+                        </h3>
+                        <p>Communication is vital, but dangerous. The game features a Positional Voice Chat system where
+                            enemies can hear players speaking. While the game includes combat, stealth is often the
+                            smarter choice.</p>
+                        <p>Weapons are loud, and the entities are drawn to noise, including your team's voice chat. This
+                            creates high-tension moments where silence is a survival mechanic.</p>
+                    </div>
+                    <div class="feature-media">
+                        <div class="halftone-container border-orange">
+                            <img src="Images/gifs/TitleGif_ProximityVoiceChat.gif" alt="Proximity Voice Chat Gameplay">
+                            <div class="halftone-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INFINITE REPLAYABILITY -->
+                <div class="feature-block sci-fi-panel dither-panel">
+                    <div class="feature-text">
+                        <h3 class="feature-title">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" style="vertical-align: middle; margin-right: 10px;">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <polyline points="1 20 1 14 7 14"></polyline>
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
+                            INFINITE REPLAYABILITY
+                        </h3>
+                        <p>No two matches are the same. The replay factor is driven by deep procedural generation and
+                            dynamic systems, ensuring players always face a fresh experience.</p>
+                        <p>All scenarios are generated procedurally with various themes. Each level introduces a new
+                            environmental challenge: some have unique traps or holes, others are swarming with enemies,
+                            and some have strict time limits due to oxygen levels.</p>
+                    </div>
+                    <div class="feature-media">
+                        <div class="halftone-container">
+                            <img src="Images/gifs/TitleGif_InfiniteReplayability.gif"
+                                alt="Infinite Replayability Gameplay">
+                            <div class="halftone-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ADDITIONAL DETAILS GRID -->
+        <section class="details-section dark-mesh-bg">
+            <div class="section-separator">
+                <div class="sep-line"></div>
+                <div class="sep-diamond"></div>
+                <div class="sep-line"></div>
+            </div>
+            <div class="container">
+                <h2 class="section-title text-glow align-center">OPERATIONAL HAZARDS</h2>
+
+                <div class="details-grid">
+                    <div class="detail-card sci-fi-panel small-panel">
+                        <h4>PHYSICS-BASED GAMEPLAY</h4>
+                        <p>Inventory management is tactile and strategic. Players must stack "Lost Cargo" on their
+                            backs, and every item has active physics. Movement matters—bumping into another player can
+                            knock over their stack. Some items are explosive or radioactive!</p>
+                    </div>
+
+                    <div class="detail-card sci-fi-panel small-panel outline-orange">
+                        <h4>ADAPTIVE ENEMIES</h4>
+                        <p>There are distinct enemies, each with a unique visual design and behavior pattern. Players
+                            must constantly adapt their strategies to survive these encounters and secure the company's
+                            assets.</p>
+                    </div>
+
+                    <div class="detail-card sci-fi-panel small-panel">
+                        <h4>PROGRESSION & ECONOMY</h4>
+                        <p>Risk leads to reward. The ship features a shop where players can spend their bonuses on
+                            items, weapons, consumables, cosmetic suits, and ship upgrades. The shop is dynamic,
+                            inventory is replenished only after meeting the quota.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <!-- INLINE DEMO SIGNUP SECTION (FALLBACK) -->
+    <section class="demo-signup-section liquid-gradient-bg" id="demo-signup-section">
+        <div class="container">
+            <div class="sci-fi-panel demo-signup-inline">
+                <div class="panel-decor-top-left"></div>
+                <div class="panel-decor-bottom-right"></div>
+                <h2 class="section-title text-glow align-center">Limited-Time Demo Launching Soon.</h2>
+                <p class="demo-inline-sub align-center">Available for a limited time only. Sign up to get an instant
+                    alert when a Demo goes live.</p>
+                <form class="demo-form demo-form-inline" onsubmit="return false;">
+                    <input type="email" id="demo-email-inline" placeholder="Enter your email address" required>
+                    <button type="submit" class="steam-button small-btn demo-submit-btn" id="demo-inline-submit">NOTIFY
+                        ME</button>
+                </form>
+                <p class="demo-inline-confirm" id="demo-inline-confirm"
+                    style="display:none; color: var(--color-orange); margin-top: 20px;">✓ You're on the list. We'll
+                    notify you when the demo drops.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="system-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="logos/ICON_SD-WHITE.svg" alt="Lost Cargo Logo" class="footer-logo">
+                <p>Lost Cargo Division - Property of Cortez Productions</p>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="footer-heading">DATABANKS</h4>
+                <ul>
+                    <li><a href="https://store.steampowered.com/app/4141230/Space_Delivery/" target="_blank">STEAM
+                            STORE</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1KOQOczydAS2cgr69xdOLvj8CLEfrFBQI?usp=drive_link"
+                            target="_blank">PRESS KIT</a></li>
+                    <li><a href="http://discord.gg/smAKurM" target="_blank">DISCORD COMM-LINK</a></li>
+                    <li><a href="https://x.com/vinicortezart" target="_blank">X (TWITTER)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-warning">
+                <span class="warning-icon">⚠</span>
+                <p>WARNING: Employment at Lost Cargo Division may result in dismemberment, radiation poisoning, or
+                    spontaneous displacement into hostile dimensions. The Company is not liable for loss of life or
+                    personal items.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cortez Productions. All Rights Reserved. Not a real division. Probably.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
