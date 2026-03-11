@@ -221,37 +221,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectCards = document.querySelectorAll('.project-card');
 
     projectCards.forEach(async (card) => {
-        const steamLink = card.querySelector('.steam-link');
+        const steamLink = card.querySelector('a[href*="store.steampowered.com/app/"]');
         const genreEl = card.querySelector('.project-genre');
 
         // Skip cards without a Steam link
-        if (!steamLink || !steamLink.href || !steamLink.href.includes('store.steampowered.com/app/')) {
+        if (!steamLink) {
             return;
         }
 
-        if (steamLink && steamLink.href && steamLink.href.includes('store.steampowered.com/app/')) {
-            const urlParts = steamLink.href.split('/');
-            const appidIndex = urlParts.indexOf('app') + 1;
-            const appid = urlParts[appidIndex];
+        const urlParts = steamLink.href.split('/');
+        const appidIndex = urlParts.indexOf('app') + 1;
+        const appid = urlParts[appidIndex];
 
-            if (appid) {
-                // 1. Fetch Reviews
-                try {
-                    const reviewResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1&filter=all&language=all&review_type=all&purchase_type=all&num_per_page=0')}`);
-                    const reviewData = await reviewResponse.json();
+        if (appid) {
+            // 1. Fetch Reviews
+            try {
+                const reviewResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://store.steampowered.com/appreviews/' + appid + '?json=1&filter=all&language=all&review_type=all&purchase_type=all&num_per_page=0')}`);
+                const reviewData = await reviewResponse.json();
 
-                    if (reviewData && reviewData.query_summary && reviewData.query_summary.total_reviews > 0) {
-                        const summary = reviewData.query_summary;
+                if (reviewData && reviewData.query_summary && reviewData.query_summary.total_reviews > 0) {
+                    const summary = reviewData.query_summary;
 
-                        let reviewColor = '#a3a3a3'; // Default mixed/grey
-                        const desc = summary.review_score_desc.toLowerCase();
-                        if (desc.includes('positive')) {
-                            reviewColor = '#8bc53f'; // Green for positive
-                        } else if (desc.includes('negative')) {
-                            reviewColor = '#c23f3f'; // Red for negative
-                        }
+                    let reviewColor = '#a3a3a3'; // Default mixed/grey
+                    const desc = summary.review_score_desc.toLowerCase();
+                    if (desc.includes('positive')) {
+                        reviewColor = '#8bc53f'; // Green for positive
+                    } else if (desc.includes('negative')) {
+                        reviewColor = '#c23f3f'; // Red for negative
+                    }
 
-                        const reviewHTML = `
+                    const reviewHTML = `
                             <div class="steam-reviews">
                                 <span class="review-label">All Reviews:</span>
                                 <span class="review-score" style="color: ${reviewColor};">${summary.review_score_desc}</span>
@@ -259,33 +258,31 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         `;
 
-                        const titleEl = card.querySelector('.project-title');
-                        titleEl.insertAdjacentHTML('afterend', reviewHTML);
-                    }
-                } catch (e) {
-                    console.error("Error fetching Steam reviews for", appid, e);
+                    const titleEl = card.querySelector('.project-title');
+                    titleEl.insertAdjacentHTML('afterend', reviewHTML);
                 }
+            } catch (e) {
+                console.error("Error fetching Steam reviews for", appid, e);
+            }
 
-                // 2. Fetch Tags (inserted after genre, not replacing it)
-                try {
-                    const tagsResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://steamspy.com/api.php?request=appdetails&appid=' + appid)}`);
-                    const tagsData = await tagsResponse.json();
+            // 2. Fetch Tags (inserted after genre, not replacing it)
+            try {
+                const tagsResponse = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent('https://steamspy.com/api.php?request=appdetails&appid=' + appid)}`);
+                const tagsData = await tagsResponse.json();
 
-                    if (tagsData && tagsData.tags) {
-                        const tags = Object.keys(tagsData.tags).slice(0, 4);
-                        const tagsHTML = `<div class="steam-tags-container">${tags.map(tag => `<span class="steam-tag">${tag}</span>`).join('')}</div>`;
+                if (tagsData && tagsData.tags) {
+                    const tags = Object.keys(tagsData.tags).slice(0, 4);
+                    const tagsHTML = `<div class="steam-tags-container">${tags.map(tag => `<span class="steam-tag">${tag}</span>`).join('')}</div>`;
 
-                        if (genreEl) {
-                            genreEl.insertAdjacentHTML('afterend', tagsHTML);
-                        }
+                    if (genreEl) {
+                        genreEl.insertAdjacentHTML('afterend', tagsHTML);
                     }
-                } catch (e) {
-                    console.error("Error fetching Steam tags for", appid, e);
                 }
+            } catch (e) {
+                console.error("Error fetching Steam tags for", appid, e);
             }
         }
     });
-
     // --- Matrix Rain Effect for Contact Section ---
     const canvas = document.getElementById('matrix-canvas');
     if (canvas) {
@@ -350,4 +347,28 @@ document.addEventListener('DOMContentLoaded', function () {
         // Run animation ~30 FPS
         setInterval(drawMatrix, 33);
     }
+    
+    // --- Google Ads Conversion Tracking: Space Delivery Wishlist ---
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        
+        // Check if it's the Space Delivery Steam link
+        if (target && target.href && target.href.includes('store.steampowered.com/app/4141230')) {
+            // Prevent default to ensure event fires before navigation
+            e.preventDefault();
+            const url = target.href;
+            
+            gtag('event', 'conversion', {
+                'send_to': 'AW-747890922/B2e4CM7M0IYcEOrRz-QC',
+                'event_callback': function() {
+                    window.open(url, '_blank');
+                }
+            });
+            
+            // Fallback in case gtag doesn't fire
+            setTimeout(function() {
+                window.open(url, '_blank');
+            }, 500);
+        }
+    });
 });

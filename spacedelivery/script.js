@@ -645,4 +645,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // --- Google Ads Conversion Tracking: Space Delivery Wishlist ---
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        
+        // Check if it's the Space Delivery Steam link
+        if (target && target.href && target.href.includes('store.steampowered.com/app/4141230')) {
+            // Prevent default to ensure event fires before navigation
+            e.preventDefault();
+            const url = target.href;
+            
+            gtag('event', 'conversion', {
+                'send_to': 'AW-747890922/B2e4CM7M0IYcEOrRz-QC',
+                'event_callback': function() {
+                    window.open(url, '_blank');
+                }
+            });
+            
+            // Fallback in case gtag doesn't fire
+            setTimeout(function() {
+                window.open(url, '_blank');
+            }, 500);
+        }
+    });
 });
