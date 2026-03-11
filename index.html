@@ -9,6 +9,15 @@
     <meta name="keywords"
         content="Cortez Productions, Game Development, Horror Games, Indie Games, EXP: War Trauma, The Backrooms: Lost Tape, Anomaly Tapes">
     <title>Cortez Productions</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-747890922"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-747890922');
+    </script>
     <!-- Corrected path to the CSS file -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,7 +132,7 @@
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Space Delivery</h3>
-                            <p class="project-genre">Online Co-Op, Survival Horror, Procedural Generation</p>
+                            <p class="project-genre">Co-op Horror</p>
                             <p class="project-description">Grab your crew for a high-stakes co-op horror run. You have 5
                                 days to meet the quota. Haul valuable and dangerous, cargo from procedural levels and
                                 surreal, shifting dimensions. Survive deadly entities and daily Galactic Events. Get
@@ -222,7 +231,12 @@
                             <textarea id="message" name="message" rows="5" placeholder="Your Message" required
                                 style="flex: 1;"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <!-- Cloudflare Turnstile Widget -->
+                        <!-- IMPORTANT: Replace the data-sitekey below with your actual Turnstile Site Key -->
+                        <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" style="margin-bottom: 20px;">
+                        </div>
+
+                        <button type="submit" class="submit-btn" style="width: 100%;">Send Message</button>
                         <p id="form-status"></p>
                     </form>
 
@@ -241,6 +255,8 @@
         <p>&copy; 2025 Cortez Productions. All Rights Reserved.</p>
     </footer>
 
+    <!-- Form Validation and Submission Script, and Turnstile CAPTCHA -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <!-- Corrected path to the JS file -->
     <script src="js/script.js"></script>
 </body>
