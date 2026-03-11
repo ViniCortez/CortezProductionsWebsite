@@ -119,6 +119,242 @@ document.addEventListener('DOMContentLoaded', () => {
             "form_manifest": "Você está no manifesto, Comandante. Avisaremos no momento em que a demo for lançada.",
             "form_wishlist": "Adicionar à Lista no Steam",
             "form_retry": "TENTAR TRANSMISSÃO NOVAMENTE"
+        },
+        "ru": {
+            "meta_desc": "Собирайте команду для кооперативного хоррор-забега с высокими ставками. У вас есть 5 дней, чтобы выполнить квоту.",
+            "nav_back": "&lt; СИСТЕМА.ВЕРНУТЬСЯ_В_ГЛАВНОЕ_МЕНЮ",
+            "popup_header": "ВХОДЯЩЕЕ СООБЩЕНИЕ",
+            "popup_body": "Не забудьте сдать квоту. Добавьте в список желаемого сегодня.",
+            "popup_btn_wishlist": "В желаемое",
+            "popup_btn_dismiss": "Закрыть",
+            "demo_popup_headline": "Скоро выйдет демоверсия.",
+            "demo_popup_sub": "Доступна ограниченное время. Подпишитесь, чтобы получить мгновенное уведомление о выходе демо.",
+            "demo_placeholder": "Введите ваш адрес электронной почты",
+            "demo_btn_notify": "УВЕДОМИТЬ МЕНЯ",
+            "hero_tagline": "Собирайте команду для кооперативного хоррор-забега. <br> У вас есть 5 дней, чтобы выполнить квоту.",
+            "hero_btn_wishlist": "В ЖЕЛАЕМОЕ В STEAM",
+            "trailer_title": "КООПЕРАТИВНЫЙ ЭКСТРАКШН-ХОРРОР - ГЕЙМПЛЕЙНЫЙ ТРЕЙЛЕР",
+            "about_title": "ОБ ЭТОЙ ИГРЕ",
+            "about_p1": "Space Delivery — это кооперативный хоррор на выживание, ориентированный на добычу. Игроки должны работать вместе, чтобы выполнить еженедельную квоту по прибыли, путешествуя по разным планетам и измерениям для поиска потерянного груза.",
+            "about_p2": "Вооружившись рюкзаком, в который нужно складывать предметы, команда сталкивается со сложной задачей: в каждом пункте назначения их ждут уникальные испытания, враги, ловушки и головоломки.",
+            "surveillance_title": "КАМЕРЫ НАБЛЮДЕНИЯ",
+            "features_title": "КЛЮЧЕВЫЕ ОСОБЕННОСТИ",
+            "feature1_title": "СЮЖЕТ",
+            "feature1_p1": "Вы являетесь частью 'Дивизиона потерянных грузов' — команды, которой поручено возвращать поставки, потерянные покупателями по всей вселенной.",
+            "feature1_p2": "В начале миссии вам назначается финансовая квота, которую нужно выполнить за 5 дней. В случае успеха квота увеличивается на следующую неделю, как и общая сложность работы.",
+            "feature2_title": "ГОЛОСОВОЙ ЧАТ ПО БЛИЗОСТИ",
+            "feature2_p1": "Связь жизненно важна, но опасна. В игре есть система позиционного голосового чата, где враги могут слышать разговоры игроков. Хотя в игре есть бои, скрытность часто является более разумным выбором.",
+            "feature2_p2": "Оружие громкое, и сущности стягиваются на шум, включая голосовой чат вашей команды. Это создает напряженные моменты, где тишина — это механика выживания.",
+            "feature3_title": "БЕСКОНЕЧНАЯ РЕИГРАБЕЛЬНОСТЬ",
+            "feature3_p1": "Нет двух одинаковых матчей. Фактор повторного прохождения обусловлен глубокой процедурной генерацией и динамическими системами, гарантируя, что игроки всегда получают новый опыт.",
+            "feature3_p2": "Все сценарии генерируются процедурно с различными темами. Каждый уровень предлагает новое испытание: где-то есть уникальные ловушки или дыры, где-то полно врагов, а где-то строгие ограничения по времени из-за уровня кислорода.",
+            "hazards_title": "ОПЕРАЦИОННЫЕ УГРОЗЫ",
+            "hazard1_title": "ГЕЙМПЛЕЙ НА БАЗЕ ФИЗИКИ",
+            "hazard1_p": "Управление инвентарем тактильно и стратегично. Игроки должны складывать 'Потерянный груз' себе на спину, и каждый предмет обладает активной физикой. Движение имеет значение — столкновение с другим игроком может опрокинуть его стопку. Некоторые предметы взрывоопасны или радиоактивны!",
+            "hazard2_title": "АДАПТИВНЫЕ ВРАГИ",
+            "hazard2_p": "Существуют различные враги, каждый со своим уникальным визуальным дизайном и моделью поведения. Игрокам приходится постоянно адаптировать свои стратегии, чтобы пережить эти встречи и сохранить активы компании.",
+            "hazard3_title": "ПРОГРЕССИЯ И ЭКОНОМИКА",
+            "hazard3_p": "Риск ведет к награде. На корабле есть магазин, где игроки могут потратить свои бонусы на предметы, оружие, расходные материалы, косметические костюмы и улучшения корабля. Магазин динамичный, инвентарь пополняется только после выполнения квоты.",
+            "demo_inline_title": "Скоро выйдет демоверсия.",
+            "demo_inline_sub": "Доступна ограниченное время. Подпишитесь, чтобы получить мгновенное уведомление о выходе демо.",
+            "demo_inline_confirm": "✓ Вы в списке. Мы уведомим вас, когда выйдет демоверсия.",
+            "footer_prop": "Дивизион потерянных грузов - Собственность Cortez Productions",
+            "footer_links_title": "БАЗЫ ДАННЫХ",
+            "footer_link_steam": "МАГАЗИН STEAM",
+            "footer_link_press": "ПРЕСС-КИТ",
+            "footer_link_discord": "СВЯЗЬ В DISCORD",
+            "footer_link_twitter": "X (TWITTER)",
+            "footer_warning": "ВНИМАНИЕ: Работа в Дивизионе потерянных грузов может привести к расчленению, радиационному отравлению или спонтанному перемещению во враждебные измерения. Компания не несет ответственности за гибель людей или потерю личных вещей.",
+            "footer_copy": "&copy; 2026 Cortez Productions. Все права защищены. Не настоящее подразделение. Наверное.",
+            "loader_1": "Инициализация ОС Потерянного Груза...",
+            "loader_2": "Установка соединения с Галактической Сетью...",
+            "loader_3": "Обход протоколов безопасности компании...",
+            "loader_4": "Синхронизация ежедневных целей по квотам...",
+            "loader_5": "Калибровка систем жизнеобеспечения (ВНИМАНИЕ: Субоптимально)",
+            "loader_6": "Загрузка планетарных данных...",
+            "loader_7": "Последовательность загрузки завершена. Добро пожаловать.",
+            "form_establishing": "УСТАНОВКА СОЕДИНЕНИЯ...",
+            "form_received": "ПЕРЕДАЧА ПОЛУЧЕНА.",
+            "form_manifest": "Вы в списке, Командир. Мы сообщим, как только выйдет демоверсия.",
+            "form_wishlist": "В желаемое в Steam",
+            "form_retry": "ПОВТОРИТЬ ПЕРЕДАЧУ"
+        },
+        "de": {
+            "meta_desc": "Trommeln Sie Ihre Crew für einen kooperativen Horror-Run mit hohen Einsätzen zusammen. Sie haben 5 Tage, um die Quote zu erfüllen.",
+            "nav_back": "&lt; SYSTEM.ZURÜCK_ZUM_HAUPTMENÜ",
+            "popup_header": "EINGEHENDE NACHRICHT",
+            "popup_body": "Vergessen Sie nicht, Ihre Quote abzugeben. Fügen Sie das Spiel noch heute Ihrer Wunschliste hinzu.",
+            "popup_btn_wishlist": "Auf die Wunschliste",
+            "popup_btn_dismiss": "Schließen",
+            "demo_popup_headline": "Zeitlich begrenzte Demo erscheint bald.",
+            "demo_popup_sub": "Nur für begrenzte Zeit verfügbar. Melden Sie sich an, um eine sofortige Benachrichtigung zu erhalten, wenn eine Demo live geht.",
+            "demo_placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+            "demo_btn_notify": "BENACHRICHTIGEN",
+            "hero_tagline": "Trommeln Sie Ihre Crew für einen kooperativen Horror-Run zusammen. <br> Sie haben 5 Tage, um die Quote zu erfüllen.",
+            "hero_btn_wishlist": "AUF STEAM WÜNSCHEN",
+            "trailer_title": "KOOP-MULTIPLAYER-EXTRAKTIONS-HORROR - GAMEPLAY-TRAILER",
+            "about_title": "ÜBER DIESES SPIEL",
+            "about_p1": "Space Delivery ist ein Koop-Survival-Horror-Spiel, bei dem es um Extraktion und das Sammeln von Gegenständen geht. Die Spieler müssen zusammenarbeiten, um eine wöchentliche Gewinnquote zu erfüllen, indem sie zu verschiedenen Planeten und Dimensionen reisen, um verlorene Fracht zu bergen.",
+            "about_p2": "Ausgestattet mit einem Rucksack, in dem Gegenstände gestapelt werden müssen, steht das Team vor einer schwierigen Aufgabe: Jedes Reiseziel bietet einzigartige Herausforderungen, Feinde, Fallen und Rätsel.",
+            "surveillance_title": "ÜBERWACHUNGSFEEDS",
+            "features_title": "HAUPTMERKMALE",
+            "feature1_title": "GESCHICHTE & PRÄMISSE",
+            "feature1_p1": "Sie sind Teil der 'Lost Cargo Division', einem Team, das beauftragt ist, Sendungen zurückzuholen, die von Käufern im ganzen Universum verlegt wurden.",
+            "feature1_p2": "Zu Beginn der Mission erhalten Sie eine finanzielle Quote, die innerhalb von 5 Tagen erfüllt werden muss. Wenn Sie erfolgreich sind, steigt die Quote für die nächste Woche, ebenso wie der allgemeine Schwierigkeitsgrad der Aufgabe.",
+            "feature2_title": "PROXIMITY VOICE CHAT",
+            "feature2_p1": "Kommunikation ist wichtig, aber gefährlich. Das Spiel verfügt über ein positionsbezogenes Voice-Chat-System, bei dem Feinde die Spieler sprechen hören können. Obwohl das Spiel Kämpfe beinhaltet, ist Schleichen oft die klügere Wahl.",
+            "feature2_p2": "Waffen sind laut, und die Entitäten werden von Lärm angezogen, einschließlich des Voice-Chats Ihres Teams. Dies sorgt für hochspannende Momente, in denen Stille eine Überlebensmechanik ist.",
+            "feature3_title": "UNENDLICHE WIEDERSPIELBARKEIT",
+            "feature3_p1": "Kein Spiel gleicht dem anderen. Der Wiederspielwert wird durch eine tiefe prozedurale Generierung und dynamische Systeme angetrieben, die sicherstellen, dass die Spieler immer eine neue Erfahrung machen.",
+            "feature3_p2": "Alle Szenarien werden prozedural mit verschiedenen Themen generiert. Jedes Level führt eine neue umweltbedingte Herausforderung ein: Einige haben einzigartige Fallen oder Löcher, andere wimmeln von Feinden, und einige haben aufgrund der Sauerstoffwerte strenge Zeitlimits.",
+            "hazards_title": "OPERATIONELLE GEFAHREN",
+            "hazard1_title": "PHYSIK-BASIERTES GAMEPLAY",
+            "hazard1_p": "Das Inventarmanagement ist taktil und strategisch. Die Spieler müssen 'Verlorene Fracht' auf ihrem Rücken stapeln, und jeder Gegenstand hat eine aktive Physik. Bewegung ist wichtig – das Zusammenstoßen mit einem anderen Spieler kann seinen Stapel umwerfen. Einige Gegenstände sind explosiv oder radioaktiv!",
+            "hazard2_title": "ADAPTIVE FEINDE",
+            "hazard2_p": "Es gibt verschiedene Feinde, jeder mit einem einzigartigen visuellen Design und Verhaltensmuster. Die Spieler müssen ihre Strategien ständig anpassen, um diese Begegnungen zu überleben und die Vermögenswerte des Unternehmens zu sichern.",
+            "hazard3_title": "FORTSCHRITT & WIRTSCHAFT",
+            "hazard3_p": "Risiko führt zur Belohnung. Das Schiff verfügt über einen Laden, in dem die Spieler ihre Boni für Gegenstände, Waffen, Verbrauchsmaterialien, kosmetische Anzüge und Schiffs-Upgrades ausgeben können. Der Laden ist dynamisch, das Inventar wird erst aufgefüllt, nachdem die Quote erfüllt wurde.",
+            "demo_inline_title": "Zeitlich begrenzte Demo erscheint bald.",
+            "demo_inline_sub": "Nur für begrenzte Zeit verfügbar. Melden Sie sich an, um benachrichtigt zu werden, sobald eine Demo live geht.",
+            "demo_inline_confirm": "✓ Sie stehen auf der Liste. Wir benachrichtigen Sie, wenn die Demo erscheint.",
+            "footer_prop": "Lost Cargo Division - Eigentum von Cortez Productions",
+            "footer_links_title": "DATENBANKEN",
+            "footer_link_steam": "STEAM-SHOP",
+            "footer_link_press": "PRESSEMAPPE",
+            "footer_link_discord": "DISCORD COMM-LINK",
+            "footer_link_twitter": "X (TWITTER)",
+            "footer_warning": "WARNUNG: Eine Beschäftigung bei der Lost Cargo Division kann zu Zerstückelung, Strahlenvergiftung oder spontaner Verschiebung in feindliche Dimensionen führen. Das Unternehmen haftet nicht für den Verlust von Menschenleben oder persönlichen Gegenständen.",
+            "footer_copy": "&copy; 2026 Cortez Productions. Alle Rechte vorbehalten. Keine echte Abteilung. Wahrscheinlich.",
+            "loader_1": "Lost Cargo OS wird initialisiert...",
+            "loader_2": "Verbindung zum Galaktischen Netzwerk wird hergestellt...",
+            "loader_3": "Sicherheitsprotokolle des Unternehmens werden umgangen...",
+            "loader_4": "Tägliche Quoten werden synchronisiert...",
+            "loader_5": "Lebenserhaltungssysteme werden kalibriert (WARNUNG: Suboptimal)",
+            "loader_6": "Planetare Daten werden geladen...",
+            "loader_7": "Startsequenz abgeschlossen. Willkommen in der Division.",
+            "form_establishing": "VERBINDUNG WIRD HERGESTELLT...",
+            "form_received": "ÜBERTRAGUNG ERHALTEN.",
+            "form_manifest": "Sie stehen auf der Liste, Commander. Wir benachrichtigen Sie, sobald die Demo da ist.",
+            "form_wishlist": "Auf Steam wünschen",
+            "form_retry": "ÜBERTRAGUNG WIEDERHOLEN"
+        },
+        "zh": {
+            "meta_desc": "召集你的船员，进行一场高风险的合作恐怖逃生冒险。你有5天时间完成配额。",
+            "nav_back": "&lt; 系统.返回主菜单",
+            "popup_header": "收到新消息",
+            "popup_body": "不要忘记提交你的配额。今天就加入愿望单吧。",
+            "popup_btn_wishlist": "加入愿望单",
+            "popup_btn_dismiss": "忽略",
+            "demo_popup_headline": "限时试玩即将推出。",
+            "demo_popup_sub": "仅限时提供。立即注册以便在试玩版上线时收到第一时间通知。",
+            "demo_placeholder": "输入您的电子邮件地址",
+            "demo_btn_notify": "通知我",
+            "hero_tagline": "召集你的船员，进行一场高风险的合作恐怖冒险。<br> 你有5天时间完成配额。",
+            "hero_btn_wishlist": "在STEAM上添加愿望单",
+            "trailer_title": "多人合作撤离恐怖游戏 - 实机演示预告片",
+            "about_title": "关于本游戏",
+            "about_p1": "《Space Delivery》是一款主打物品收集和撤离的合作生存恐怖游戏。玩家必须通力合作，通过前往不同星球和维度回收丢失的货物来完成每周的利润配额。",
+            "about_p2": "团队只配备了用于堆叠物品的背包，面临着艰巨的任务：每个目的地都有独特的挑战、敌人、陷阱和谜题。",
+            "surveillance_title": "监控画面",
+            "features_title": "主要特色",
+            "feature1_title": "故事与背景",
+            "feature1_p1": "你是“丢失货物专员”的一员，这支队伍的任务是找回全宇宙买家错放的货物。",
+            "feature1_p2": "在任务开始时，你会得到一个必须在5天内完成的财务配额。如果你成功了，下周的配额会增加，同时工作的整体难度也会提升。",
+            "feature2_title": "距离语音聊天",
+            "feature2_p1": "沟通至关重要，但也充满危险。游戏采用位置语音聊天系统，敌人能听到玩家说话。虽然游戏包含战斗，但潜行通常是更明智的选择。",
+            "feature2_p2": "武器声音很大，而各种实体会被噪音吸引，包括你们团队的语音聊天。这创造了极度紧张的时刻，沉默成为了一种生存机制。",
+            "feature3_title": "无限重玩性",
+            "feature3_p1": "没有两局比赛是完全相同的。深度程序化生成和动态系统带来了极高的重玩价值，确保玩家始终面临新鲜的体验。",
+            "feature3_p2": "所有场景均可通过不同主题进行程序化生成。每一级都会引入新的环境挑战：有些有独特的陷阱或坑洞，有些成群结队的敌人，还有一些会因氧气水平而有严格的时间限制。",
+            "hazards_title": "操作危险",
+            "hazard1_title": "基于物理的玩法",
+            "hazard1_p": "库存管理具有触感和策略性。玩家必须在背上堆叠“丢失货物”，每个物品都有活跃的物理引擎响应。移动要小心——撞到其他玩家可能会撞翻他们的货堆。有些物品具有爆炸性或放射性！",
+            "hazard2_title": "自适应敌人",
+            "hazard2_p": "游戏中有多种不同的敌人，每种都有独特的视觉设计和行为模式。玩家必须不断调整策略才能在这些遭遇战中幸存下来并保住公司的资产。",
+            "hazard3_title": "进度与经济",
+            "hazard3_p": "风险带来回报。飞船上设有商店，玩家可利用奖金购买物品、武器、消耗品、外观套装以及飞船升​​级。商店的商品是动态调整的，只有在完成配额后才会进货。",
+            "demo_inline_title": "限时试玩即将推出。",
+            "demo_inline_sub": "仅限时提供。立即注册以便在试玩版上线时收到第一时间通知。",
+            "demo_inline_confirm": "✓ 您已在名单中。试玩版发布时我们将通知您。",
+            "footer_prop": "丢失货物专员 - Cortez Productions 财产",
+            "footer_links_title": "数据库",
+            "footer_link_steam": "STEAM 商店",
+            "footer_link_press": "新闻媒体包",
+            "footer_link_discord": "DISCORD 交流频道",
+            "footer_link_twitter": "X (TWITTER)",
+            "footer_warning": "警告：受雇于丢失货物专员可能导致肢体断裂、辐射中毒或被随机传送到敌对维度。公司对生命或个人财物损失概不负责。",
+            "footer_copy": "&copy; 2026 Cortez Productions。保留所有权利。不是一个真实的部门。大概吧。",
+            "loader_1": "正在初始化丢失货物操作系统...",
+            "loader_2": "正在连接银河网络...",
+            "loader_3": "正在绕过公司安全协议...",
+            "loader_4": "正在同步每日配额目标...",
+            "loader_5": "正在校准生命支持系统（警告：未达到最佳状态）",
+            "loader_6": "正在加载行星数据...",
+            "loader_7": "启动程序完成。欢迎来到部门。",
+            "form_establishing": "正在建立连接...",
+            "form_received": "数据传输已接收。",
+            "form_manifest": "指挥官，您已在名单上。试玩版上线时我们会通知您。",
+            "form_wishlist": "在 Steam 上添加愿望单",
+            "form_retry": "重试传输"
+        },
+        "fr": {
+            "meta_desc": "Rassemblez votre équipage pour une mission coopérative d'horreur à haut risque. Vous avez 5 jours pour atteindre le quota.",
+            "nav_back": "&lt; SYSTÈME.RETOUR_AU_MENU_PRINCIPAL",
+            "popup_header": "MESSAGE ENTRANT",
+            "popup_body": "N'oubliez pas de soumettre votre quota. Ajoutez-le à votre liste de souhaits aujourd'hui.",
+            "popup_btn_wishlist": "Liste de souhaits",
+            "popup_btn_dismiss": "Fermer",
+            "demo_popup_headline": "Démo à durée limitée bientôt disponible.",
+            "demo_popup_sub": "Disponible pour une durée limitée seulement. Inscrivez-vous pour recevoir une alerte instantanée dès le lancement d'une démo.",
+            "demo_placeholder": "Entrez votre adresse e-mail",
+            "demo_btn_notify": "M'INFORMER",
+            "hero_tagline": "Rassemblez votre équipage pour une mission d'horreur coopérative à haut risque. <br> Vous avez 5 jours pour atteindre le quota.",
+            "hero_btn_wishlist": "LISTE DE SOUHAITS SUR STEAM",
+            "trailer_title": "SURVIE COOPÉRATIVE MULTIJOUEUR - BANDE-ANNONCE DE JOUABILITÉ",
+            "about_title": "À PROPOS DE CE JEU",
+            "about_p1": "Space Delivery est un jeu d'horreur de survie en coopération axé sur l'extraction et la collecte d'objets. Les joueurs doivent travailler ensemble pour atteindre un quota de profit hebdomadaire en voyageant vers différentes planètes et dimensions pour récupérer des cargaisons perdues.",
+            "about_p2": "Armée d'un sac à dos où les objets doivent être empilés, l'équipe fait face à une tâche difficile : chaque destination présente des défis uniques, des ennemis, des pièges et des énigmes.",
+            "surveillance_title": "FLUX DE SURVEILLANCE",
+            "features_title": "CARACTÉRISTIQUES PRINCIPALES",
+            "feature1_title": "HISTOIRE & PRÉMISSE",
+            "feature1_p1": "Vous faites partie de la « Division des Cargaisons Perdues », une équipe chargée de récupérer les expéditions égarées par des acheteurs à travers l'univers.",
+            "feature1_p2": "Au début de la mission, on vous attribue un quota financier qui doit être atteint dans les 5 jours. Si vous réussissez, le quota augmente pour la semaine d'après, tout comme la difficulté globale du travail.",
+            "feature2_title": "CHAT VOCAL DE PROXIMITÉ",
+            "feature2_p1": "La communication est vitale, mais dangereuse. Le jeu dispose d'un système de chat vocal positionnel où les ennemis peuvent entendre les joueurs parler. Bien que le jeu inclue des combats, la furtivité est souvent le choix le plus judicieux.",
+            "feature2_p2": "Les armes sont bruyantes et les entités sont attirées par le bruit, y compris le chat vocal de votre équipe. Cela crée des moments de haute tension où le silence est un mécanisme de survie.",
+            "feature3_title": "REJOUABILITÉ INFINIE",
+            "feature3_p1": "Il n'y a pas deux parties identiques. Le facteur de relecture est motivé par une génération procédurale profonde et des systèmes dynamiques, garantissant que les joueurs font toujours face à une expérience nouvelle.",
+            "feature3_p2": "Tous les scénarios sont générés de manière procédurale avec différents thèmes. Chaque niveau introduit un nouveau défi environnemental : certains ont des pièges ou des trous uniques, d'autres grouillent d'ennemis et d'autres ont des limites de temps strictes en raison des niveaux d'oxygène.",
+            "hazards_title": "RISQUES OPÉRATIONNELS",
+            "hazard1_title": "JOUABILITÉ BASÉE SUR LA PHYSIQUE",
+            "hazard1_p": "La gestion de l'inventaire est tactile et stratégique. Les joueurs doivent empiler la « Cargaison Perdue » sur leur dos, et chaque objet possède une physique active. Les mouvements comptent : bousculer un autre joueur peut renverser sa pile. Certains objets sont explosifs ou radioactifs !",
+            "hazard2_title": "ENNEMIS ADAPTATIFS",
+            "hazard2_p": "Il existe des monstres distincts, chacun avec une conception visuelle unique et un modèle de comportement. Les joueurs doivent constamment adapter leurs stratégies pour survivre à ces rencontres et sécuriser les actifs de l'entreprise.",
+            "hazard3_title": "PROGRESSION & ÉCONOMIE",
+            "hazard3_p": "Le risque mène à la récompense. Le vaisseau dispose d'une boutique où les joueurs peuvent dépenser leurs bonus en objets, armes, consommables, combinaisons cosmétiques et améliorations de vaisseau. La boutique est dynamique, l'inventaire n'est réapprovisionné qu'après avoir atteint le quota.",
+            "demo_inline_title": "Démo à durée limitée bientôt disponible.",
+            "demo_inline_sub": "Disponible pour une durée limitée seulement. Inscrivez-vous pour obtenir une alerte lorsque la démo sera en ligne.",
+            "demo_inline_confirm": "✓ Vous êtes sur la liste. Nous vous préviendrons de la sortie de la démo.",
+            "footer_prop": "Division des Cargaisons Perdues - Propriété de Cortez Productions",
+            "footer_links_title": "BANQUES DE DONNÉES",
+            "footer_link_steam": "BOUTIQUE STEAM",
+            "footer_link_press": "KIT DE PRESSE",
+            "footer_link_discord": "COMM-LINK DISCORD",
+            "footer_link_twitter": "X (TWITTER)",
+            "footer_warning": "AVERTISSEMENT : L'emploi à la Division des Cargaisons Perdues peut entraîner un démembrement, un empoisonnement aux radiations ou un déplacement spontané dans des dimensions hostiles. La Société n'est pas responsable des pertes de vie ou d'objets personnels.",
+            "footer_copy": "&copy; 2026 Cortez Productions. Tous droits réservés. Pas une vraie division. Probablement.",
+            "loader_1": "Initialisation du système d'exploitation...",
+            "loader_2": "Établissement de la connexion au Réseau Galactique...",
+            "loader_3": "Contournement des protocoles de sécurité de l'entreprise...",
+            "loader_4": "Synchronisation des objectifs de quota quotidiens...",
+            "loader_5": "Étalonnage des systèmes de survie (AVERTISSEMENT : sous-optimal)",
+            "loader_6": "Chargement des données planétaires...",
+            "loader_7": "Séquence de démarrage terminée. Bienvenue dans la Division.",
+            "form_establishing": "ÉTABLISSEMENT DE LA CONNEXION...",
+            "form_received": "TRANSMISSION REÇUE.",
+            "form_manifest": "Vous êtes sur le manifeste, Commandant. Nous vous préviendrons dès le lancement de la démo.",
+            "form_wishlist": "Liste de souhaits sur Steam",
+            "form_retry": "RÉESSAYER LA TRANSMISSION"
         }
     };
 
@@ -153,13 +389,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const btnEn = document.getElementById('lang-en');
-        const btnPt = document.getElementById('lang-pt');
-        if (btnEn) btnEn.classList.toggle('active', lang === 'en');
-        if (btnPt) btnPt.classList.toggle('active', lang === 'pt-br');
+        // Update custom dropdown
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langOptions = document.querySelectorAll('.lang-option');
+        
+        if (langOptions.length > 0) {
+            langOptions.forEach(opt => {
+                const optLang = opt.getAttribute('data-lang');
+                if (optLang === lang) {
+                    opt.classList.add('active');
+                    if (langToggleBtn) {
+                        langToggleBtn.innerHTML = `${opt.textContent} <span class="arrow">▼</span>`;
+                    }
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
 
         // Custom update for document title (optional SEO/Tab header update, fallback handling)
-        document.title = (lang === 'pt-br') ? "Space Delivery - Um Jogo de Cortez Productions" : "Space Delivery - A Cortez Productions Game";
+        const titles = {
+            'en': "Space Delivery - A Cortez Productions Game",
+            'pt-br': "Space Delivery - Um Jogo de Cortez Productions",
+            'ru': "Space Delivery - Игра от Cortez Productions",
+            'de': "Space Delivery - Ein Cortez Productions Spiel",
+            'zh': "Space Delivery - Cortez Productions 出品",
+            'fr': "Space Delivery - Un Jeu Cortez Productions"
+        };
+        document.title = titles[lang] || titles['en'];
     }
 
     function initLanguage() {
@@ -167,18 +424,64 @@ document.addEventListener('DOMContentLoaded', () => {
         if (savedLang) {
             currentLang = savedLang;
         } else {
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.toLowerCase().startsWith('pt')) {
+            const browserLang = (navigator.language || navigator.userLanguage).toLowerCase();
+            if (browserLang.startsWith('pt')) {
                 currentLang = 'pt-br';
+            } else if (browserLang.startsWith('ru')) {
+                currentLang = 'ru';
+            } else if (browserLang.startsWith('de')) {
+                currentLang = 'de';
+            } else if (browserLang.startsWith('zh')) {
+                currentLang = 'zh';
+            } else if (browserLang.startsWith('fr')) {
+                currentLang = 'fr';
+            } else {
+                currentLang = 'en';
             }
         }
         applyLanguage(currentLang);
     }
 
-    const btnEn = document.getElementById('lang-en');
-    const btnPt = document.getElementById('lang-pt');
-    if (btnEn) btnEn.addEventListener('click', () => applyLanguage('en'));
-    if (btnPt) btnPt.addEventListener('click', () => applyLanguage('pt-br'));
+    // Dropdown event listeners
+    const langDropdown = document.querySelector('.lang-dropdown');
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const langOptions = document.querySelectorAll('.lang-option');
+
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+            // Play click sound if exists
+            const audioClick = document.getElementById('audio-click');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (audioClick && !prefersReducedMotion) {
+                audioClick.currentTime = 0;
+                audioClick.play().catch(() => {});
+            }
+        });
+    }
+
+    langOptions.forEach(opt => {
+        opt.addEventListener('click', (e) => {
+            e.stopPropagation();
+            applyLanguage(opt.getAttribute('data-lang'));
+            langDropdown.classList.remove('open');
+            
+            const audioClick = document.getElementById('audio-click');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (audioClick && !prefersReducedMotion) {
+                audioClick.currentTime = 0;
+                audioClick.play().catch(() => {});
+            }
+        });
+    });
+
+    // Close dropdown on click outside
+    document.addEventListener('click', () => {
+        if (langDropdown) {
+            langDropdown.classList.remove('open');
+        }
+    });
 
     initLanguage();
 

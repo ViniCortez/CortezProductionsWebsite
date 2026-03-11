@@ -90,10 +90,16 @@
     <!-- NAVIGATION OVERLAY -->
     <nav class="main-nav">
         <a href="../" class="back-link" data-i18n="nav_back">&lt; SYSTEM.RETURN_TO_MAIN</a>
-        <div class="lang-switcher">
-            <button id="lang-en" class="lang-btn active">EN</button>
-            <span class="lang-sep">|</span>
-            <button id="lang-pt" class="lang-btn">PT-BR</button>
+        <div class="lang-dropdown">
+            <button class="lang-dropbtn" id="lang-toggle">EN <span class="arrow">▼</span></button>
+            <div class="lang-dropdown-content" id="lang-menu">
+                <button class="lang-option active" data-lang="en">EN</button>
+                <button class="lang-option" data-lang="pt-br">PT-BR</button>
+                <button class="lang-option" data-lang="ru">RU</button>
+                <button class="lang-option" data-lang="de">DE</button>
+                <button class="lang-option" data-lang="zh">ZH</button>
+                <button class="lang-option" data-lang="fr">FR</button>
+            </div>
         </div>
     </nav>
 
