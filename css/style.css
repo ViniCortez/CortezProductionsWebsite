@@ -934,11 +934,53 @@ a[href*="store.steampowered.com"].steam-link:hover {
 /* --- Footer --- */
 .footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px 20px;
     background-color: var(--secondary-bg);
     border-top: 1px solid var(--border-color);
     color: var(--text-dark);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-bg);
+    color: var(--text-light);
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    font-size: 1.6rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-icon:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-color);
+}
+
+.footer p {
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 /* --- Responsive Design --- */
