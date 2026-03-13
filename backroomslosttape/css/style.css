@@ -129,6 +129,12 @@ body.crt-enabled {
     margin-top: 50px;
     margin-bottom: 40px;
     gap: 20px;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: top center;
+}
+
+.desktop-logo-container.centered {
+    transform: translateY(22vh) scale(1.15);
 }
 
 .desktop-game-logo {

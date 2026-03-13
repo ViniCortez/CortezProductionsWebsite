@@ -238,11 +238,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Let's rewrite updateTaskbar locally:
     function renderTaskbar() {
         taskbarContainer.innerHTML = '';
+        let anyWindowOpen = false;
+
         windows.forEach(win => {
             // Modal windows only show in taskbar if they are actively opened (not display: none natively)
             const isModal = win.id === 'video-modal' || win.id === 'what-awaits-modal';
             const isVisible = win.style.display !== 'none';
             const isMinimized = win.classList.contains('minimized-win');
+
+            if (!isMinimized && isVisible) {
+                anyWindowOpen = true;
+            }
 
             if ((!isModal && win.style.display !== 'none') || (isModal && isVisible) || isMinimized) {
                 const title = win.getAttribute('data-title');
@@ -276,6 +282,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 taskbarContainer.appendChild(taskBtn);
             }
         });
+
+        // Toggle Logo Centering
+        const logoContainer = document.querySelector('.desktop-logo-container');
+        if (logoContainer) {
+            if (anyWindowOpen) {
+                logoContainer.classList.remove('centered');
+            } else {
+                logoContainer.classList.add('centered');
+            }
+        }
     }
 
     // Rebind minimize buttons to use class
