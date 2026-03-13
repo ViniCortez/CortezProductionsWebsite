@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Backrooms: Lost Tape - An immersive walking simulator through the mysterious and unsettling world of the Backrooms. Survive the entities and uncover the mysteries of the yellow rooms.">
+    <meta name="keywords" content="Backrooms, The Backrooms, Lost Tape, Horror Game, Indie Game, PC Game, Walking Simulator, Liminal Spaces, Cortez Productions">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Backrooms: Lost Tape">
+    <meta property="og:description" content="Explore the mysterious and unsettling world of the Backrooms in this immersive walking simulator.">
+    <meta property="og:image" content="https://cortezproductions.com/backroomslosttape/image/screenshots/ss_2714d054881a1f0284520595f923a5e85c7ca2dc.1920x1080.jpg">
+    <meta property="og:url" content="https://cortezproductions.com/backroomslosttape/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Backrooms: Lost Tape">
+    <meta name="twitter:description" content="Explore the mysterious and unsettling world of the Backrooms in this immersive walking simulator.">
+    <meta name="twitter:image" content="https://cortezproductions.com/backroomslosttape/image/screenshots/ss_2714d054881a1f0284520595f923a5e85c7ca2dc.1920x1080.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192x192.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <title>Backrooms: Lost Tape</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-747890922"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-747890922');
+    </script>
+
+    <!-- Global Styles & Phosphor Icons -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="css/style.css?v=12">
+</head>
+<body class="crt-enabled">
+    <!-- Go Back Navigation -->
+    <a href="../#projects" class="win-button go-back-btn">
+        <i class="ph ph-arrow-left"></i> Go Back
+    </a>
+
+    <div class="vhs-overlay"></div>
+    <div class="scanlines"></div>
+
+    <main class="desktop-environment">
+        
+        <!-- Desktop Icons (Apps) -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" id="open-what-awaits">
+                <i class="ph-fill ph-file-text"></i>
+                <span class="icon-text">What awaits you.txt</span>
+            </div>
+            <a href="../expwartrauma" class="desktop-icon">
+                <i class="ph-fill ph-crosshair"></i>
+                <span class="icon-text">EXP: War Trauma</span>
+            </a>
+            <a href="../spacedelivery" class="desktop-icon">
+                <i class="ph-fill ph-rocket"></i>
+                <span class="icon-text">Space Delivery</span>
+            </a>
+        </div>
+
+        <!-- Center Logo Area (Not a window) -->
+        <div class="desktop-logo-container">
+            <img src="logo/THE-BACKROOMS_LOGOTIPO_SVG_%23FFFFFF.svg" alt="Backrooms Lost Tape Logo" class="desktop-game-logo">
+            <a href="https://store.steampowered.com/app/1926620/The_Backrooms_Lost_Tape/" target="_blank" class="win-button primary-action">
+                <i class="ph-fill ph-steam-logo"></i> View on Steam
+            </a>
+        </div>
+
+        <div class="windows-container">
+            
+            <!-- Left Side Windows -->
+            <div class="windows-column column-left">
+                <!-- System Log Window -->
+                <div class="window desktop-window" id="window-system-log" data-title="System Log" data-icon="../images/favicon-192x192.png">
+                    <div class="window-title-bar">
+                        <div class="window-title">
+                            <img src="../images/favicon-192x192.png" alt="icon" class="window-icon">
+                            System Log - Database_04
+                        </div>
+                        <div class="window-controls">
+                            <button class="win-btn minimize"><i class="ph ph-minus"></i></button>
+                            <button class="win-btn maximize"><i class="ph ph-square"></i></button>
+                            <button class="win-btn close"><i class="ph ph-x"></i></button>
+                        </div>
+                    </div>
+                    <div class="window-content">
+                        <p class="typewriter-text">You work in the cinema as an usher and accidentally fell into the Backrooms, now being trapped, needing to unravel the mysteries of the yellow rooms in order to get out of this place, but be careful, there are entities that will be in your way.</p>
+                        <br>
+                        <p class="typewriter-text delay-1">An immersive walking simulator through the mysterious and unsettling world of the Backrooms, separated by Tapes (Chapters).</p>
+                    </div>
+                    <div class="status-bar">
+                        <div class="status-item">Connected to: SERVER_04</div>
+                        <div class="status-item">Status: ONLINE</div>
+                    </div>
+                </div>
+
+                <!-- Available Recordings Window -->
+                <div class="window desktop-window tapes-window" id="window-recordings" data-title="Available Recordings" data-icon="../images/favicon-192x192.png">
+                    <div class="window-title-bar">
+                        <div class="window-title">
+                            <img src="../images/favicon-192x192.png" alt="icon" class="window-icon">
+                            Available Recordings
+                        </div>
+                        <div class="window-controls">
+                            <button class="win-btn minimize"><i class="ph ph-minus"></i></button>
+                            <button class="win-btn maximize"><i class="ph ph-square"></i></button>
+                            <button class="win-btn close"><i class="ph ph-x"></i></button>
+                        </div>
+                    </div>
+                    <div class="window-content tapes-list">
+                        <div class="tape-item available" data-trailer="https://www.youtube.com/embed/_nldQxnr6b4?autoplay=1&mute=0">
+                            <i class="ph ph-cassette-tape"></i>
+                            <span class="tape-name">The Tape of Josh</span>
+                            <span class="tape-status">PLAYABLE</span>
+                        </div>
+                        <div class="tape-item available" data-trailer="https://www.youtube.com/embed/TFDQp5eqzXw?autoplay=1&mute=0">
+                            <i class="ph ph-cassette-tape"></i>
+                            <span class="tape-name">The Tape of Nikolas</span>
+                            <span class="tape-status">PLAYABLE</span>
+                        </div>
+                        <div class="tape-item locked">
+                            <i class="ph ph-lock-key"></i>
+                            <span class="tape-name">Tape 03 - [REDACTED]</span>
+                            <span class="tape-status">CORRUPTED</span>
+                        </div>
+                        <div class="tape-item locked">
+                            <i class="ph ph-lock-key"></i>
+                            <span class="tape-name">Tape 04 - [REDACTED]</span>
+                            <span class="tape-status">CORRUPTED</span>
+                        </div>
+                        <div class="tape-item locked">
+                            <i class="ph ph-lock-key"></i>
+                            <span class="tape-name">Tape 05 - [REDACTED]</span>
+                            <span class="tape-status">CORRUPTED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side Windows -->
+            <div class="windows-column column-right">
+                <!-- Visual Data Window -->
+                <div class="window desktop-window media-window" id="window-visual-data" data-title="Visual Data Explorer" data-icon="../images/favicon-192x192.png">
+                    <div class="window-title-bar">
+                        <div class="window-title">
+                            <img src="../images/favicon-192x192.png" alt="icon" class="window-icon">
+                            Visual Data Explorer
+                        </div>
+                        <div class="window-controls">
+                            <button class="win-btn minimize"><i class="ph ph-minus"></i></button>
+                            <button class="win-btn maximize"><i class="ph ph-square"></i></button>
+                            <button class="win-btn close"><i class="ph ph-x"></i></button>
+                        </div>
+                    </div>
+                    <div class="window-content">
+                        <div class="carousel-container">
+                            <div class="carousel-track" id="screenshot-track">
+                                <img src="image/screenshots/ss_2714d054881a1f0284520595f923a5e85c7ca2dc.1920x1080.jpg" alt="Screenshot 1">
+                                <img src="image/screenshots/ss_297b7969b2de8ec557b490d445c794de46b8966a.1920x1080.jpg" alt="Screenshot 2">
+                                <img src="image/screenshots/ss_3b479d0a1b38230b950334d1813ac630d32764e5.1920x1080.jpg" alt="Screenshot 3">
+                                <img src="image/screenshots/ss_3f8fe84410863ac3669f6fdcd21f5ab9bd0b1ccb.1920x1080.jpg" alt="Screenshot 4">
+                                <img src="image/screenshots/ss_5ecdc20b564e6437f38e6ed216a2e37c63b24172.1920x1080.jpg" alt="Screenshot 5">
+                                <img src="image/screenshots/ss_5fb2c6eb3a00691d0dba416b52a2a5c88d233f6f.1920x1080.jpg" alt="Screenshot 6">
+                                <img src="image/screenshots/ss_6f4f257fd3354fdcab2be8b780f9916df70ead1f.1920x1080.jpg" alt="Screenshot 7">
+                                <img src="image/screenshots/ss_740457b9f6455ae99bcefe03cc3e9ce9751a8383.1920x1080.jpg" alt="Screenshot 8">
+                                <img src="image/screenshots/ss_995029d3dc3adc324f53b9978d37b471540d7801.1920x1080.jpg" alt="Screenshot 9">
+                                <img src="image/screenshots/ss_eff41ab408b033147c729b8b1ceffbded2a84902.1920x1080.jpg" alt="Screenshot 10">
+                            </div>
+                            <div class="carousel-controls">
+                                <button class="win-button" id="prev-btn">&lt; Prev</button>
+                                <span class="image-counter" id="image-counter">1 / 10</span>
+                                <button class="win-button" id="next-btn">Next &gt;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-bar">
+                        <div class="status-item time-display" id="time-display">00:00:00</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Video Player Modal Window (Hidden by default) -->
+        <div class="window video-modal desktop-window" id="video-modal" data-title="Media Player" data-icon="../images/favicon-192x192.png" style="display: none;">
+            <div class="window-title-bar">
+                <div class="window-title">
+                    <img src="../images/favicon-192x192.png" alt="icon" class="window-icon">
+                    <span id="video-modal-title">Media Player</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn close" id="close-video-modal"><i class="ph ph-x"></i></button>
+                </div>
+            </div>
+            <div class="window-content" style="padding: 2px;">
+                <iframe id="trailer-iframe" width="100%" height="450" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <!-- Text Document Modal Window (Hidden by default) -->
+        <div class="window text-modal desktop-window" id="what-awaits-modal" data-title="What awaits you.txt" data-icon="text-icon" style="display: none;">
+            <div class="window-title-bar">
+                <div class="window-title">
+                    <i class="ph-fill ph-file-text window-icon-font"></i>
+                    <span>What awaits you.txt - Notepad</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn maximize"><i class="ph ph-square"></i></button>
+                    <button class="win-btn close" id="close-what-awaits-modal"><i class="ph ph-x"></i></button>
+                </div>
+            </div>
+            <!-- Menu bar mock -->
+            <div class="win-menu-bar">
+                <span><u>F</u>ile</span>
+                <span><u>E</u>dit</span>
+                <span><u>S</u>earch</span>
+                <span><u>H</u>elp</span>
+            </div>
+            <div class="window-content" style="padding: 0;">
+                <textarea class="notepad-textarea" readonly>Get ready for a contemplative experience like no other! This game will feature multiple tapes, each with its own tantalizing story and unique characters that will have you on the edge of your seat. Immerse yourself in uncharted territories, unraveling mysteries and facing spine-chilling entities that will keep you guessing at every turn. With each new tape comes a world of possibilities to explore and secrets to uncover. Are you ready to explore the most faithful representation of backrooms?</textarea>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Windows 95 Taskbar Footer -->
+    <div class="win-taskbar">
+        <button class="win-start-btn win-button">
+            <img src="../images/favicon-192x192.png" alt="Start" class="start-logo">
+            <span class="start-text">Start</span>
+        </button>
+        <div class="taskbar-tasks" id="taskbar-tasks-container">
+            <!-- Dynamic Active tasks generated by JS -->
+        </div>
+        <div class="taskbar-tray">
+            <div class="status-item taskbar-time" id="taskbar-time-display">00:00</div>
+        </div>
+    </div>
+
+    <!-- Footer override to hide global footer mostly -> handled in CSS -->
+    <script src="js/script.js?v=12"></script>
+</body>
+</html>

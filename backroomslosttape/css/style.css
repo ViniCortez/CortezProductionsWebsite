@@ -1,0 +1,664 @@
+/* 
+   Retro Windows OS + VHS/CRT Effects
+   The Backrooms: Lost Tape 
+*/
+
+:root {
+    /* Exact Windows 95 Color Palette */
+    --win-bg: #c0c0c0;
+    --win-title-active: #000080;
+    --win-title-inactive: #808080;
+    --win-text: #000000;
+    --win-border-light: #ffffff;    /* 3D Light */
+    --win-border-dark: #808080;     /* 3D Shadow */
+    --win-border-darker: #000000;   /* Window border */
+    
+    --vhs-green: #00ff00;
+    --vhs-red: #ff0000;
+    --vhs-blue: #0000ff;
+    
+    --crt-bg: #050505;
+}
+
+/* CRT and VHS Global Effects */
+body.crt-enabled {
+    background-color: var(--crt-bg);
+    background-image: url('../image/windows95wallpaper_hd.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, Arial, sans-serif;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+    margin: 0;
+}
+
+/* Go Back Button */
+.go-back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+}
+
+.desktop-environment {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 60px; /* Space for taskbar */
+    z-index: 10;
+    position: relative;
+}
+
+/* Desktop Icons (Apps) */
+.desktop-icons {
+    position: absolute;
+    top: 75px; /* Moved down to avoid Go Back button */
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    z-index: 50;
+    width: 110px;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Desktop font color in Win95 was usually white with shadow or pure white on simple backgrounds */
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    gap: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.desktop-icon i {
+    font-size: 48px; /* Increased icon size */
+    color: #fff;
+    filter: drop-shadow(2px 2px 0px #000); /* Stronger drop shadow */
+    /* Give phosphor icons a slightly blockier look by scaling */
+    transform: scale(1.1); 
+    image-rendering: crisp-edges;
+}
+
+.custom-app-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    image-rendering: pixelated; /* Makes scaled images look chunky */
+    filter: drop-shadow(2px 2px 0px #000);
+}
+
+.icon-text {
+    font-size: 14px;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, Arial, sans-serif;
+    text-shadow: 1px 1px 0 #000;
+    padding: 2px 4px;
+    line-height: 1.2;
+    margin-top: 5px;
+}
+
+/* Identical Win95 Icon Selection Behavior */
+.desktop-icon:hover .icon-text, 
+.desktop-icon:focus .icon-text, 
+.desktop-icon:active .icon-text {
+    background-color: var(--win-title-active);
+    color: white;
+    text-shadow: none;
+    outline: 1px dotted #fff; /* Dotted outline on focus */
+}
+
+/* Removed empty ruleset here for linting */
+
+/* Center Logo Header Area */
+.desktop-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.desktop-game-logo {
+    max-width: 800px;
+    width: 90%;
+    filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.8));
+}
+
+.primary-action {
+    font-size: 1.3rem;
+    padding: 12px 25px;
+    font-weight: bold;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+}
+
+/* Multi-Window Layout */
+.windows-container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.windows-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    min-width: 350px;
+}
+
+.column-left {
+    max-width: 600px;
+}
+
+.column-right {
+    max-width: 900px;
+}
+
+/* CSS Scanlines */
+.scanlines {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0,0,0,0.1) 50%,
+        rgba(0,0,0,0.1)
+    );
+    background-size: 100% 4px;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Vignette and Slight curvature */
+.vhs-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+    z-index: 998;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
+}
+
+/* ----------- Windows 95/98 Styling ----------- */
+
+/* Global overrides for dark theme bleed */
+.window * {
+    color: var(--win-text);
+}
+
+.window {
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-darker);
+    border-bottom: 2px solid var(--win-border-darker);
+    box-shadow: 
+        inset -1px -1px 0 0 var(--win-border-dark),
+        inset 1px 1px 0 0 var(--win-bg),
+        4px 4px 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.window-title-bar {
+    background: var(--win-title-active);
+    color: white;
+    padding: 3px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.window-title-bar * {
+    color: white;
+}
+
+.window-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.window-icon {
+    width: 16px; 
+    height: 16px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.win-btn {
+    width: 16px;
+    height: 16px;
+    background: var(--win-bg);
+    border-top: 1px solid var(--win-border-light);
+    border-left: 1px solid var(--win-border-light);
+    border-right: 1px solid var(--win-border-darker);
+    border-bottom: 1px solid var(--win-border-darker);
+    box-shadow: inset -1px -1px 0 0 var(--win-border-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 10px;
+    color: black;
+}
+
+.win-btn:active {
+    border-top: 1px solid var(--win-border-darker);
+    border-left: 1px solid var(--win-border-darker);
+    border-right: 1px solid var(--win-border-light);
+    border-bottom: 1px solid var(--win-border-light);
+    box-shadow: none;
+    padding-top: 1px;
+    padding-left: 1px;
+}
+
+.window-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Generic Win Button */
+.win-button {
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-darker);
+    border-bottom: 2px solid var(--win-border-darker);
+    box-shadow: inset -1px -1px 0 0 var(--win-border-dark);
+    padding: 6px 15px;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--win-text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Win95 buttons have no hover transition */
+}
+
+.win-button:active {
+    border-top: 2px solid var(--win-border-darker);
+    border-left: 2px solid var(--win-border-darker);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    box-shadow: inset 1px 1px 0 0 var(--win-border-dark);
+    padding: 7px 14px 5px 16px; /* Shift text down/right */
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+
+.win-button:focus {
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+
+/* Text Adjustments from old panels */
+.typewriter-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--win-text);
+}
+
+/* Menu Bar (e.g. Notepad) */
+.win-menu-bar {
+    background: var(--win-bg);
+    padding: 2px 5px;
+    border-bottom: 1px solid var(--win-border-light);
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: var(--win-text);
+}
+
+.win-menu-bar span {
+    padding: 2px 5px;
+    cursor: default;
+}
+
+.win-menu-bar span:hover {
+    background: var(--win-title-active);
+    color: white;
+}
+
+.win-menu-bar span:hover u {
+    color: white;
+}
+
+/* Notepad content */
+.notepad-textarea {
+    width: 100%;
+    height: 300px;
+    background: #fff;
+    color: #000;
+    border: none;
+    resize: none;
+    padding: 5px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Video and Text Modal Styling */
+.video-modal, .text-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 1000;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+.text-modal {
+    max-width: 600px; /* Text file specific width */
+}
+
+/* Tape List Settings */
+.tapes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tape-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    background: #ffffff; /* Win95 listbox bg is usually white */
+    border: 1px solid transparent;
+    gap: 10px;
+}
+
+.tape-item.available {
+    cursor: pointer;
+}
+
+.tape-item.available:hover {
+    background: var(--win-title-active);
+}
+
+.tape-item.available:hover * {
+    color: #ffffff;
+}
+
+.tape-item.locked {
+    opacity: 0.6;
+    background: #e0e0e0;
+}
+
+.tape-name {
+    flex: 1;
+    font-weight: 500;
+}
+
+.tape-status {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.available .tape-status {
+    color: #006600;
+}
+.locked .tape-status {
+    color: #880000;
+}
+
+/* Carousel */
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.carousel-track {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    border: 2px inset var(--win-border-light);
+}
+
+.carousel-track img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-track img.active {
+    opacity: 1;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--win-bg);
+    padding: 5px;
+    border: 1px solid var(--win-border-dark);
+}
+
+.image-counter {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    border-top: 1px solid var(--win-border-dark);
+    border-bottom: 1px solid var(--win-border-light);
+    margin-top: auto;
+    background: var(--win-bg);
+}
+
+.status-item {
+    padding: 3px 8px;
+    border-right: 1px solid var(--win-border-dark);
+    border-left: 1px solid var(--win-border-light);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+.status-item:first-child {
+    border-left: none;
+    flex: 1;
+}
+.status-item:last-child {
+    border-right: none;
+    min-width: 80px;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Windows 95 Taskbar */
+.win-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    box-shadow: 0 -1px 5px rgba(0,0,0,0.5);
+    color: var(--win-text); /* Fix white text bleed */
+}
+
+.win-taskbar * {
+    color: var(--win-text);
+}
+
+.win-start-btn {
+    font-weight: bold;
+    padding: 2px 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.start-logo {
+    width: 18px;
+    height: 18px;
+    image-rendering: auto; /* Maybe auto if we use modern logo */
+}
+
+.start-text {
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.taskbar-tasks {
+    flex: 1;
+    display: flex;
+    padding: 0 5px;
+    height: 100%;
+    align-items: center;
+}
+
+.taskbar-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    height: 100%;
+    min-width: 150px;
+    max-width: 200px;
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-darker);
+    border-bottom: 2px solid var(--win-border-darker);
+    box-shadow: inset -1px -1px 0 0 var(--win-border-dark);
+    font-size: 13px;
+    cursor: default;
+}
+
+.taskbar-item img {
+    width: 16px;
+    height: 16px;
+}
+
+.active-task {
+    border-top: 2px solid var(--win-border-darker);
+    border-left: 2px solid var(--win-border-darker);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    box-shadow: inset 1px 1px 0 0 var(--win-border-dark);
+    background: #e0e0e0;
+}
+
+.taskbar-tray {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid var(--win-border-darker);
+    border-left: 2px solid var(--win-border-darker);
+    border-right: 2px solid var(--win-border-light);
+    border-bottom: 2px solid var(--win-border-light);
+    padding: 0 8px;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .desktop-game-logo {
+        max-width: 600px;
+    }
+}
+@media (max-width: 768px) {
+    .windows-column {
+        min-width: 100%;
+    }
+    .desktop-game-logo {
+        max-width: 90%;
+    }
+    .go-back-btn {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+        align-self: flex-start;
+    }
+    .desktop-icons {
+        position: relative;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .desktop-icon {
+        width: 80px;
+    }
+    
+    /* Make taskbar normal flow at bottom for mobile */
+    .win-taskbar {
+        position: relative;
+        flex-direction: column;
+        height: auto;
+        padding: 5px;
+        gap: 5px;
+    }
+    .taskbar-tasks {
+        width: 100%;
+        padding: 0;
+    }
+    .taskbar-item {
+        width: 100%;
+        max-width: 100%;
+    }
+    .desktop-environment {
+        padding-bottom: 20px;
+    }
+}
