@@ -258,11 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 taskBtn.className = isMinimized ? 'taskbar-item' : 'taskbar-item active-task';
                 taskBtn.setAttribute('data-target', win.id);
                 
-                if (iconSrc === 'text-icon') {
-                    taskBtn.innerHTML = `<i class="ph-fill ph-file-text" style="font-size: 16px;"></i><span>${title}</span>`;
-                } else {
-                    taskBtn.innerHTML = `<img src="${iconSrc}" alt="icon"><span>${title}</span>`;
-                }
+                // All icons are now Phosphor icon classes stored in data-icon
+                taskBtn.innerHTML = `<i class="${iconSrc}" style="font-size: 16px;"></i><span>${title}</span>`;
                 
                 taskBtn.addEventListener('click', () => {
                     if (win.classList.contains('minimized-win')) {
