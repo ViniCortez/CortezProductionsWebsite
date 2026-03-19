@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "demo_popup_sub": "Available for a limited time only. Sign up to get an instant alert when a Demo goes live.",
             "demo_placeholder": "Enter your email address",
             "demo_btn_notify": "NOTIFY ME",
-            "hero_tagline": "Grab your crew for a high-stakes co-op horror run. <br> You have 5 days to meet the quota.",
+            "hero_tagline": "Grab your crew for a high-stakes <span style='color: #66c0f4; text-transform: uppercase; font-weight: bold;'>co-op</span> horror run. <br> You have 5 days to meet the quota.",
             "hero_btn_wishlist": "WISHLIST ON STEAM",
             "trailer_title": "CO-OP MULTIPLAYER EXTRACTION HORROR - GAMEPLAY TRAILER",
             "about_title": "ABOUT THIS GAME",
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "demo_popup_sub": "Disponível apenas por tempo limitado. Inscreva-se para receber um alerta imediato quando a Demo for lançada.",
             "demo_placeholder": "Digite seu endereço de email",
             "demo_btn_notify": "ME NOTIFIQUE",
-            "hero_tagline": "Reúna sua equipe para uma corrida de horror cooperativa de alto risco. <br> Você tem 5 dias para atingir a cota.",
+            "hero_tagline": "Reúna sua equipe para uma corrida de horror <span style='color: #66c0f4; text-transform: uppercase; font-weight: bold;'>co-op</span> de alto risco. <br> Você tem 5 dias para atingir a cota.",
             "hero_btn_wishlist": "ADICIONAR À LISTA NO STEAM",
             "trailer_title": "HORROR DE EXTRAÇÃO COOPERATIVO MULTIJOGADOR - TRAILER DE GAMEPLAY",
             "about_title": "SOBRE ESTE JOGO",
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "demo_popup_sub": "Доступна ограниченное время. Подпишитесь, чтобы получить мгновенное уведомление о выходе демо.",
             "demo_placeholder": "Введите ваш адрес электронной почты",
             "demo_btn_notify": "УВЕДОМИТЬ МЕНЯ",
-            "hero_tagline": "Собирайте команду для кооперативного хоррор-забега. <br> У вас есть 5 дней, чтобы выполнить квоту.",
+            "hero_tagline": "Собирайте команду для <span style='color: #66c0f4; text-transform: uppercase; font-weight: bold;'>co-op</span> хоррор-забега. <br> У вас есть 5 дней, чтобы выполнить квоту.",
             "hero_btn_wishlist": "В ЖЕЛАЕМОЕ В STEAM",
             "trailer_title": "КООПЕРАТИВНЫЙ ЭКСТРАКШН-ХОРРОР - ГЕЙМПЛЕЙНЫЙ ТРЕЙЛЕР",
             "about_title": "ОБ ЭТОЙ ИГРЕ",
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "demo_popup_sub": "Nur für begrenzte Zeit verfügbar. Melden Sie sich an, um eine sofortige Benachrichtigung zu erhalten, wenn eine Demo live geht.",
             "demo_placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
             "demo_btn_notify": "BENACHRICHTIGEN",
-            "hero_tagline": "Trommeln Sie Ihre Crew für einen kooperativen Horror-Run zusammen. <br> Sie haben 5 Tage, um die Quote zu erfüllen.",
+            "hero_tagline": "Trommeln Sie Ihre Crew für einen <span style='color: #66c0f4; text-transform: uppercase; font-weight: bold;'>co-op</span> Horror-Run zusammen. <br> Sie haben 5 Tage, um die Quote zu erfüllen.",
             "hero_btn_wishlist": "AUF STEAM WÜNSCHEN",
             "trailer_title": "KOOP-MULTIPLAYER-EXTRAKTIONS-HORROR - GAMEPLAY-TRAILER",
             "about_title": "ÜBER DIESES SPIEL",
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "demo_popup_sub": "仅限时提供。立即注册以便在试玩版上线时收到第一时间通知。",
             "demo_placeholder": "输入您的电子邮件地址",
             "demo_btn_notify": "通知我",
-            "hero_tagline": "召集你的船员，进行一场高风险的合作恐怖冒险。<br> 你有5天时间完成配额。",
+            "hero_tagline": "召集你的船员，进行一场高风险的<span style='color: #66c0f4; text-transform: uppercase; font-weight: bold;'>co-op</span>恐怖冒险。<br> 你有5天时间完成配额。",
             "hero_btn_wishlist": "在STEAM上添加愿望单",
             "trailer_title": "多人合作撤离恐怖游戏 - 实机演示预告片",
             "about_title": "关于本游戏",
@@ -531,53 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drawParticles();
     }
 
-    /* --- Demo Signup Popup --- */
-    const demoPopup = document.getElementById('demo-popup');
-    const closeDemoBtn = document.getElementById('close-demo-popup');
-    const demoForm = demoPopup ? demoPopup.querySelector('.demo-form') : null;
-    let demoPopupShown = false;
     const DEMO_KEY = 'sd_demo_dismissed';
-
-    function showDemoPopup() {
-        if (demoPopupShown || localStorage.getItem(DEMO_KEY)) return;
-        demoPopupShown = true;
-        if (demoPopup) {
-            demoPopup.classList.add('show');
-            document.body.style.overflow = 'hidden'; // lock scroll
-        }
-    }
-
-    function hideDemoPopup() {
-        if (demoPopup) {
-            demoPopup.classList.remove('show');
-            document.body.style.overflow = ''; // unlock scroll
-            localStorage.setItem(DEMO_KEY, 'true');
-        }
-    }
-
-    // Trigger popup when user scrolls to Key Features section
-    window.addEventListener('scroll', () => {
-        const featuresSection = document.querySelector('.features-section');
-        if (featuresSection && !demoPopupShown) {
-            const rect = featuresSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.8) {
-                showDemoPopup();
-            }
-        }
-    });
-
-    if (closeDemoBtn) {
-        closeDemoBtn.addEventListener('click', hideDemoPopup);
-    }
-
-    // Close on overlay click (outside the box)
-    if (demoPopup) {
-        demoPopup.addEventListener('click', (e) => {
-            if (e.target === demoPopup) {
-                hideDemoPopup();
-            }
-        });
-    }
 
     // --- Google Apps Script Form Submission ---
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzYl7-xyzTVN9DLpr3L3sNcpr1mxda09wG2_HKAI-D7Kzt0xkjAL8rR_x0rdwF4CQaIJg/exec';
@@ -604,33 +558,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedback.innerHTML = `
                         <h3>${i18n('form_received')}</h3>
                         <p>${i18n('form_manifest')}</p>
-                        <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" class="wishlist-btn steam-button small-btn" target="_blank">${i18n('form_wishlist')}</a>
+                        <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" class="hero-steam-btn" target="_blank" style="padding: 10px 20px; font-size: 1rem; margin-top: 15px; margin-bottom: 5px;">
+                            <img src="../images/Steam_icon_logo.svg" alt="Steam Logo" class="steam-logo-icon" style="width: 25px; height: 25px;">
+                            <div class="btn-text-content">
+                                <span class="btn-text">${i18n('form_wishlist')}</span>
+                            </div>
+                        </a>
                     `;
                     localStorage.setItem(DEMO_KEY, 'signed_up');
-
-                    // Close popup if it was the popup form
-                    if (form.id === 'demo-signup-form') {
-                        setTimeout(() => hideDemoPopup(), 3000);
-                    }
-
-                    // Sync: also update the other form if it exists
-                    const inlineForm = document.getElementById('demo-signup-form-inline');
-                    const inlineFeedback = document.getElementById('form-feedback-inline');
-                    const popupForm = document.getElementById('demo-signup-form');
-                    const popupFeedback = document.getElementById('form-feedback');
-                    if (form.id === 'demo-signup-form' && inlineForm) {
-                        inlineForm.style.display = 'none';
-                        if (inlineFeedback) {
-                            inlineFeedback.style.display = 'block';
-                            inlineFeedback.innerHTML = feedback.innerHTML;
-                        }
-                    } else if (form.id === 'demo-signup-form-inline' && popupForm) {
-                        popupForm.style.display = 'none';
-                        if (popupFeedback) {
-                            popupFeedback.style.display = 'block';
-                            popupFeedback.innerHTML = feedback.innerHTML;
-                        }
-                    }
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
@@ -640,27 +575,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Popup form
-    const popupForm = document.getElementById('demo-signup-form');
-    const popupBtn = document.getElementById('submit-btn');
-    const popupFeedback = document.getElementById('form-feedback');
-    handleDemoFormSubmit(popupForm, popupBtn, popupFeedback);
-
     // Inline form
     const inlineForm = document.getElementById('demo-signup-form-inline');
     const inlineBtn = document.getElementById('submit-btn-inline');
     const inlineFeedback = document.getElementById('form-feedback-inline');
     handleDemoFormSubmit(inlineForm, inlineBtn, inlineFeedback);
 
-    // If already signed up, hide both forms and show confirmation
+    // If already signed up, hide form and show confirmation
     if (localStorage.getItem(DEMO_KEY) === 'signed_up') {
         const successHTML = `
             <h3>${i18n('form_received')}</h3>
             <p>${i18n('form_manifest')}</p>
-            <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" class="wishlist-btn steam-button small-btn" target="_blank">${i18n('form_wishlist')}</a>
+            <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" class="hero-steam-btn" target="_blank" style="padding: 10px 20px; font-size: 1rem; margin-top: 15px; margin-bottom: 5px;">
+                <img src="../images/Steam_icon_logo.svg" alt="Steam Logo" class="steam-logo-icon" style="width: 25px; height: 25px;">
+                <div class="btn-text-content">
+                    <span class="btn-text">${i18n('form_wishlist')}</span>
+                </div>
+            </a>
         `;
-        if (popupForm) popupForm.style.display = 'none';
-        if (popupFeedback) { popupFeedback.style.display = 'block'; popupFeedback.innerHTML = successHTML; }
         if (inlineForm) inlineForm.style.display = 'none';
         if (inlineFeedback) { inlineFeedback.style.display = 'block'; inlineFeedback.innerHTML = successHTML; }
     }
@@ -675,13 +607,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.custom-cursor');
     if (cursor && !prefersReducedMotion) {
         window.addEventListener('mousemove', e => {
-            // Using requestAnimationFrame or GSAP for smooth tracking
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.1,
-                ease: 'power2.out'
-            });
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
         });
     } else if (cursor) {
         cursor.style.display = 'none';
@@ -740,7 +667,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Start loader
-    if (!prefersReducedMotion) {
+    if (false && !prefersReducedMotion) { // Disabled loader for testing
         setTimeout(showNextMessage, 500);
     } else {
         loaderWrapper.style.display = 'none';
@@ -853,16 +780,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = tagline.innerHTML;
             tagline.innerHTML = "";
             let i = 0;
-            let isTag = false;
-            let textNode = "";
+            let currentHTML = "";
 
             // Custom typewriter that handles HTML tags silently
             function typeWriter() {
                 if (i < text.length) {
                     let char = text.charAt(i);
                     if (char === '<') {
-                        isTag = true;
-                        textNode = "<";
+                        let textNode = "<";
                         i++;
                         // Fast forward to end of tag
                         while (i < text.length && text.charAt(i) !== '>') {
@@ -870,13 +795,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             i++;
                         }
                         textNode += ">";
-                        tagline.innerHTML += textNode;
+                        currentHTML += textNode;
+                        tagline.innerHTML = currentHTML;
                         i++; // Move past the '>'
                         setTimeout(typeWriter, 0); // Immediately type the next character after tag
                         return;
                     }
 
-                    tagline.innerHTML += char;
+                    currentHTML += char;
+                    tagline.innerHTML = currentHTML;
                     i++;
                     setTimeout(typeWriter, 30);
                 }
@@ -946,6 +873,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 sysTimeEl.textContent = `${hours}:${minutes}:${seconds}`;
             }
         }, 1000);
+    }
+
+    // --- Train Screenshot Carousel Modal ---
+    const imageModal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const closeImageModal = document.getElementById('close-image-modal');
+    const trainImages = document.querySelectorAll('.train-img');
+
+    if (imageModal && modalImage && closeImageModal) {
+        trainImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src;
+                imageModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Lock scrolling
+                
+                const audioClick = document.getElementById('audio-click');
+                if (audioClick && !prefersReducedMotion) {
+                    audioClick.currentTime = 0;
+                    audioClick.play().catch(() => {});
+                }
+            });
+        });
+
+        const hideModal = () => {
+            imageModal.classList.add('hidden');
+            document.body.style.overflow = ''; // Unlock scrolling
+        };
+
+        closeImageModal.addEventListener('click', hideModal);
+
+        // Close on overlay click
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                hideModal();
+            }
+        });
     }
 
     // --- Google Ads Conversion Tracking: Space Delivery Wishlist ---

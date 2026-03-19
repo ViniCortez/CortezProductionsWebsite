@@ -109,32 +109,17 @@
             <p data-i18n="popup_body">Do not forget to submit your quota. Add to your Wishlist today.</p>
             <div class="popup-actions">
                 <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" target="_blank"
-                    class="steam-button small-btn popup-btn" data-i18n="popup_btn_wishlist">Wishlist Now</a>
+                    class="hero-steam-btn popup-btn" style="padding: 10px 20px; font-size: 1rem;">
+                    <img src="../images/Steam_icon_logo.svg" alt="Steam Logo" class="steam-logo-icon" style="width: 25px; height: 25px;">
+                    <div class="btn-text-content">
+                        <span class="btn-text" data-i18n="popup_btn_wishlist">Wishlist Now</span>
+                    </div>
+                </a>
                 <button id="close-popup" class="outline-btn popup-btn" data-i18n="popup_btn_dismiss">Dismiss</button>
             </div>
         </div>
     </div>
 
-    <!-- DEMO SIGNUP POPUP -->
-    <div id="demo-popup" class="demo-popup-overlay">
-        <div class="demo-popup-box sci-fi-panel">
-            <button id="close-demo-popup" class="demo-close-btn">&times;</button>
-            <div class="panel-decor-top-left"></div>
-            <div class="panel-decor-bottom-right"></div>
-            <h3 class="demo-popup-headline text-glow" data-i18n="demo_popup_headline">Limited-Time Demo Launching Soon.
-            </h3>
-            <p class="demo-popup-sub" data-i18n="demo_popup_sub">Available for a limited time only. Sign up to get an
-                instant alert when a Demo
-                goes live.</p>
-            <form class="demo-form" id="demo-signup-form">
-                <input type="email" name="Email" id="demo-email" placeholder="Enter your email address"
-                    data-i18n-placeholder="demo_placeholder" required>
-                <button type="submit" class="steam-button small-btn demo-submit-btn" id="submit-btn"
-                    data-i18n="demo_btn_notify">NOTIFY ME</button>
-            </form>
-            <div id="form-feedback" style="display:none;"></div>
-        </div>
-    </div>
 
     <!-- NAVIGATION OVERLAY -->
     <nav class="main-nav">
@@ -154,6 +139,12 @@
 
     <!-- HERO SECTION -->
     <header class="hero sci-fi-hero">
+        <!-- Background Video -->
+        <div class="hero-video-bg">
+            <iframe src="https://www.youtube.com/embed/5CwICbhiFH8?autoplay=1&mute=1&loop=1&controls=0&playlist=5CwICbhiFH8&playsinline=1"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
         <div class="vignette-overlay"></div>
         <div class="grid-overlay"></div>
         <div class="dither-bg hero-dither"></div>
@@ -168,12 +159,35 @@
 
             <div class="hero-actions">
                 <a href="https://store.steampowered.com/app/4141230/Space_Delivery/" target="_blank"
-                    class="steam-button giant-btn flicker-btn">
-                    <span class="btn-text" data-i18n="hero_btn_wishlist">WISHLIST ON STEAM</span>
-                    <span class="btn-scanline"></span>
+                    class="hero-steam-btn pulse-anim">
+                    <img src="../images/Steam_icon_logo.svg" alt="Steam Logo" class="steam-logo-icon">
+                    <div class="btn-text-content">
+                        <span class="btn-text" data-i18n="hero_btn_wishlist">WISHLIST ON STEAM</span>
+                    </div>
                 </a>
             </div>
+
+            <!-- Train Screenshot Carousel inside hero-content -->
+            <div class="train-carousel-wrapper">
+                <div class="train-carousel-track">
+                    <!-- Set 1 -->
+                    <img src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.36.688.png" class="train-img" alt="Screenshot 1">
+                    <img src="Images/screenshots/Desktop 2026.02.22 - 02.10.20.38.DVR.mp4_snapshot_00.46.712.png" class="train-img" alt="Screenshot 2">
+                    <img src="Images/screenshots/Windows 2026.02.20 - 23.22.38.109.DVR.mp4_snapshot_00.02.506.png" class="train-img" alt="Screenshot 3">
+                    <img src="Images/screenshots/Windows 2026.02.20 - 21.48.55.03.DVR.mp4_snapshot_00.13.214.png" class="train-img" alt="Screenshot 4">
+                    <img src="Images/screenshots/Desktop 2026.02.22 - 00.55.53.23.DVR.mp4_snapshot_00.37.696.png" class="train-img" alt="Screenshot 5">
+                    <img src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.37.694.png" class="train-img" alt="Screenshot 6">
+                    <!-- Set 2 (for infinite looping) -->
+                    <img src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.36.688.png" class="train-img" alt="Screenshot 1">
+                    <img src="Images/screenshots/Desktop 2026.02.22 - 02.10.20.38.DVR.mp4_snapshot_00.46.712.png" class="train-img" alt="Screenshot 2">
+                    <img src="Images/screenshots/Windows 2026.02.20 - 23.22.38.109.DVR.mp4_snapshot_00.02.506.png" class="train-img" alt="Screenshot 3">
+                    <img src="Images/screenshots/Windows 2026.02.20 - 21.48.55.03.DVR.mp4_snapshot_00.13.214.png" class="train-img" alt="Screenshot 4">
+                    <img src="Images/screenshots/Desktop 2026.02.22 - 00.55.53.23.DVR.mp4_snapshot_00.37.696.png" class="train-img" alt="Screenshot 5">
+                    <img src="Images/screenshots/SpaceDelivery_MultiplayerGameplayTrailer.mp4_snapshot_01.37.694.png" class="train-img" alt="Screenshot 6">
+                </div>
+            </div>
         </div>
+
 
         <div class="scroll-indicator" id="scroll-to-trailer">
             <svg viewBox="0 0 24 24" width="40" height="40" stroke="var(--color-orange)" stroke-width="2" fill="none"
@@ -463,6 +477,12 @@
                 Probably.</p>
         </div>
     </footer>
+
+    <!-- IMAGE MODAL (For Train Carousel) -->
+    <div id="image-modal" class="hidden image-modal-overlay">
+        <button id="close-image-modal" class="modal-close-btn">&times;</button>
+        <img id="modal-image" src="" alt="Fullscreen Screenshot">
+    </div>
 
     <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
